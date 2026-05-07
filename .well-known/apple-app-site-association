@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "M576JMA5A7.com.seoktaedev.tteona",
-        "paths": ["/course", "/course/*"]
+        "paths": ["/course", "/course/*", "/room", "/room/*"]
       }
     ]
   }
