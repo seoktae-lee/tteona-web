@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>떠나 — 코스 공유</title>
+  <meta property="og:title" content="떠나에서 코스를 공유했어요 🗺️">
+  <meta property="og:description" content="떠나 앱에서 이 코스를 확인해보세요">
+  <meta property="og:image" content="https://tteona.kr/og-image.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, 'Apple SD Gothic Neo', sans-serif;
+      background: #FFFAF7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .logo { font-size: 48px; margin-bottom: 8px; }
+    h1 { font-size: 24px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+    .course-name {
+      font-size: 20px; font-weight: 700;
+      color: #FF6B35; margin-bottom: 6px;
+    }
+    .course-info { font-size: 14px; color: #888; margin-bottom: 40px; }
+    .open-btn {
+      display: inline-block;
+      background: #FF6B35;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .store-btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      max-width: 320px;
+    }
+    .divider {
+      font-size: 13px; color: #bbb;
+      margin: 12px 0;
+    }
+  </style>
+  <script>
+    // URL에서 courseId 파싱
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get('id');
+    const courseName = params.get('name') || '공유된 코스';
+    const placesCount = params.get('places') || '';
+
+    // 앱 딥링크 시도
+    function tryOpenApp() {
+      if (courseId) {
+        window.location.href = 'tteona://course/' + courseId;
+      }
+    }
+
+    window.onload = function() {
+      // 페이지 제목/내용 동적 업데이트
+      document.getElementById('courseName').textContent = courseName;
+      if (placesCount) {
+        document.getElementById('courseInfo').textContent = '장소 ' + placesCount + '곳';
+      }
+
+      // og 태그 업데이트
+      document.querySelector('meta[property="og:title"]').content =
+        courseName + ' — 떠나에서 공유된 코스';
+      document.querySelector('meta[property="og:description"]').content =
+        '장소 ' + placesCount + '곳 · 떠나 앱에서 확인해보세요';
+
+      // 앱 열기 버튼 링크 설정
+      if (courseId) {
+        document.getElementById('openBtn').href = 'tteona://course/' + courseId;
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="logo">🗺️</div>
+  <h1>코스를 공유받았어요!</h1>
+  <div class="course-name" id="courseName"></div>
+  <div class="course-info" id="courseInfo"></div>
+
+  <a class="open-btn" id="openBtn" href="#">
+    떠나 앱에서 열기
+  </a>
+  <div class="divider">앱이 없다면</div>
+  <a class="store-btn" href="https://apps.apple.com/app/id000000000">
+    App Store에서 다운로드
+  </a>
+</body>
+</html>
