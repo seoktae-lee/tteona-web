@@ -6,12 +6,15 @@
   <title>떠나 — 코스 공유</title>
   <meta property="og:title" content="떠나에서 코스를 공유했어요 🗺️">
   <meta property="og:description" content="떠나 앱에서 이 코스를 확인해보세요">
-  <meta property="og:image" content="https://tteona.kr/og-image.png">
+  <meta property="og:image" content="https://tteona.kr/tteona-character.png">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, 'Apple SD Gothic Neo', sans-serif;
-      background: #FFFAF7;
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: #FFFAF5;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -19,72 +22,167 @@
       justify-content: center;
       padding: 40px 20px;
       text-align: center;
+      overflow: hidden;
     }
-    .logo { font-size: 48px; margin-bottom: 8px; }
-    h1 { font-size: 24px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+
+    .bg-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob1 { width: 400px; height: 400px; background: #FF6B35; top: -100px; right: -100px; }
+    .blob2 { width: 300px; height: 300px; background: #FFB347; bottom: -80px; left: -80px; }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      padding: 40px 32px 36px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(255,107,53,0.12), 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .character {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 6px 16px rgba(255,107,53,0.2));
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .from-label {
+      font-size: 13px;
+      color: #aaa;
+      margin-bottom: 4px;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FF6B35;
+      margin-bottom: 20px;
+    }
+
+    .course-box {
+      background: #FFF3EE;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
     .course-name {
-      font-size: 20px; font-weight: 700;
-      color: #FF6B35; margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: 900;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
     }
-    .course-info { font-size: 14px; color: #888; margin-bottom: 40px; }
-    .open-btn {
-      display: inline-block;
-      background: #FF6B35;
-      color: #fff;
-      text-decoration: none;
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-size: 17px;
+
+    .course-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: #FF6B35;
       font-weight: 600;
-      margin-bottom: 16px;
-      width: 100%;
-      max-width: 320px;
+      background: white;
+      padding: 4px 12px;
+      border-radius: 20px;
     }
-    .store-btn {
-      display: inline-block;
-      background: #000;
+
+    .open-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FF6B35, #FF8C5A);
       color: #fff;
       text-decoration: none;
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-size: 15px;
-      font-weight: 500;
+      padding: 17px 32px;
+      border-radius: 18px;
+      font-size: 17px;
+      font-weight: 700;
       width: 100%;
-      max-width: 320px;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 20px rgba(255,107,53,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
     }
+
+    .open-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 3px 10px rgba(255,107,53,0.25);
+    }
+
     .divider {
-      font-size: 13px; color: #bbb;
-      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0 12px;
+      color: #ddd;
+      font-size: 12px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 32px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      width: 100%;
+      transition: transform 0.15s;
+    }
+
+    .store-btn:active { transform: scale(0.97); }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #ccc;
     }
   </style>
   <script>
-    // URL에서 courseId 파싱
     const params = new URLSearchParams(window.location.search);
     const courseId = params.get('id');
     const courseName = params.get('name') || '공유된 코스';
     const placesCount = params.get('places') || '';
 
-    // 앱 딥링크 시도
-    function tryOpenApp() {
-      if (courseId) {
-        window.location.href = 'tteona://course/' + courseId;
-      }
-    }
-
     window.onload = function() {
-      // 페이지 제목/내용 동적 업데이트
       document.getElementById('courseName').textContent = courseName;
       if (placesCount) {
-        document.getElementById('courseInfo').textContent = '장소 ' + placesCount + '곳';
+        document.getElementById('courseInfo').textContent = '📍 장소 ' + placesCount + '곳';
       }
 
-      // og 태그 업데이트
       document.querySelector('meta[property="og:title"]').content =
         courseName + ' — 떠나에서 공유된 코스';
       document.querySelector('meta[property="og:description"]').content =
         '장소 ' + placesCount + '곳 · 떠나 앱에서 확인해보세요';
 
-      // 앱 열기 버튼 링크 설정
       if (courseId) {
         document.getElementById('openBtn').href = 'tteona://course/' + courseId;
       }
@@ -92,17 +190,28 @@
   </script>
 </head>
 <body>
-  <div class="logo">🗺️</div>
-  <h1>코스를 공유받았어요!</h1>
-  <div class="course-name" id="courseName"></div>
-  <div class="course-info" id="courseInfo"></div>
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
 
-  <a class="open-btn" id="openBtn" href="#">
-    떠나 앱에서 열기
-  </a>
-  <div class="divider">앱이 없다면</div>
-  <a class="store-btn" href="https://apps.apple.com/app/id000000000">
-    App Store에서 다운로드
-  </a>
+  <div class="card">
+    <img class="character" src="/tteona-character.png" alt="떠나 캐릭터">
+    <p class="from-label">코스를 공유받았어요!</p>
+    <p class="app-name">— 떠나 —</p>
+
+    <div class="course-box">
+      <div class="course-name" id="courseName"></div>
+      <div class="course-info" id="courseInfo"></div>
+    </div>
+
+    <a class="open-btn" id="openBtn" href="#">
+      ✈️ 떠나 앱에서 열기
+    </a>
+    <div class="divider">앱이 없다면</div>
+    <a class="store-btn" href="https://apps.apple.com/app/id000000000">
+      App Store에서 다운로드
+    </a>
+  </div>
+
+  <p class="footer">© 2025 Tteona. Made with ❤️</p>
 </body>
 </html>
