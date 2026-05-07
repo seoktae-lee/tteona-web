@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>떠나 — 오늘, 어디로 떠나볼까요?</title>
-  <meta property="og:title" content="떠나 — 오늘, 어디로 떠나볼까요?">
+  <title>tteona — 오늘, 어디로 떠나볼까요?</title>
+  <meta property="og:title" content="tteona — 오늘, 어디로 떠나볼까요?">
   <meta property="og:description" content="나만의 여행 코스를 기록하고 공유해보세요">
   <meta property="og:image" content="https://tteona.kr/tteona-character.png">
   <meta property="og:url" content="https://tteona.kr">
@@ -15,52 +15,48 @@
 
     html, body {
       height: 100%;
+      width: 100%;
     }
 
     body {
       font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      min-height: 100vh;
+      background:
+        url('/tteona-character.png') center center / cover no-repeat fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      background: #FFFAF5;
-    }
-
-    .hero {
-      width: 100%;
-      max-width: 480px;
-      aspect-ratio: 4 / 3;
-      background: url('/tteona-character.png') center center / cover no-repeat;
+      justify-content: flex-end;
+      padding-bottom: 60px;
     }
 
     .bottom {
       width: 100%;
-      max-width: 480px;
-      flex: 1;
+      max-width: 400px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 40px 32px 48px;
+      padding: 0 28px;
       text-align: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 52px;
       font-weight: 900;
-      color: #1a1a1a;
+      color: #FF6B35;
       letter-spacing: -1px;
+      text-shadow: 0 2px 16px rgba(255,107,53,0.18);
     }
 
     .subtitle {
       font-size: 15px;
-      color: #999;
+      color: #555;
       line-height: 1.7;
     }
 
     .app-store-btn {
-      margin-top: 12px;
+      margin-top: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,7 +69,7 @@
       font-size: 16px;
       font-weight: 700;
       width: 100%;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
 
     .app-store-btn svg {
@@ -85,10 +81,8 @@
   </style>
 </head>
 <body>
-  <div class="hero"></div>
-
   <div class="bottom">
-    <h1>떠나</h1>
+    <h1>tteona</h1>
     <p class="subtitle">오늘 하루를 여행처럼 기록하고<br>나만의 코스를 친구에게 공유해요</p>
     <a class="app-store-btn" href="https://apps.apple.com/app/id000000000">
       <svg viewBox="0 0 814 1000" xmlns="http://www.w3.org/2000/svg">
