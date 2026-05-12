@@ -32,10 +32,20 @@
       z-index: 10;
     }
     header .brand {
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    header .brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+    }
+    header .brand span {
+      font-size: 18px;
       font-weight: 700;
       color: var(--orange);
-      text-decoration: none;
     }
     .lang-toggle {
       display: flex;
@@ -109,11 +119,25 @@
     }
     .lang-section { display: none; }
     .lang-section.active { display: block; }
+    footer {
+      margin-top: 60px;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer p {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 4px;
+    }
   </style>
 </head>
 <body>
 <header>
-  <a class="brand" href="https://tteona.kr">떠나</a>
+  <a class="brand" href="https://tteona.kr">
+    <img src="/tteona-logo.png" alt="tteona 로고">
+    <span>tteona</span>
+  </a>
   <div class="lang-toggle">
     <button id="btn-ko" class="active" onclick="setLang('ko')">한국어</button>
     <button id="btn-en" onclick="setLang('en')">English</button>
@@ -260,10 +284,6 @@
 
     <h2>12. 문의</h2>
     <p>개인정보 관련 문의는 앱 내 설정 화면의 문의 기능을 이용해 주시기 바랍니다.</p>
-    <ul>
-      <li><strong>사업자명</strong>: AERON</li>
-      <li><strong>서비스명</strong>: 떠나 (Tteona)</li>
-    </ul>
   </div>
 
   <!-- ===== English ===== -->
@@ -403,13 +423,14 @@
 
     <h2>12. Contact</h2>
     <p>For privacy-related inquiries, please use the in-app contact feature in the Settings screen.</p>
-    <ul>
-      <li><strong>Business name</strong>: AERON</li>
-      <li><strong>Service name</strong>: 떠나 (Tteona)</li>
-    </ul>
   </div>
 
 </div>
+
+<footer>
+  <p>© 2026 AERON · tteona</p>
+  <p>사업자명: AERON &nbsp;·&nbsp; 서비스명: 떠나 (Tteona)</p>
+</footer>
 
 <script>
   function setLang(lang) {
