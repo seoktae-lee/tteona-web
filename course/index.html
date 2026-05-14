@@ -109,7 +109,7 @@
         document.getElementById('courseName').textContent = courseName;
       }
       if (courseId) {
-        document.getElementById('openBtn').href = 'tteona://course/' + courseId;
+        document.getElementById('openBtn').href = 'tteona://course?id=' + courseId;
       }
       document.querySelector('meta[property="og:title"]').content =
         (courseName ? courseName + ' — ' : '') + '떠나에서 코스를 공유했어요!';
