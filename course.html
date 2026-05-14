@@ -111,7 +111,7 @@
 
       const openBtn = document.getElementById('openBtn');
       if (courseId) {
-        openBtn.href = 'tteona://course/' + courseId;
+        openBtn.href = 'tteona://course?id=' + courseId;
       } else {
         openBtn.style.display = 'none';
         document.getElementById('divider').style.display = 'none';
