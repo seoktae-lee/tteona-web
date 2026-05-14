@@ -111,12 +111,7 @@
 
       const openBtn = document.getElementById('openBtn');
       if (courseId) {
-        const deepLink = 'tteona://course/' + courseId;
-        openBtn.href = deepLink;
-        openBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.location.href = deepLink;
-        });
+        openBtn.href = 'tteona://course/' + courseId;
       } else {
         openBtn.style.display = 'none';
         document.getElementById('divider').style.display = 'none';
