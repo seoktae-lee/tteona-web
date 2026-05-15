@@ -503,13 +503,23 @@
       color: #bbb;
     }
 
+    .powered-by {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+      opacity: 0.35;
+    }
+
+    .powered-by span {
+      font-size: 10px;
+      color: #bbb;
+      letter-spacing: 0.08em;
+    }
+
     img.aeron-logo {
-      height: 48px;
-      opacity: 0.5;
-      margin-top: 24px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      height: 14px;
     }
   </style>
 </head>
@@ -670,7 +680,10 @@
       © 2026 tteona. All rights reserved.<br>
       <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a>
     </p>
-    <img class="aeron-logo" src="/aeron-logo.jpg" alt="AERON">
+    <div class="powered-by">
+      <span>Powered by</span>
+      <img class="aeron-logo" src="/aeron-logo.jpg" alt="AERON">
+    </div>
   </footer>
 
 </body>
