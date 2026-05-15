@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
   <style>
     :root {
       --orange: #FF6B35;
@@ -196,14 +197,7 @@
       50%       { transform: translateX(-50%) translateY(5px); }
     }
 
-    /* ── SECTIONS ── */
-    section { padding: 80px 24px; }
-
-    .section-inner {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
+    /* ── SECTION ICON ── */
     .section-icon-wrap {
       display: flex;
       align-items: center;
@@ -236,15 +230,23 @@
       background: rgba(255,107,53,0.14);
     }
 
-    .section-icon span {
+    .section-icon i {
       position: relative;
       z-index: 1;
       font-size: 40px;
-      line-height: 1;
+      color: var(--orange);
     }
 
     .feature-vlog .section-icon::before { background: rgba(255,107,53,0.15); }
     .feature-vlog .section-icon::after  { background: rgba(255,107,53,0.22); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+
+    .section-inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
 
     .section-tag {
       display: inline-block;
@@ -314,6 +316,7 @@
       justify-content: center;
       font-size: 22px;
       flex-shrink: 0;
+      color: var(--orange);
     }
 
     .course-card .text h3 {
@@ -625,27 +628,27 @@
   <section class="feature-course">
     <div class="section-inner">
       <div class="section-icon-wrap reveal">
-        <div class="section-icon"><span>🗺️</span></div>
+        <div class="section-icon"><i class="ph-fill ph-map-trifold"></i></div>
       </div>
       <h2 class="section-title reveal reveal-delay-1">내 손 안의<br><em>여행 플래너</em></h2>
       <p class="section-desc reveal reveal-delay-2">다른 여행자들이 기록한 코스를 탐색하거나, 직접 나만의 코스를 만들어 보세요. 장소마다 사진과 메모를 남기면 나만의 여행 지도가 완성돼요.</p>
       <div class="course-cards">
         <div class="course-card reveal reveal-delay-2">
-          <div class="icon">🗺️</div>
+          <div class="icon"><i class="ph-fill ph-map-trifold"></i></div>
           <div class="text">
             <h3>코스 탐색 & 저장</h3>
             <p>다른 사람들이 만든 여행 코스를 검색하고 내 라이브러리에 저장해요</p>
           </div>
         </div>
         <div class="course-card reveal reveal-delay-3">
-          <div class="icon">🎬</div>
+          <div class="icon"><i class="ph-fill ph-video-camera"></i></div>
           <div class="text">
             <h3>나의 오늘</h3>
             <p>일상을 자유롭게 기록해요</p>
           </div>
         </div>
         <div class="course-card reveal reveal-delay-4">
-          <div class="icon">🎞️</div>
+          <div class="icon"><i class="ph-fill ph-film-strip"></i></div>
           <div class="text">
             <h3>Vlog 생성</h3>
             <p>여행이 끝나면 자동으로 영상이 완성돼요</p>
@@ -659,7 +662,7 @@
   <section class="feature-vlog">
     <div class="section-inner">
       <div class="section-icon-wrap reveal">
-        <div class="section-icon"><span>🎞️</span></div>
+        <div class="section-icon"><i class="ph-fill ph-film-strip"></i></div>
       </div>
       <h2 class="section-title reveal reveal-delay-1">여행이 끝나면<br><em style="color:var(--orange)">브이로그가 완성</em></h2>
       <p class="section-desc reveal reveal-delay-2">여행 중에 찍은 영상 클립을 저장해두면, 떠나가 자동으로 편집해 브이로그로 만들어줘요. 편집은 떠나에게, 추억은 나에게.</p>
@@ -693,10 +696,10 @@
   <section class="feature-group">
     <div class="section-inner">
       <div class="section-icon-wrap reveal">
-        <div class="section-icon"><span>👥</span></div>
+        <div class="section-icon"><i class="ph-fill ph-users"></i></div>
       </div>
       <h2 class="section-title reveal reveal-delay-1">같이 가면<br><em>더 재밌잖아요</em></h2>
-      <p class="section-desc reveal reveal-delay-2">초대 코드로 그룹을 만들고 친구를 초대해요. 실시간 위치 공유부터 피드, 댓글까지 — 함께하는 여행의 모든 것을 한 곳에서.</p>
+      <p class="section-desc reveal reveal-delay-2">6자리 초대 코드로 그룹을 만들고 친구를 초대해요. 실시간 위치 공유부터 피드, 댓글까지 — 함께하는 여행의 모든 것을 한 곳에서.</p>
       <div class="group-pills reveal reveal-delay-2">
         <div class="group-pill"><span class="dot"></span> 실시간 위치 공유</div>
         <div class="group-pill"><span class="dot"></span> 그룹 피드 & 댓글</div>
