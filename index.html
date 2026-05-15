@@ -204,6 +204,48 @@
       margin: 0 auto;
     }
 
+    .section-icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .section-icon {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(255,107,53,0.08);
+    }
+
+    .section-icon::after {
+      content: '';
+      position: absolute;
+      inset: 15px;
+      border-radius: 50%;
+      background: rgba(255,107,53,0.14);
+    }
+
+    .section-icon span {
+      position: relative;
+      z-index: 1;
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .feature-vlog .section-icon::before { background: rgba(255,107,53,0.15); }
+    .feature-vlog .section-icon::after  { background: rgba(255,107,53,0.22); }
+
     .section-tag {
       display: inline-block;
       background: var(--orange-light);
@@ -582,7 +624,9 @@
   <!-- ── FEATURE: COURSE ── -->
   <section class="feature-course">
     <div class="section-inner">
-      <span class="section-tag reveal">🗺️ 코스 탐색</span>
+      <div class="section-icon-wrap reveal">
+        <div class="section-icon"><span>🗺️</span></div>
+      </div>
       <h2 class="section-title reveal reveal-delay-1">내 손 안의<br><em>여행 플래너</em></h2>
       <p class="section-desc reveal reveal-delay-2">다른 여행자들이 기록한 코스를 탐색하거나, 직접 나만의 코스를 만들어 보세요. 장소마다 사진과 메모를 남기면 나만의 여행 지도가 완성돼요.</p>
       <div class="course-cards">
@@ -614,7 +658,9 @@
   <!-- ── FEATURE: VLOG ── -->
   <section class="feature-vlog">
     <div class="section-inner">
-      <span class="section-tag reveal">🎞️ 자동 브이로그</span>
+      <div class="section-icon-wrap reveal">
+        <div class="section-icon"><span>🎞️</span></div>
+      </div>
       <h2 class="section-title reveal reveal-delay-1">여행이 끝나면<br><em style="color:var(--orange)">브이로그가 완성</em></h2>
       <p class="section-desc reveal reveal-delay-2">여행 중에 찍은 영상 클립을 저장해두면, 떠나가 자동으로 편집해 브이로그로 만들어줘요. 편집은 떠나에게, 추억은 나에게.</p>
       <div class="vlog-steps">
@@ -646,9 +692,11 @@
   <!-- ── FEATURE: GROUP ── -->
   <section class="feature-group">
     <div class="section-inner">
-      <span class="section-tag reveal">👥 그룹 여행</span>
+      <div class="section-icon-wrap reveal">
+        <div class="section-icon"><span>👥</span></div>
+      </div>
       <h2 class="section-title reveal reveal-delay-1">같이 가면<br><em>더 재밌잖아요</em></h2>
-      <p class="section-desc reveal reveal-delay-2">6자리 초대 코드로 그룹을 만들고 친구를 초대해요. 실시간 위치 공유부터 피드, 댓글까지 — 함께하는 여행의 모든 것을 한 곳에서.</p>
+      <p class="section-desc reveal reveal-delay-2">초대 코드로 그룹을 만들고 친구를 초대해요. 실시간 위치 공유부터 피드, 댓글까지 — 함께하는 여행의 모든 것을 한 곳에서.</p>
       <div class="group-pills reveal reveal-delay-2">
         <div class="group-pill"><span class="dot"></span> 실시간 위치 공유</div>
         <div class="group-pill"><span class="dot"></span> 그룹 피드 & 댓글</div>
