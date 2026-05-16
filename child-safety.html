@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아동 안전 기준 정책 / Child Safety Standards Policy — 떠나</title>
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --bg: #FAFAFA;
+      --text: #1A1A1A;
+      --sub: #555;
+      --border: #E5E5E5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0 0 60px;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    header .brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+    }
+    header .brand span {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .lang-toggle {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .lang-toggle button {
+      padding: 6px 16px;
+      border: none;
+      background: #fff;
+      color: var(--sub);
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-toggle button.active {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .effective-date {
+      color: var(--sub);
+      font-size: 13px;
+      margin-bottom: 36px;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 36px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--orange);
+    }
+    p { margin-bottom: 12px; font-size: 15px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; font-size: 15px; }
+    a { color: var(--orange); }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    footer {
+      margin-top: 60px;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer img.aeron {
+      height: 18px;
+      opacity: 0.3;
+      margin-bottom: 10px;
+      filter: grayscale(100%);
+    }
+    footer p {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a class="brand" href="https://tteona.kr">
+    <img src="/tteona-logo.png" alt="tteona 로고">
+    <span>tteona</span>
+  </a>
+  <div class="lang-toggle">
+    <button id="btn-ko" class="active" onclick="setLang('ko')">한국어</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ===== 한국어 ===== -->
+  <div id="ko" class="lang-section active">
+    <h1>아동 안전 기준 정책</h1>
+    <p class="effective-date">시행일: 2026년 5월 16일 &nbsp;·&nbsp; 최종 업데이트: 2026년 5월 16일</p>
+
+    <p>AERON(이하 "서비스 제공자")은 모바일 애플리케이션 "떠나"(이하 "앱")를 이용하는 모든 사용자, 특히 아동과 청소년의 안전한 환경을 위해 최선을 다합니다. 서비스 제공자는 아동 성적 학대 및 착취(CSAE)에 대해 무관용 정책을 적용하며, 아동을 착취하거나 학대하거나 위험에 빠뜨리는 모든 콘텐츠와 행위를 엄격히 금지합니다.</p>
+
+    <h2>1. 금지되는 콘텐츠 및 행위</h2>
+    <p>당사 플랫폼에서는 다음 행위를 엄격히 금지합니다.</p>
+    <ul>
+      <li>모든 형태의 아동 성적 학대 자료(CSAM)</li>
+      <li>미성년자에게 부적절한 관계를 형성하려는 그루밍 행위 또는 시도</li>
+      <li>미성년자에 대한 성적 착취, 강요 또는 협박(섹스토션 포함)</li>
+      <li>미성년자가 등장하는 성적 콘텐츠의 공유, 요청 또는 배포</li>
+      <li>아동의 안전이나 복지를 위협하는 모든 활동</li>
+    </ul>
+    <p>본 정책에서 아동 또는 미성년자는 만 18세 미만의 모든 개인을 의미합니다.</p>
+
+    <h2>2. 신고 방법</h2>
+    <p>앱 내에서 아동의 안전을 위협하는 콘텐츠 또는 행위를 발견하신 경우, 아래 이메일로 즉시 신고해 주시기 바랍니다.</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+    <p>신고 접수 후 서비스 제공자는 즉시 검토 절차를 진행하며, 필요한 경우 관련 법집행 기관에 신고합니다.</p>
+
+    <h2>3. 법적 신고 의무</h2>
+    <p>서비스 제공자는 아동 성적 학대 자료(CSAM)로 의심되는 콘텐츠를 발견하거나 신고받은 경우, 관련 법령에 따라 즉시 관할 기관(방송통신심의위원회, 경찰청 사이버수사국 등) 및 미국 실종·착취 아동 국가센터(NCMEC)에 신고할 의무를 이행합니다.</p>
+
+    <h2>4. 이용 자격 및 연령 제한</h2>
+    <p>앱은 만 14세 이상의 이용자를 대상으로 합니다. 서비스 제공자는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않으며, 해당 사실을 인지하는 즉시 관련 계정 및 데이터를 삭제합니다.</p>
+
+    <h2>5. 안전한 환경 유지 노력</h2>
+    <p>서비스 제공자는 아동 안전을 위해 다음과 같은 노력을 기울입니다.</p>
+    <ul>
+      <li>그룹(방) 기능은 초대 코드를 통한 폐쇄형 운영으로 낯선 사람과의 무작위 접촉을 방지합니다.</li>
+      <li>아동 안전 관련 신고를 접수한 경우 즉각적으로 조치합니다.</li>
+      <li>관련 법령 및 플랫폼 정책 변화에 따라 본 정책을 주기적으로 검토·개선합니다.</li>
+    </ul>
+
+    <h2>6. 정책 변경</h2>
+    <p>본 정책은 필요에 따라 변경될 수 있으며, 중요한 변경 사항은 앱 또는 본 페이지를 통해 사전 공지합니다.</p>
+
+    <h2>7. 문의</h2>
+    <p>아동 안전과 관련된 문의 또는 신고는 아래 이메일로 연락해 주시기 바랍니다.</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+  </div>
+
+  <!-- ===== English ===== -->
+  <div id="en" class="lang-section">
+    <h1>Child Safety Standards Policy</h1>
+    <p class="effective-date">Effective Date: May 16, 2026 &nbsp;·&nbsp; Last Updated: May 16, 2026</p>
+
+    <p>AERON (the "Service Provider") is committed to providing a safe environment for all users of the mobile application "떠나 (Tteona)" (the "App"), especially children and minors. The Service Provider has a zero-tolerance policy toward Child Sexual Abuse and Exploitation (CSAE) and strictly prohibits any content or behavior that exploits, abuses, or endangers children.</p>
+
+    <h2>1. Prohibited Content and Behavior</h2>
+    <p>The following are strictly prohibited on our platform:</p>
+    <ul>
+      <li>Any form of Child Sexual Abuse Material (CSAM)</li>
+      <li>Grooming behavior or attempts to establish inappropriate relationships with minors</li>
+      <li>Sexual exploitation, coercion, or threats targeting minors (including sextortion)</li>
+      <li>Sharing, requesting, or distributing sexual content involving minors</li>
+      <li>Any activity that threatens the safety or well-being of children</li>
+    </ul>
+    <p>For the purposes of this policy, a child or minor refers to any individual under the age of 18.</p>
+
+    <h2>2. How to Report</h2>
+    <p>If you encounter any content or behavior within the App that threatens the safety of a child, please report it immediately by emailing us.</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+    <p>Upon receiving a report, the Service Provider will initiate a review immediately and, where necessary, report the matter to the relevant law enforcement authorities.</p>
+
+    <h2>3. Legal Reporting Obligations</h2>
+    <p>If the Service Provider discovers or receives a report of content suspected to be Child Sexual Abuse Material (CSAM), we are legally obligated to report it immediately to the relevant authorities, including the Korea Communications Standards Commission, the Cyber Investigation Bureau of the National Police Agency, and the National Center for Missing &amp; Exploited Children (NCMEC).</p>
+
+    <h2>4. Eligibility and Age Restrictions</h2>
+    <p>The App is intended for users aged 14 and older. The Service Provider does not knowingly collect personal information from children under the age of 14. If we become aware that a child under 14 has provided personal information, we will immediately delete the relevant account and data.</p>
+
+    <h2>5. Commitment to a Safe Environment</h2>
+    <p>The Service Provider takes the following measures to protect child safety:</p>
+    <ul>
+      <li>Group (room) features operate as closed environments accessible only via invite codes, preventing random contact with strangers.</li>
+      <li>Reports related to child safety are acted upon immediately upon receipt.</li>
+      <li>This policy is reviewed and updated periodically in response to changes in applicable laws and platform standards.</li>
+    </ul>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>This Policy may be updated periodically. Material changes will be announced in advance through the App or this page.</p>
+
+    <h2>7. Contact</h2>
+    <p>For inquiries or reports related to child safety, please contact us by email.</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <img class="aeron" src="/aeron-logo.jpg" alt="AERON">
+  <p>© 2026 tteona. All rights reserved.</p>
+  <p>사업자명: 에어론(AERON) &nbsp;·&nbsp; 서비스명: 떠나(tteona)</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+</body>
+</html>
