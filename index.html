@@ -107,23 +107,39 @@
 
     /* HERO */
     .hero {
-      position: relative; min-height: 100svh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: calc(var(--nav-h) + 60px) 40px 80px; overflow: hidden; text-align: center;
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: calc(var(--nav-h) + 40px) 0 60px;
+      background: var(--bg); overflow: hidden;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url('/tteona-character.png') center 30% / cover no-repeat;
-      z-index: 0; transform: scale(1.06);
-      animation: hero-zoom 1.4s cubic-bezier(0.22,1,0.36,1) forwards;
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: center; width: 100%;
     }
-    @keyframes hero-zoom { to { transform: scale(1); } }
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(250,250,250,0.1) 0%, rgba(250,250,250,0) 35%, rgba(250,250,250,0.65) 72%, rgba(250,250,250,1) 100%);
+    .hero-content {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+      animation: hero-up 1s 0.2s cubic-bezier(0.22,1,0.36,1) both;
     }
-    .hero-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 18px; animation: hero-up 1s 0.2s cubic-bezier(0.22,1,0.36,1) both; }
     @keyframes hero-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero-img-wrap {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      animation: hero-up 1s 0.35s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .hero-img-wrap::before {
+      content: ''; position: absolute;
+      width: 88%; height: 88%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(255,107,53,0.03) 70%, transparent 100%);
+    }
+    .hero-img-wrap img {
+      width: 100%; max-width: 520px; object-fit: contain;
+      animation: float 5s ease-in-out infinite;
+      position: relative; z-index: 1;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -133,11 +149,11 @@
     }
     .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
 
-    .hero-title { font-size: clamp(38px, 6vw, 72px); font-weight: 900; line-height: 1.15; color: var(--text); letter-spacing: -2px; }
+    .hero-title { font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1.15; color: var(--text); letter-spacing: -2px; }
     .hero-title em { color: var(--orange); font-style: normal; }
-    .hero-sub { font-size: clamp(15px, 1.8vw, 18px); color: var(--sub); line-height: 1.85; max-width: 440px; }
+    .hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--sub); line-height: 1.9; max-width: 400px; }
 
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 9px;
@@ -156,10 +172,10 @@
     }
     .btn-ghost:hover { background: #fff; transform: translateY(-2px); }
 
-    .scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0.35; z-index: 1; animation: bounce 2.5s infinite; }
+    .scroll-hint { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; opacity: 0.35; margin-top: 8px; }
     .scroll-hint span { font-size: 10px; letter-spacing: 0.1em; color: var(--sub); }
-    .scroll-hint svg { width: 16px; height: 16px; stroke: var(--sub); fill: none; stroke-width: 2; }
-    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+    .scroll-hint svg { width: 16px; height: 16px; stroke: var(--sub); fill: none; stroke-width: 2; animation: bounce-y 2.5s infinite; }
+    @keyframes bounce-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
     /* HIGHLIGHT BAR */
     .highlights { background: #fff; padding: 48px 0; border-bottom: 1px solid var(--border); }
@@ -273,6 +289,12 @@
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { align-items: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .scroll-hint { align-items: center; }
+      .hero-img-wrap { max-width: 360px; margin: 0 auto; }
       .hl-grid { grid-template-columns: repeat(2, 1fr); }
       .hl-item:nth-child(2) { border-right: none; }
       .hl-item:nth-child(1), .hl-item:nth-child(2) { border-bottom: 1px solid var(--border); }
@@ -286,6 +308,7 @@
       .container { padding: 0 20px; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
+      .hero { padding: calc(var(--nav-h) + 24px) 0 40px; }
       .feature { padding: 72px 0; }
       .hl-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
@@ -348,22 +371,28 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">지금 App Store에서 무료로 시작하세요</div>
-    <h1 class="hero-title">오늘 하루를<br><em>여행처럼</em> 기록해요</h1>
-    <p class="hero-sub">나만의 코스를 만들고, 브이로그로 남기고,<br>친구와 함께 공유해요.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="https://apps.apple.com/app/id000000000">
-        <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
-        App Store에서 다운로드
-      </a>
-      <a class="btn-ghost" href="#feature-today">기능 살펴보기 →</a>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">지금 App Store에서 무료로 시작하세요</div>
+        <h1 class="hero-title">오늘 하루를<br><em>여행처럼</em><br>기록해요</h1>
+        <p class="hero-sub">나만의 코스를 만들고, 브이로그로 남기고,<br>친구와 함께 공유해요.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://apps.apple.com/app/id000000000">
+            <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
+            App Store에서 다운로드
+          </a>
+          <a class="btn-ghost" href="#feature-today">기능 살펴보기 →</a>
+        </div>
+        <div class="scroll-hint">
+          <span>SCROLL</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="/tteona-character.png" alt="tteona 캐릭터">
+      </div>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <span>SCROLL</span>
-    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
