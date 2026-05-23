@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>업데이트 — tteona</title>
+  <link rel="icon" href="/tteona-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #FF6B35;
+      --orange-light: #FFF3EE;
+      --border: rgba(0,0,0,0.08);
+      --bg: #FAFAF8;
+      --nav-h: 68px;
+    }
+    body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: #111; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .navbar {
+      position: sticky; top: 0; background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent; z-index: 100; height: var(--nav-h);
+    }
+    .navbar.scrolled { border-bottom-color: var(--border); }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo img { width: 34px; height: 34px; border-radius: 9px; }
+    .nav-logo span { font-size: 20px; font-weight: 900; color: var(--orange); letter-spacing: -0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links > li > a,
+    .nav-links > li > button {
+      display: block; padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 500;
+      color: #555; text-decoration: none; background: none; border: none; cursor: pointer;
+      transition: background 0.13s, color 0.13s;
+    }
+    .nav-links > li > a:hover { background: rgba(0,0,0,0.05); color: #111; }
+    .nav-links > li > a.active { color: var(--orange); font-weight: 700; }
+    .nav-cta {
+      display: flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 12px;
+      background: var(--orange); color: #fff; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: opacity 0.15s, transform 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .nav-cta svg { width: 14px; height: 14px; fill: white; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; background: none; border: none;
+      cursor: pointer; padding: 8px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #333; border-radius: 2px; transition: 0.2s; }
+    .mobile-menu {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
+      flex-direction: column; gap: 4px; padding: 12px 20px 20px; z-index: 99;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 13px 12px; font-size: 15px; font-weight: 500; color: #333; text-decoration: none; border-radius: 10px; transition: background 0.13s; }
+    .mobile-menu a:hover { background: rgba(0,0,0,0.04); }
+    .mobile-menu .m-cta { margin-top: 10px; background: var(--orange); color: #fff; text-align: center; border-radius: 12px; padding: 14px; font-weight: 700; }
+
+    @media (max-width: 640px) {
+      :root { --nav-h: 60px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (min-width: 641px) { .mobile-menu { display: none !important; } }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 52px 0 44px;
+    }
+    .page-eyebrow {
+      font-size: 13px; font-weight: 700; color: var(--orange);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .page-title {
+      font-size: clamp(28px, 5vw, 40px); font-weight: 900;
+      letter-spacing: -0.03em; line-height: 1.15; color: #111; margin-bottom: 10px;
+    }
+    .page-subtitle {
+      font-size: 15px; color: #888; font-weight: 400; line-height: 1.6;
+    }
+
+    /* TIMELINE */
+    .timeline-section {
+      padding: 52px 0 80px;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 56px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-entry {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 0 28px;
+      padding-bottom: 48px;
+      position: relative;
+    }
+    .tl-entry:last-child { padding-bottom: 0; }
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 4px;
+      position: relative;
+    }
+    .tl-dot {
+      width: 12px; height: 12px;
+      background: var(--orange); border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--orange);
+      position: absolute;
+      right: -22px;
+      top: 8px;
+    }
+    .tl-latest .tl-dot {
+      width: 16px; height: 16px;
+      right: -24px;
+      top: 6px;
+    }
+    .tl-version {
+      font-size: 15px; font-weight: 900; color: #111; letter-spacing: -0.02em;
+    }
+    .tl-date {
+      font-size: 12px; color: #aaa; font-weight: 400; margin-top: 3px;
+    }
+    .tl-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 28px;
+    }
+    .tl-latest .tl-card {
+      border-color: rgba(255,107,53,0.25);
+      box-shadow: 0 4px 20px rgba(255,107,53,0.08);
+    }
+    .tl-card-title {
+      font-size: 17px; font-weight: 800; color: #111;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .tl-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .tl-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .tag-new { background: #ECFDF5; color: #059669; }
+    .tag-fix { background: #FFF7ED; color: #EA580C; }
+    .tag-improve { background: #EFF6FF; color: #2563EB; }
+
+    .change-group { margin-bottom: 20px; }
+    .change-group:last-child { margin-bottom: 0; }
+    .change-group-label {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+      margin-bottom: 10px; letter-spacing: 0.02em;
+    }
+    .change-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .change-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: #333; line-height: 1.6;
+    }
+    .change-list li .ci {
+      flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px;
+      background: var(--orange-light); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); font-size: 12px;
+    }
+    .ci-fix { background: #FFF7ED !important; color: #EA580C !important; }
+    .ci-improve { background: #EFF6FF !important; color: #2563EB !important; }
+    .change-divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+    @media (max-width: 640px) {
+      .timeline::before { left: 0; display: none; }
+      .tl-entry { grid-template-columns: 1fr; gap: 8px; }
+      .tl-left { flex-direction: row; align-items: center; gap: 10px; padding-top: 0; }
+      .tl-dot { display: none; }
+      .tl-card { padding: 20px; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 36px 0; text-align: center;
+    }
+    footer p { font-size: 13px; color: #bbb; }
+    footer a { color: #bbb; text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container" style="max-width:1080px">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/tteona-logo.png" alt="tteona">
+        <span>tteona</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">기능 소개</a></li>
+        <li><a href="/popular.html">인기코스</a></li>
+        <li><a href="/updates.html" class="active">업데이트</a></li>
+        <li><a href="/#cta">다운로드</a></li>
+        <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
+      </ul>
+      <a class="nav-cta" href="https://apps.apple.com/app/id000000000">
+        <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
+        App Store
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">🗺️ 기능 소개</a>
+  <a href="/popular.html">🏆 인기코스</a>
+  <a href="/updates.html">🔔 업데이트</a>
+  <a href="/#cta">⬇️ 다운로드</a>
+  <a href="mailto:just.tteona@gmail.com">✉️ 문의하기</a>
+  <a href="https://apps.apple.com/app/id000000000" class="m-cta">App Store에서 다운로드</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-eyebrow">Release Notes</div>
+    <h1 class="page-title">업데이트 노트</h1>
+    <p class="page-subtitle">tteona의 새로운 기능과 개선사항을 확인해보세요.</p>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="timeline">
+
+      <!-- v1.3 -->
+      <div class="tl-entry tl-latest">
+        <div class="tl-left">
+          <span class="tl-version">v1.3</span>
+          <span class="tl-date">2025.05</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">브이로그 & 화면 개선</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci"><i class="ph-fill ph-film-strip"></i></span>
+                브이로그 타이틀 카드 — 파스텔 주황 배경에 날짜와 tteona 워터마크가 자동으로 삽입돼요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-device-mobile"></i></span>
+                앱 버전 정보가 설정 화면에서 실시간으로 표시돼요
+              </li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-video-camera"></i></span>
+                브이로그 렌더링 성능이 향상되었어요 (CALayer 방식으로 전환)
+              </li>
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-spinner-gap"></i></span>
+                주요 화면의 로딩 인디케이터가 추가되어 상태를 더 명확히 알 수 있어요
+              </li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-fix">수정</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci ci-fix"><i class="ph-fill ph-map-pin"></i></span>
+                위치 권한이 '항상 허용'으로 정확하게 요청되도록 수정했어요
+              </li>
+              <li>
+                <span class="ci ci-fix"><i class="ph-fill ph-microphone"></i></span>
+                마이크 권한 요청이 정상적으로 동작하도록 수정했어요
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- v1.2 -->
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.2</span>
+          <span class="tl-date">2025.04</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">알림 & 보안 강화</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci"><i class="ph-fill ph-bell"></i></span>
+                채팅 화면이 열려 있을 때 해당 방의 알림이 자동으로 억제돼요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-bell-ringing"></i></span>
+                설정 화면에서 현재 알림 권한 상태를 바로 확인할 수 있어요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-read-cv-logo"></i></span>
+                피드 방에서 읽지 않은 새 피드가 있을 때 뱃지로 표시돼요
+              </li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-shield-check"></i></span>
+                Firestore 보안 규칙이 강화되었어요
+              </li>
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-trash"></i></span>
+                Apple/카카오 계정 탈퇴 시 인증 정보가 완전히 삭제돼요
+              </li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-fix">수정</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci ci-fix"><i class="ph-fill ph-bell-slash"></i></span>
+                중복 푸시 알림이 발송되는 문제를 수정했어요
+              </li>
+              <li>
+                <span class="ci ci-fix"><i class="ph-fill ph-user"></i></span>
+                자신의 활동에 대해 알림이 오지 않도록 수정했어요
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- v1.1 -->
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.1</span>
+          <span class="tl-date">2025.03</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">그룹 피드 & 코스 탐색</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci"><i class="ph-fill ph-chat-circle-dots"></i></span>
+                댓글 답글 기능이 추가됐어요 — 특정 댓글을 인용해서 답할 수 있어요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-magnifying-glass"></i></span>
+                코스 이름으로 실시간 검색이 가능해요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-arrow-counter-clockwise"></i></span>
+                이전에 기록한 코스를 이어서 다시 시작할 수 있어요
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-flag-banner"></i></span>
+                그룹 방에 참여하면 여행 시작 피드가 자동으로 생성돼요
+              </li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-sort-ascending"></i></span>
+                코스 목록이 인기도 순으로 정렬돼요
+              </li>
+              <li>
+                <span class="ci ci-improve"><i class="ph-fill ph-users-three"></i></span>
+                그룹 방에서 마지막 멤버가 나가면 방이 자동으로 삭제돼요
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- v1.0 -->
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.0</span>
+          <span class="tl-date">2025.02</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">tteona 첫 출시 🎉</div>
+          <div class="change-group">
+            <ul class="change-list">
+              <li>
+                <span class="ci"><i class="ph-fill ph-map-trifold"></i></span>
+                코스를 따라 장소를 기록하는 <strong>나의 오늘</strong> 기능
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-video-camera"></i></span>
+                장소마다 짧은 영상 클립을 촬영해 자동으로 합치는 <strong>브이로그</strong> 기능
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-users"></i></span>
+                초대 코드로 친구와 함께 여행을 공유하는 <strong>그룹 피드</strong> 기능
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-map-pin"></i></span>
+                그룹 멤버 간 실시간 위치 공유
+              </li>
+              <li>
+                <span class="ci"><i class="ph-fill ph-sign-in"></i></span>
+                Apple, 카카오, 이메일 로그인 지원
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 tteona · <a href="/terms.html">이용약관</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="mailto:just.tteona@gmail.com">문의하기</a></p>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
