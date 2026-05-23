@@ -186,6 +186,28 @@
     .ci-improve { background: #EFF6FF !important; color: #2563EB !important; }
     .change-divider { height: 1px; background: var(--border); margin: 16px 0; }
 
+    .tl-upcoming .tl-dot { background: #ccc; box-shadow: 0 0 0 2px #ccc; }
+    .tl-upcoming .tl-card {
+      border-color: var(--border); position: relative; overflow: hidden;
+    }
+    .upcoming-overlay {
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 16px; z-index: 2;
+    }
+    .upcoming-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 8px 18px;
+      font-size: 14px; font-weight: 700; color: #888;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .upcoming-badge i { font-size: 16px; color: var(--orange); }
+    .tl-upcoming .tl-version { color: #aaa; }
+    .tl-upcoming .tl-date { color: #ccc; }
+
     @media (max-width: 640px) {
       .timeline::before { left: 0; display: none; }
       .tl-entry { grid-template-columns: 1fr; gap: 8px; }
@@ -254,172 +276,47 @@
   <div class="container">
     <div class="timeline">
 
-      <!-- v1.3 -->
-      <div class="tl-entry tl-latest">
-        <div class="tl-left">
-          <span class="tl-version">v1.3</span>
-          <span class="tl-date">2025.05</span>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-card">
-          <div class="tl-card-title">브이로그 & 화면 개선</div>
-          <div class="change-group">
-            <div class="change-group-label tag-new">새 기능</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci"><i class="ph-fill ph-film-strip"></i></span>
-                브이로그 타이틀 카드 — 파스텔 주황 배경에 날짜와 tteona 워터마크가 자동으로 삽입돼요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-device-mobile"></i></span>
-                앱 버전 정보가 설정 화면에서 실시간으로 표시돼요
-              </li>
-            </ul>
-          </div>
-          <div class="change-divider"></div>
-          <div class="change-group">
-            <div class="change-group-label tag-improve">개선</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-video-camera"></i></span>
-                브이로그 렌더링 성능이 향상되었어요 (CALayer 방식으로 전환)
-              </li>
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-spinner-gap"></i></span>
-                주요 화면의 로딩 인디케이터가 추가되어 상태를 더 명확히 알 수 있어요
-              </li>
-            </ul>
-          </div>
-          <div class="change-divider"></div>
-          <div class="change-group">
-            <div class="change-group-label tag-fix">수정</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci ci-fix"><i class="ph-fill ph-map-pin"></i></span>
-                위치 권한이 '항상 허용'으로 정확하게 요청되도록 수정했어요
-              </li>
-              <li>
-                <span class="ci ci-fix"><i class="ph-fill ph-microphone"></i></span>
-                마이크 권한 요청이 정상적으로 동작하도록 수정했어요
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- v1.2 -->
-      <div class="tl-entry">
-        <div class="tl-left">
-          <span class="tl-version">v1.2</span>
-          <span class="tl-date">2025.04</span>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-card">
-          <div class="tl-card-title">알림 & 보안 강화</div>
-          <div class="change-group">
-            <div class="change-group-label tag-new">새 기능</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci"><i class="ph-fill ph-bell"></i></span>
-                채팅 화면이 열려 있을 때 해당 방의 알림이 자동으로 억제돼요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-bell-ringing"></i></span>
-                설정 화면에서 현재 알림 권한 상태를 바로 확인할 수 있어요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-read-cv-logo"></i></span>
-                피드 방에서 읽지 않은 새 피드가 있을 때 뱃지로 표시돼요
-              </li>
-            </ul>
-          </div>
-          <div class="change-divider"></div>
-          <div class="change-group">
-            <div class="change-group-label tag-improve">개선</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-shield-check"></i></span>
-                Firestore 보안 규칙이 강화되었어요
-              </li>
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-trash"></i></span>
-                Apple/카카오 계정 탈퇴 시 인증 정보가 완전히 삭제돼요
-              </li>
-            </ul>
-          </div>
-          <div class="change-divider"></div>
-          <div class="change-group">
-            <div class="change-group-label tag-fix">수정</div>
-            <ul class="change-list">
-              <li>
-                <span class="ci ci-fix"><i class="ph-fill ph-bell-slash"></i></span>
-                중복 푸시 알림이 발송되는 문제를 수정했어요
-              </li>
-              <li>
-                <span class="ci ci-fix"><i class="ph-fill ph-user"></i></span>
-                자신의 활동에 대해 알림이 오지 않도록 수정했어요
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- v1.1 -->
-      <div class="tl-entry">
+      <!-- v1.1 업데이트 예정 -->
+      <div class="tl-entry tl-upcoming">
         <div class="tl-left">
           <span class="tl-version">v1.1</span>
-          <span class="tl-date">2025.03</span>
+          <span class="tl-date">예정</span>
           <div class="tl-dot"></div>
         </div>
         <div class="tl-card">
-          <div class="tl-card-title">그룹 피드 & 코스 탐색</div>
+          <div class="upcoming-overlay">
+            <div class="upcoming-badge">
+              <i class="ph-fill ph-clock-countdown"></i>
+              업데이트 예정
+            </div>
+          </div>
+          <div class="tl-card-title">다음 업데이트</div>
           <div class="change-group">
             <div class="change-group-label tag-new">새 기능</div>
             <ul class="change-list">
-              <li>
-                <span class="ci"><i class="ph-fill ph-chat-circle-dots"></i></span>
-                댓글 답글 기능이 추가됐어요 — 특정 댓글을 인용해서 답할 수 있어요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-magnifying-glass"></i></span>
-                코스 이름으로 실시간 검색이 가능해요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-arrow-counter-clockwise"></i></span>
-                이전에 기록한 코스를 이어서 다시 시작할 수 있어요
-              </li>
-              <li>
-                <span class="ci"><i class="ph-fill ph-flag-banner"></i></span>
-                그룹 방에 참여하면 여행 시작 피드가 자동으로 생성돼요
-              </li>
+              <li><span class="ci"><i class="ph-fill ph-star"></i></span>새로운 기능이 준비되고 있어요</li>
+              <li><span class="ci"><i class="ph-fill ph-star"></i></span>새로운 기능이 준비되고 있어요</li>
             </ul>
           </div>
           <div class="change-divider"></div>
           <div class="change-group">
             <div class="change-group-label tag-improve">개선</div>
             <ul class="change-list">
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-sort-ascending"></i></span>
-                코스 목록이 인기도 순으로 정렬돼요
-              </li>
-              <li>
-                <span class="ci ci-improve"><i class="ph-fill ph-users-three"></i></span>
-                그룹 방에서 마지막 멤버가 나가면 방이 자동으로 삭제돼요
-              </li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-star"></i></span>더 나은 경험을 위한 개선이 진행 중이에요</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- v1.0 -->
-      <div class="tl-entry">
+      <!-- v1.0 출시 예정 -->
+      <div class="tl-entry tl-latest">
         <div class="tl-left">
           <span class="tl-version">v1.0</span>
-          <span class="tl-date">2025.02</span>
+          <span class="tl-date">출시 예정</span>
           <div class="tl-dot"></div>
         </div>
         <div class="tl-card">
-          <div class="tl-card-title">tteona 첫 출시 🎉</div>
+          <div class="tl-card-title">tteona 출시 예정</div>
           <div class="change-group">
             <ul class="change-list">
               <li>
