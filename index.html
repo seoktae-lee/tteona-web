@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
   <style>
     :root {
       --orange: #FF6B35;
@@ -220,7 +221,26 @@
 
     .flist { display: flex; flex-direction: column; gap: 16px; }
     .fitem { display: flex; align-items: flex-start; gap: 12px; }
-    .fitem-icon { width: 36px; height: 36px; background: var(--orange-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    /* 온보딩 스타일 이중 원형 아이콘 */
+    .ico {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; width: 56px; height: 56px;
+    }
+    .ico::before {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background: rgba(255,107,53,0.08);
+    }
+    .ico::after {
+      content: ''; position: absolute; inset: 8px; border-radius: 50%;
+      background: rgba(255,107,53,0.15);
+    }
+    .ico i { position: relative; z-index: 1; font-size: 22px; color: var(--orange); }
+
+    .ico-lg { width: 72px; height: 72px; }
+    .ico-lg::after { inset: 11px; }
+    .ico-lg i { font-size: 28px; }
+
+    .fitem-icon { flex-shrink: 0; }
     .fitem-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
     .fitem-text p { font-size: 13px; color: var(--sub); line-height: 1.55; }
 
@@ -275,7 +295,8 @@
     .bg-dark .fdesc { color: rgba(255,255,255,0.5); }
     .bg-dark .fitem-text h4 { color: #fff; }
     .bg-dark .fitem-text p { color: rgba(255,255,255,0.45); }
-    .bg-dark .fitem-icon { background: rgba(255,107,53,0.18); }
+    .bg-dark .ico::before { background: rgba(255,107,53,0.12); }
+    .bg-dark .ico::after { background: rgba(255,107,53,0.2); }
     .bg-peach { background: #FFF5F0; }
 
     /* CTA */
@@ -431,22 +452,22 @@
   <div class="container">
     <div class="hl-grid reveal">
       <div class="hl-item">
-        <div class="hl-emoji">🗺️</div>
+        <div class="ico ico-lg"><i class="ph-fill ph-map-trifold"></i></div>
         <div class="hl-label">코스 기록 & 탐색</div>
         <div class="hl-desc">나만의 여행 루트를 만들고 저장해요</div>
       </div>
       <div class="hl-item">
-        <div class="hl-emoji">🎬</div>
+        <div class="ico ico-lg"><i class="ph-fill ph-film-strip"></i></div>
         <div class="hl-label">자동 브이로그 편집</div>
         <div class="hl-desc">클립을 모으면 영상이 자동 완성돼요</div>
       </div>
       <div class="hl-item">
-        <div class="hl-emoji">🧡</div>
+        <div class="ico ico-lg"><i class="ph-fill ph-users"></i></div>
         <div class="hl-label">그룹 피드 & 위치 공유</div>
         <div class="hl-desc">친구들과 실시간으로 함께해요</div>
       </div>
       <div class="hl-item">
-        <div class="hl-emoji">📍</div>
+        <div class="ico ico-lg"><i class="ph-fill ph-map-pin"></i></div>
         <div class="hl-label">오늘을 여행처럼</div>
         <div class="hl-desc">일상도 특별한 여행이 될 수 있어요</div>
       </div>
@@ -464,15 +485,15 @@
         <p class="fdesc reveal d2">다른 여행자들이 기록한 코스를 탐색하거나, 직접 나만의 코스를 만들어 보세요. 장소마다 짧은 클립을 남기면 나만의 여행 지도가 완성돼요.</p>
         <div class="flist">
           <div class="fitem reveal d2">
-            <div class="fitem-icon">🗺️</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-map-trifold"></i></div>
             <div class="fitem-text"><h4>코스 탐색 & 저장</h4><p>다른 사람들이 만든 여행 코스를 검색하고 내 라이브러리에 저장해요</p></div>
           </div>
           <div class="fitem reveal d3">
-            <div class="fitem-icon">📷</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-camera"></i></div>
             <div class="fitem-text"><h4>나의 오늘 기록</h4><p>장소마다 짧은 클립을 촬영하고 나만의 기록을 남겨요</p></div>
           </div>
           <div class="fitem reveal d4">
-            <div class="fitem-icon">📍</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-map-pin"></i></div>
             <div class="fitem-text"><h4>장소 기반 코스</h4><p>지도 위에 코스를 그려가며 나만의 여행 루트를 만들어요</p></div>
           </div>
         </div>
@@ -512,15 +533,15 @@
         <p class="fdesc reveal d2">여행 중 찍은 영상 클립을 저장해두면, tteona가 자동으로 편집해 브이로그로 만들어줘요. 편집은 tteona에게, 추억은 나에게.</p>
         <div class="flist">
           <div class="fitem reveal d2">
-            <div class="fitem-icon">🎥</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-video-camera"></i></div>
             <div class="fitem-text"><h4>클립 자동 수집</h4><p>코스의 각 장소에서 촬영한 클립이 자동으로 저장돼요</p></div>
           </div>
           <div class="fitem reveal d3">
-            <div class="fitem-icon">✨</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-magic-wand"></i></div>
             <div class="fitem-text"><h4>자동 편집 & 전환 효과</h4><p>페이드 효과와 장소명 텍스트 오버레이가 자동으로 적용돼요</p></div>
           </div>
           <div class="fitem reveal d4">
-            <div class="fitem-icon">📱</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-device-mobile"></i></div>
             <div class="fitem-text"><h4>갤러리 자동 저장</h4><p>완성된 브이로그가 내 갤러리에 바로 저장돼요</p></div>
           </div>
         </div>
@@ -553,15 +574,15 @@
         <p class="fdesc reveal d2">6자리 초대 코드로 그룹을 만들고 친구를 초대해요. 실시간 위치 공유부터 피드, 댓글까지 — 함께하는 여행의 모든 것을 한 곳에서.</p>
         <div class="flist">
           <div class="fitem reveal d2">
-            <div class="fitem-icon">📍</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-map-pin"></i></div>
             <div class="fitem-text"><h4>실시간 위치 공유</h4><p>그룹 멤버들의 위치를 지도에서 실시간으로 확인해요</p></div>
           </div>
           <div class="fitem reveal d3">
-            <div class="fitem-icon">📸</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-camera"></i></div>
             <div class="fitem-text"><h4>그룹 피드 & 댓글</h4><p>서로의 클립과 기록을 피드에서 보고 반응해요</p></div>
           </div>
           <div class="fitem reveal d4">
-            <div class="fitem-icon">🔑</div>
+            <div class="fitem-icon ico"><i class="ph-fill ph-key"></i></div>
             <div class="fitem-text"><h4>6자리 초대 코드</h4><p>코드 하나로 간편하게 그룹에 참여해요</p></div>
           </div>
         </div>
