@@ -122,24 +122,45 @@
     }
     @keyframes hero-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
-    .hero-img-wrap {
-      position: relative; display: flex; align-items: center; justify-content: center;
+    .hero-phones {
+      position: relative;
+      height: 560px;
       animation: hero-up 1s 0.35s cubic-bezier(0.22,1,0.36,1) both;
     }
-    .hero-img-wrap::before {
-      content: ''; position: absolute;
-      width: 88%; height: 88%; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(255,107,53,0.03) 70%, transparent 100%);
+    .phone {
+      position: absolute;
+      border-radius: 40px;
+      border: 7px solid #1C1C1E;
+      overflow: hidden;
+      box-shadow: 0 28px 64px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.08);
     }
-    .hero-img-wrap img {
-      width: 100%; max-width: 520px; object-fit: contain;
-      animation: float 5s ease-in-out infinite;
-      position: relative; z-index: 1;
+    .phone::before {
+      content: ''; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 26px;
+      background: #1C1C1E; border-radius: 0 0 16px 16px; z-index: 2;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
+    .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .phone-main {
+      width: 234px; height: 468px;
+      left: 30px; top: 20px;
+      transform: rotate(-2deg); z-index: 2;
     }
+    .phone-sub {
+      width: 200px; height: 400px;
+      right: 10px; bottom: 10px;
+      transform: rotate(2.5deg); z-index: 1;
+    }
+    .float-tag {
+      position: absolute; z-index: 3;
+      background: #fff; border-radius: 100px;
+      padding: 8px 14px; font-size: 12px; font-weight: 700; color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .float-tag-1 { top: 10px; right: 0; animation: ftag 4s ease-in-out infinite; }
+    .float-tag-2 { bottom: 60px; left: 0; animation: ftag 4s 1.8s ease-in-out infinite; }
+    @keyframes ftag { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -294,7 +315,9 @@
       .hero-sub { max-width: 100%; }
       .hero-actions { justify-content: center; }
       .scroll-hint { align-items: center; }
-      .hero-img-wrap { max-width: 360px; margin: 0 auto; }
+      .hero-phones { height: 420px; max-width: 380px; margin: 0 auto; }
+      .phone-main { width: 180px; height: 360px; left: 20px; }
+      .phone-sub { width: 155px; height: 310px; right: 0; }
       .hl-grid { grid-template-columns: repeat(2, 1fr); }
       .hl-item:nth-child(2) { border-right: none; }
       .hl-item:nth-child(1), .hl-item:nth-child(2) { border-bottom: 1px solid var(--border); }
@@ -389,8 +412,15 @@
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
       </div>
-      <div class="hero-img-wrap">
-        <img src="/tteona-character.png" alt="tteona 캐릭터">
+      <div class="hero-phones">
+        <div class="phone phone-main">
+          <img src="/app-map.png" alt="tteona 지도 화면">
+        </div>
+        <div class="phone phone-sub">
+          <img src="/app-course.png" alt="tteona 코스 화면">
+        </div>
+        <div class="float-tag float-tag-1">📍 경복궁 근처</div>
+        <div class="float-tag float-tag-2">🎬 브이로그 생성 완료</div>
       </div>
     </div>
   </div>
