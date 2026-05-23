@@ -287,8 +287,36 @@
     .gc-pill { background: var(--orange-light); color: var(--orange); padding: 7px 13px; border-radius: 100px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
     .gc-pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
 
+    /* EXPLORE CARD */
+    .explore-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 28px rgba(0,0,0,0.06); }
+    .explore-head { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .explore-head-icon { width: 38px; height: 38px; border-radius: 11px; background: var(--orange-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--orange); font-size: 18px; }
+    .explore-title { font-size: 14px; font-weight: 800; color: #111; }
+    .explore-sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+    .explore-steps { padding: 8px 12px; display: flex; flex-direction: column; gap: 3px; }
+    .estep { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px; }
+    .estep.done { opacity: 0.5; }
+    .estep.active { background: var(--orange-light); }
+    .estep.locked { opacity: 0.38; }
+    .estep-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .estep.done .estep-icon { background: #ECFDF5; color: #059669; }
+    .estep.active .estep-icon { background: var(--orange); color: #fff; }
+    .estep.locked .estep-icon { background: #f0f0f0; color: #bbb; }
+    .estep-info { flex: 1; min-width: 0; }
+    .estep-name { font-size: 13px; font-weight: 700; color: #111; }
+    .estep.active .estep-name { color: var(--orange); }
+    .estep-status { font-size: 11px; color: #aaa; margin-top: 1px; }
+    .estep.active .estep-status { color: rgba(255,107,53,0.7); }
+    .estep-badge { margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; flex-shrink: 0; }
+    .badge-done { background: #ECFDF5; color: #059669; }
+    .badge-active { background: var(--orange); color: #fff; }
+    .badge-lock { background: #f0f0f0; color: #bbb; }
+    .explore-footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+    .explore-pill { flex: 1; text-align: center; background: var(--orange-light); color: var(--orange); border-radius: 8px; padding: 8px 4px; font-size: 11px; font-weight: 700; }
+
     /* SECTION BG */
     .bg-white { background: #fff; }
+    .bg-soft { background: #F4F1EC; }
     .bg-dark { background: #111; }
     .bg-dark .ftag { background: rgba(255,107,53,0.2); }
     .bg-dark .ftitle { color: #fff; }
@@ -380,6 +408,10 @@
               <div class="d-icon"><i class="ph-fill ph-map-trifold"></i></div>
               <div><div class="d-label">나의 오늘</div><div class="d-sub">코스 기록 & 탐색</div></div>
             </a>
+            <a href="#feature-explore">
+              <div class="d-icon"><i class="ph-fill ph-compass"></i></div>
+              <div><div class="d-label">코스 떠나기</div><div class="d-sub">다른 유저 코스 따라가기</div></div>
+            </a>
             <a href="#feature-vlog">
               <div class="d-icon"><i class="ph-fill ph-film-strip"></i></div>
               <div><div class="d-label">브이로그</div><div class="d-sub">자동 영상 편집</div></div>
@@ -409,6 +441,7 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#feature-today" class="ml">🗺️ 나의 오늘</a>
+  <a href="#feature-explore" class="ml">🧭 코스 떠나기</a>
   <a href="#feature-vlog" class="ml">🎬 브이로그</a>
   <a href="#feature-group" class="ml">🧡 그룹 피드</a>
   <a href="/popular.html" class="ml">🏆 인기코스</a>
@@ -520,6 +553,68 @@
           <div>
             <div class="vlog-nudge-text">브이로그 생성 가능</div>
             <div class="vlog-nudge-sub">2개 클립 저장됨 · 탭하면 생성 시작</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE: 코스 떠나기 -->
+<section class="feature bg-soft" id="feature-explore">
+  <div class="container">
+    <div class="feature-inner rev">
+      <div>
+        <span class="ftag reveal">코스 떠나기</span>
+        <h2 class="ftitle reveal d1">누군가의 코스로<br><em>나만의 여행</em>을</h2>
+        <p class="fdesc reveal d2">다른 여행자가 저장한 코스를 가져와 직접 따라가보세요. 순서를 바꾸거나 건너뛰는 건 자유 — 내 여행 스타일대로. 장소에 직접 도착해야 촬영 버튼이 켜지고, 여행이 끝나면 나만의 브이로그가 완성돼요.</p>
+        <div class="flist">
+          <div class="fitem reveal d2">
+            <div class="fitem-icon ico"><i class="ph-fill ph-compass"></i></div>
+            <div class="fitem-text"><h4>코스 불러오기</h4><p>지도에 저장된 다른 여행자의 코스를 가져와 바로 시작해요</p></div>
+          </div>
+          <div class="fitem reveal d3">
+            <div class="fitem-icon ico"><i class="ph-fill ph-shuffle"></i></div>
+            <div class="fitem-text"><h4>자유로운 순서 & 건너뛰기</h4><p>장소 순서를 내 마음대로 바꾸거나 원하지 않는 장소는 건너뛸 수 있어요</p></div>
+          </div>
+          <div class="fitem reveal d4">
+            <div class="fitem-icon ico"><i class="ph-fill ph-map-pin"></i></div>
+            <div class="fitem-text"><h4>위치 기반 촬영 활성화</h4><p>해당 장소에 실제로 도착해야 촬영 버튼이 켜져요 — 진짜 여행만이 기록돼요</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="explore-card">
+          <div class="explore-head">
+            <div class="explore-head-icon"><i class="ph-fill ph-compass"></i></div>
+            <div><div class="explore-title">홍대 감성 투어</div><div class="explore-sub">5개 장소 · 순서 자유 변경 가능</div></div>
+          </div>
+          <div class="explore-steps">
+            <div class="estep done">
+              <div class="estep-icon"><i class="ph-fill ph-check"></i></div>
+              <div class="estep-info"><div class="estep-name">홍대 입구</div><div class="estep-status">클립 저장됨</div></div>
+              <span class="estep-badge badge-done">완료</span>
+            </div>
+            <div class="estep active">
+              <div class="estep-icon"><i class="ph-fill ph-video-camera"></i></div>
+              <div class="estep-info"><div class="estep-name">연남동 경의선숲길</div><div class="estep-status">도착 확인 · 촬영 가능</div></div>
+              <span class="estep-badge badge-active">🎬 촬영</span>
+            </div>
+            <div class="estep locked">
+              <div class="estep-icon"><i class="ph-fill ph-lock-simple"></i></div>
+              <div class="estep-info"><div class="estep-name">망원한강공원</div><div class="estep-status">도착 시 활성화</div></div>
+              <span class="estep-badge badge-lock">잠금</span>
+            </div>
+            <div class="estep locked">
+              <div class="estep-icon"><i class="ph-fill ph-lock-simple"></i></div>
+              <div class="estep-info"><div class="estep-name">서교동 카페거리</div><div class="estep-status">건너뛰기 가능</div></div>
+              <span class="estep-badge badge-lock">잠금</span>
+            </div>
+          </div>
+          <div class="explore-footer">
+            <div class="explore-pill">↕ 순서 변경</div>
+            <div class="explore-pill">⏭ 건너뛰기</div>
+            <div class="explore-pill">🎬 브이로그 생성</div>
           </div>
         </div>
       </div>
@@ -639,6 +734,7 @@
         <h4>서비스</h4>
         <ul>
           <li><a href="#feature-today">나의 오늘</a></li>
+          <li><a href="#feature-explore">코스 떠나기</a></li>
           <li><a href="#feature-vlog">브이로그</a></li>
           <li><a href="#feature-group">그룹 피드</a></li>
           <li><a href="#cta">다운로드</a></li>
