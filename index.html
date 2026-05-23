@@ -76,7 +76,7 @@
     .nav-links > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
     .dropdown a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; color: #333; text-decoration: none; transition: background 0.13s; }
     .dropdown a:hover { background: var(--orange-light); color: var(--orange); }
-    .d-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .d-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; color: var(--orange); }
     .d-label { font-weight: 700; font-size: 14px; }
     .d-sub { font-size: 12px; color: var(--sub); margin-top: 1px; }
 
@@ -377,15 +377,15 @@
           <button>기능 소개 <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
           <div class="dropdown">
             <a href="#feature-today">
-              <div class="d-icon">🗺️</div>
+              <div class="d-icon"><i class="ph-fill ph-map-trifold"></i></div>
               <div><div class="d-label">나의 오늘</div><div class="d-sub">코스 기록 & 탐색</div></div>
             </a>
             <a href="#feature-vlog">
-              <div class="d-icon">🎬</div>
+              <div class="d-icon"><i class="ph-fill ph-film-strip"></i></div>
               <div><div class="d-label">브이로그</div><div class="d-sub">자동 영상 편집</div></div>
             </a>
             <a href="#feature-group">
-              <div class="d-icon">🧡</div>
+              <div class="d-icon"><i class="ph-fill ph-users"></i></div>
               <div><div class="d-label">그룹 피드</div><div class="d-sub">친구와 함께 여행</div></div>
             </a>
           </div>
