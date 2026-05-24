@@ -78,6 +78,15 @@
     }
     @media (min-width: 641px) { .mobile-menu { display: none !important; } }
 
+    .coming-toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px);
+      background: #111; color: #fff; padding: 13px 24px; border-radius: 100px;
+      font-size: 14px; font-weight: 600; white-space: nowrap;
+      opacity: 0; transition: opacity 0.22s, transform 0.22s;
+      z-index: 9999; pointer-events: none;
+    }
+    .coming-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
     /* PAGE HEADER */
     .page-header {
       padding: calc(var(--nav-h) + 64px) 0 56px;
@@ -456,7 +465,21 @@
   </div>
 </footer>
 
+<div class="coming-toast" id="comingToast">🍎 곧 App Store에 출시될 예정이에요!</div>
+
 <script>
+  const comingToast = document.getElementById('comingToast');
+  let toastTimer;
+  function showComingSoon(e) {
+    e.preventDefault();
+    clearTimeout(toastTimer);
+    comingToast.classList.add('show');
+    toastTimer = setTimeout(() => comingToast.classList.remove('show'), 2500);
+  }
+  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(el => {
+    el.addEventListener('click', showComingSoon);
+  });
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {

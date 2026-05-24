@@ -71,6 +71,15 @@
     }
     @media (min-width: 641px) { .mobile-menu { display: none !important; } }
 
+    .coming-toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px);
+      background: #111; color: #fff; padding: 13px 24px; border-radius: 100px;
+      font-size: 14px; font-weight: 600; white-space: nowrap;
+      opacity: 0; transition: opacity 0.22s, transform 0.22s;
+      z-index: 9999; pointer-events: none;
+    }
+    .coming-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
     /* PAGE HEADER */
     .page-header {
       background: #fff;
@@ -356,7 +365,21 @@
   <p>© 2025 tteona · <a href="/terms.html">이용약관</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="mailto:just.tteona@gmail.com">문의하기</a></p>
 </footer>
 
+<div class="coming-toast" id="comingToast">🍎 곧 App Store에 출시될 예정이에요!</div>
+
 <script>
+  const comingToast = document.getElementById('comingToast');
+  let toastTimer;
+  function showComingSoon(e) {
+    e.preventDefault();
+    clearTimeout(toastTimer);
+    comingToast.classList.add('show');
+    toastTimer = setTimeout(() => comingToast.classList.remove('show'), 2500);
+  }
+  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(el => {
+    el.addEventListener('click', showComingSoon);
+  });
+
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
