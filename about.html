@@ -343,6 +343,38 @@
     .release-live   { color: #3AB87A; }
     .release-soon   { color: var(--orange); }
 
+    /* ─── LANG TOGGLE ─── */
+    .lang-toggle {
+      display: flex; align-items: center;
+      background: var(--ab-pale);
+      border: 1px solid rgba(91,168,212,0.2);
+      border-radius: 100px; padding: 3px; gap: 2px;
+    }
+    .lang-opt {
+      padding: 5px 13px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+      border: none; cursor: pointer; background: none;
+      color: #999; font-family: inherit;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+    .lang-opt.active {
+      background: var(--ab); color: #fff;
+      box-shadow: 0 2px 8px rgba(91,168,212,0.35);
+    }
+    .mobile-lang {
+      display: flex; gap: 8px; padding: 10px 12px;
+      border-top: 1px solid var(--border); margin-top: 4px;
+    }
+    .mobile-lang button {
+      flex: 1; padding: 10px; border-radius: 10px;
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border: 1.5px solid var(--border); background: none;
+      color: #555; cursor: pointer; transition: all 0.15s;
+    }
+    .mobile-lang button.active {
+      background: var(--ab); color: #fff; border-color: var(--ab);
+    }
+
     /* ─── FOOTER ─── */
     footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 60px 0 40px; }
     .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -393,11 +425,15 @@
       </a>
       <ul class="nav-links">
         <li><a href="/about.html" class="active">About AERON</a></li>
-        <li><a href="/#feature-today">기능 소개</a></li>
-        <li><a href="/popular.html">인기코스</a></li>
-        <li><a href="/updates.html">업데이트</a></li>
-        <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
+        <li><a href="/#feature-today" data-i18n="nav.features">기능 소개</a></li>
+        <li><a href="/popular.html" data-i18n="nav.popular">인기코스</a></li>
+        <li><a href="/updates.html" data-i18n="nav.updates">업데이트</a></li>
+        <li><a href="mailto:just.tteona@gmail.com" data-i18n="nav.contact">문의하기</a></li>
       </ul>
+      <div class="lang-toggle">
+        <button class="lang-opt active" data-lang="ko">KO</button>
+        <button class="lang-opt" data-lang="en">EN</button>
+      </div>
       <a class="nav-cta" href="https://apps.apple.com/app/id000000000">
         <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
         App Store
@@ -412,14 +448,18 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/about.html" class="ml">🏢 About AERON</a>
-  <a href="/#feature-today" class="ml">🗺️ 나의 오늘</a>
-  <a href="/#feature-explore" class="ml">🧭 코스 떠나기</a>
-  <a href="/#feature-vlog" class="ml">🎬 브이로그</a>
-  <a href="/#feature-group" class="ml">🧡 그룹 피드</a>
-  <a href="/popular.html" class="ml">🏆 인기코스</a>
-  <a href="/updates.html" class="ml">🔔 업데이트</a>
-  <a href="mailto:just.tteona@gmail.com" class="ml">✉️ 문의하기</a>
-  <a href="https://apps.apple.com/app/id000000000" class="m-cta">App Store에서 다운로드</a>
+  <a href="/#feature-today" class="ml" data-i18n="mobile.today">🗺️ 나의 오늘</a>
+  <a href="/#feature-explore" class="ml" data-i18n="mobile.explore">🧭 코스 떠나기</a>
+  <a href="/#feature-vlog" class="ml" data-i18n="mobile.vlog">🎬 브이로그</a>
+  <a href="/#feature-group" class="ml" data-i18n="mobile.group">🧡 그룹 피드</a>
+  <a href="/popular.html" class="ml" data-i18n="mobile.popular">🏆 인기코스</a>
+  <a href="/updates.html" class="ml" data-i18n="mobile.updates">🔔 업데이트</a>
+  <a href="mailto:just.tteona@gmail.com" class="ml" data-i18n="mobile.contact">✉️ 문의하기</a>
+  <a href="https://apps.apple.com/app/id000000000" class="m-cta" data-i18n="mobile.cta">App Store에서 다운로드</a>
+  <div class="mobile-lang">
+    <button class="active" data-lang="ko">KO 한국어</button>
+    <button data-lang="en">EN English</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -428,11 +468,10 @@
     <div class="hero-inner">
       <img src="/aeron-logo.jpg" alt="AERON" class="hero-logo reveal">
       <p class="hero-catch reveal d1">IDEAS IN THE AIR, SOLUTIONS ON.</p>
-      <h1 class="hero-title reveal d2">
-        구름 위의 <span>아이디어</span>를<br>
-        현실의 서비스로
+      <h1 class="hero-title reveal d2" data-i18n-html="hero.title">
+        구름 위의 <span>아이디어</span>를<br>현실의 서비스로
       </h1>
-      <p class="hero-sub reveal d3">
+      <p class="hero-sub reveal d3" data-i18n-html="hero.sub">
         상상 속을 자유롭게 떠다니던 아이디어가<br>
         실제로 작동하는 서비스가 되는 순간을 만들어갑니다.
       </p>
@@ -447,7 +486,7 @@
         </div>
         <div class="meta-item">
           <span class="meta-label">Industry</span>
-          <span class="meta-value">App · Web · IT</span>
+          <span class="meta-value" data-i18n="meta.industry">App · Web · IT</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Contact</span>
@@ -468,22 +507,22 @@
         <span class="concept-num">01</span>
         <div class="concept-icon"><i class="ph-fill ph-wind"></i></div>
         <div class="concept-word">Air</div>
-        <div class="concept-kr">가볍고 자유롭게</div>
-        <p class="concept-desc">무겁지 않아도 됩니다. 좋은 아이디어는 언제나 가볍게 시작해요. 형식보다 방향, 규모보다 속도를 중요하게 생각합니다.</p>
+        <div class="concept-kr" data-i18n="concept.air.sub">가볍고 자유롭게</div>
+        <p class="concept-desc" data-i18n="concept.air.desc">무겁지 않아도 됩니다. 좋은 아이디어는 언제나 가볍게 시작해요. 형식보다 방향, 규모보다 속도를 중요하게 생각합니다.</p>
       </div>
       <div class="concept-item reveal d1">
         <span class="concept-num">02</span>
         <div class="concept-icon"><i class="ph-fill ph-cloud"></i></div>
         <div class="concept-word">Cloud</div>
-        <div class="concept-kr">연결되고 안전하게</div>
-        <p class="concept-desc">사람과 사람, 서비스와 서비스를 연결합니다. 아이디어가 구름처럼 세상에 퍼져나갈 수 있도록 안정적인 기반을 만들어요.</p>
+        <div class="concept-kr" data-i18n="concept.cloud.sub">연결되고 안전하게</div>
+        <p class="concept-desc" data-i18n="concept.cloud.desc">사람과 사람, 서비스와 서비스를 연결합니다. 아이디어가 구름처럼 세상에 퍼져나갈 수 있도록 안정적인 기반을 만들어요.</p>
       </div>
       <div class="concept-item reveal d2">
         <span class="concept-num">03</span>
         <div class="concept-icon"><i class="ph-fill ph-paper-plane-tilt"></i></div>
         <div class="concept-word">On</div>
-        <div class="concept-kr">실행하고 함께</div>
-        <p class="concept-desc">아이디어는 혼자 쥐고 있을수록 사라집니다. 함께 쓸 수 있는 서비스로 내보낼 때 비로소 완성됩니다.</p>
+        <div class="concept-kr" data-i18n="concept.on.sub">실행하고 함께</div>
+        <p class="concept-desc" data-i18n="concept.on.desc">아이디어는 혼자 쥐고 있을수록 사라집니다. 함께 쓸 수 있는 서비스로 내보낼 때 비로소 완성됩니다.</p>
       </div>
     </div>
   </div>
@@ -494,39 +533,34 @@
   <div class="container">
     <div class="mission-grid">
       <div>
-        <p class="section-kicker reveal">Mission</p>
-        <h2 class="mission-title reveal d1">
-          상상이 서비스가<br>
-          되는 순간, <em>AERON</em>
+        <p class="section-kicker reveal" data-i18n="mission.kicker">Mission</p>
+        <h2 class="mission-title reveal d1" data-i18n-html="mission.title">
+          상상이 서비스가<br>되는 순간, <em>AERON</em>
         </h2>
-        <p class="mission-desc reveal d2">
-          AERON은 한 가지 믿음에서 시작했습니다 —
-          세상에 아직 없는 것이라도, 필요하다면 만들 수 있다는 것.
-          앱이든, 웹이든, 어떤 형태든 좋습니다.
-          사람들의 일상 속에 자연스럽게 스며들어 조금 더 즐겁고
-          편리한 경험을 전달하는 것이 AERON의 이유입니다.
+        <p class="mission-desc reveal d2" data-i18n="mission.desc">
+          AERON은 한 가지 믿음에서 시작했습니다 — 세상에 아직 없는 것이라도, 필요하다면 만들 수 있다는 것. 앱이든, 웹이든, 어떤 형태든 좋습니다. 사람들의 일상 속에 자연스럽게 스며들어 조금 더 즐겁고 편리한 경험을 전달하는 것이 AERON의 이유입니다.
         </p>
       </div>
       <div class="mission-visual">
         <div class="mv-card reveal d1">
           <div class="mv-icon"><i class="ph-fill ph-lightbulb"></i></div>
           <div>
-            <div class="mv-title">아이디어가 먼저</div>
-            <div class="mv-desc">기술은 도구입니다. 어떤 경험을 만들 것인지가 항상 먼저예요. 작은 불편함도 그냥 지나치지 않습니다.</div>
+            <div class="mv-title" data-i18n="mission.v1.title">아이디어가 먼저</div>
+            <div class="mv-desc" data-i18n="mission.v1.desc">기술은 도구입니다. 어떤 경험을 만들 것인지가 항상 먼저예요. 작은 불편함도 그냥 지나치지 않습니다.</div>
           </div>
         </div>
         <div class="mv-card reveal d2">
           <div class="mv-icon"><i class="ph-fill ph-rocket-launch"></i></div>
           <div>
-            <div class="mv-title">빠르게, 직접</div>
-            <div class="mv-desc">생각한 것을 오래 묵히지 않습니다. 빠르게 만들고, 직접 써보고, 실제 피드백으로 완성해나가요.</div>
+            <div class="mv-title" data-i18n="mission.v2.title">빠르게, 직접</div>
+            <div class="mv-desc" data-i18n="mission.v2.desc">생각한 것을 오래 묵히지 않습니다. 빠르게 만들고, 직접 써보고, 실제 피드백으로 완성해나가요.</div>
           </div>
         </div>
         <div class="mv-card reveal d3">
           <div class="mv-icon"><i class="ph-fill ph-users"></i></div>
           <div>
-            <div class="mv-title">사람을 위한 서비스</div>
-            <div class="mv-desc">결국 사람이 쓰는 것입니다. 누군가의 하루에 작은 기쁨이 되는 순간, 그게 AERON이 존재하는 이유입니다.</div>
+            <div class="mv-title" data-i18n="mission.v3.title">사람을 위한 서비스</div>
+            <div class="mv-desc" data-i18n="mission.v3.desc">결국 사람이 쓰는 것입니다. 누군가의 하루에 작은 기쁨이 되는 순간, 그게 AERON이 존재하는 이유입니다.</div>
           </div>
         </div>
       </div>
@@ -538,79 +572,67 @@
 <section class="products-section">
   <div class="container">
     <div class="products-header">
-      <p class="section-kicker reveal" style="justify-content:center;">Products</p>
-      <h2 class="reveal d1">AERON이 만든 서비스</h2>
-      <p class="reveal d2">아이디어를 직접 서비스로 만들어 세상에 내보냅니다</p>
+      <p class="section-kicker reveal" style="justify-content:center;" data-i18n="products.kicker">Products</p>
+      <h2 class="reveal d1" data-i18n="products.title">AERON이 만든 서비스</h2>
+      <p class="reveal d2" data-i18n="products.sub">아이디어를 직접 서비스로 만들어 세상에 내보냅니다</p>
     </div>
-
     <div class="products-grid">
-
       <!-- 티처스노크 -->
       <div class="pcard reveal d1">
         <div class="pcard-banner pcard-banner-tk">
           <div class="pcard-icon">
             <img src="/TeachersKnock_AppIcon_Small.png" alt="티처스노크">
           </div>
-          <span class="pcard-status status-live">App Store 출시</span>
+          <span class="pcard-status status-live" data-i18n="tk.status">App Store 출시</span>
         </div>
         <div class="pcard-body">
           <p class="pcard-category cat-blue">Education</p>
-          <h3 class="pcard-name">티처스노크</h3>
-          <p class="pcard-tagline">임용고시 준비생을 위한 학습 도움 앱</p>
-          <p class="pcard-desc">
-            교원 임용고시를 준비하는 수험생들의 학습 루틴을 체계적으로 관리해주는 앱.
-            방대한 시험 범위를 효율적으로 정리하고, 꾸준한 학습 습관을 만들 수 있도록
-            도와줍니다. 혼자 공부하는 긴 시간을 더 단단하게 버텨낼 수 있게요.
-          </p>
+          <h3 class="pcard-name" data-i18n="tk.name">티처스노크</h3>
+          <p class="pcard-tagline" data-i18n="tk.tagline">임용고시 준비생을 위한 학습 도움 앱</p>
+          <p class="pcard-desc" data-i18n="tk.desc">교원 임용고시를 준비하는 수험생들의 학습 루틴을 체계적으로 관리해주는 앱. 방대한 시험 범위를 효율적으로 정리하고, 꾸준한 학습 습관을 만들 수 있도록 도와줍니다. 혼자 공부하는 긴 시간을 더 단단하게 버텨낼 수 있게요.</p>
           <div class="pcard-tags">
-            <span class="pcard-tag tag-blue">임용고시</span>
-            <span class="pcard-tag tag-blue">학습 관리</span>
-            <span class="pcard-tag tag-blue">수험생</span>
-            <span class="pcard-tag tag-blue">교원 준비</span>
+            <span class="pcard-tag tag-blue" data-i18n="tk.tag1">임용고시</span>
+            <span class="pcard-tag tag-blue" data-i18n="tk.tag2">학습 관리</span>
+            <span class="pcard-tag tag-blue" data-i18n="tk.tag3">수험생</span>
+            <span class="pcard-tag tag-blue" data-i18n="tk.tag4">교원 준비</span>
           </div>
           <div class="pcard-footer">
             <span class="pcard-platform">
               <svg width="13" height="13" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
               iOS App
             </span>
-            <span class="pcard-release release-live">✓ 출시 완료</span>
+            <span class="pcard-release release-live" data-i18n="tk.release">✓ 출시 완료</span>
           </div>
         </div>
       </div>
-
       <!-- tteona -->
       <div class="pcard reveal d2">
         <div class="pcard-banner pcard-banner-tteona">
           <div class="pcard-icon">
             <img src="/tteona-logo.png" alt="tteona">
           </div>
-          <span class="pcard-status status-soon">2026.06.06 출시</span>
+          <span class="pcard-status status-soon" data-i18n="tteona.status">2026.06.06 출시</span>
         </div>
         <div class="pcard-body">
           <p class="pcard-category cat-orange">Travel &amp; Lifestyle</p>
           <h3 class="pcard-name">tteona</h3>
-          <p class="pcard-tagline">오늘 하루를 여행처럼 기록해요</p>
-          <p class="pcard-desc">
-            나만의 여행 코스를 만들고, 장소마다 영상 클립을 남기면 자동으로 브이로그가
-            완성되는 여행 기록 앱. 친구들과 실시간으로 코스를 공유하고 함께 같은 여행을
-            즐길 수 있어요. 일상도 특별한 여행이 될 수 있습니다.
-          </p>
+          <p class="pcard-tagline" data-i18n="tteona.tagline">오늘 하루를 여행처럼 기록해요</p>
+          <p class="pcard-desc" data-i18n="tteona.desc">나만의 여행 코스를 만들고, 장소마다 영상 클립을 남기면 자동으로 브이로그가 완성되는 여행 기록 앱. 친구들과 실시간으로 코스를 공유하고 함께 같은 여행을 즐길 수 있어요. 일상도 특별한 여행이 될 수 있습니다.</p>
           <div class="pcard-tags">
-            <span class="pcard-tag tag-orange">여행 코스 기록</span>
-            <span class="pcard-tag tag-orange">브이로그 자동 편집</span>
-            <span class="pcard-tag tag-orange">그룹 피드</span>
-            <span class="pcard-tag tag-orange">위치 기반 촬영</span>
+            <span class="pcard-tag tag-orange" data-i18n="tteona.tag1">여행 코스 기록</span>
+            <span class="pcard-tag tag-orange" data-i18n="tteona.tag2">브이로그 자동 편집</span>
+            <span class="pcard-tag tag-orange" data-i18n="tteona.tag3">그룹 피드</span>
+            <span class="pcard-tag tag-orange" data-i18n="tteona.tag4">위치 기반 촬영</span>
           </div>
           <div class="pcard-footer">
             <span class="pcard-platform">
               <svg width="13" height="13" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
               iOS App
             </span>
-            <span class="pcard-release release-soon">⏱ 2026.06.06 출시 예정</span>
+            <span class="pcard-release release-soon" data-i18n="tteona.release">⏱ 2026.06.06 출시 예정</span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -621,29 +643,29 @@
     <div class="footer-inner">
       <div class="footer-brand-col">
         <div class="footer-logo"><img src="/tteona-logo.png" alt="tteona"><span>tteona</span></div>
-        <p class="footer-tagline">오늘 하루를 여행처럼 기록하고<br>친구와 함께 공유해요.</p>
+        <p class="footer-tagline" data-i18n-html="footer.tagline">오늘 하루를 여행처럼 기록하고<br>친구와 함께 공유해요.</p>
         <p class="footer-contact"><a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
       </div>
       <div class="footer-col">
-        <h4>서비스</h4>
+        <h4 data-i18n="footer.services">서비스</h4>
         <ul>
-          <li><a href="/#feature-today">나의 오늘</a></li>
-          <li><a href="/#feature-explore">코스 떠나기</a></li>
-          <li><a href="/#feature-vlog">브이로그</a></li>
-          <li><a href="/#feature-group">그룹 피드</a></li>
+          <li><a href="/#feature-today" data-i18n="footer.link.today">나의 오늘</a></li>
+          <li><a href="/#feature-explore" data-i18n="footer.link.explore">코스 떠나기</a></li>
+          <li><a href="/#feature-vlog" data-i18n="footer.link.vlog">브이로그</a></li>
+          <li><a href="/#feature-group" data-i18n="footer.link.group">그룹 피드</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>법률</h4>
+        <h4 data-i18n="footer.legal">법률</h4>
         <ul>
-          <li><a href="/privacy.html">개인정보처리방침</a></li>
-          <li><a href="/terms.html">이용약관</a></li>
-          <li><a href="/child-safety.html">아동 안전 기준 정책</a></li>
+          <li><a href="/privacy.html" data-i18n="footer.link.privacy">개인정보처리방침</a></li>
+          <li><a href="/terms.html" data-i18n="footer.link.terms">이용약관</a></li>
+          <li><a href="/child-safety.html" data-i18n="footer.link.childsafety">아동 안전 기준 정책</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 AERON. All rights reserved.</p>
+      <p data-i18n="footer.copyright">© 2026 AERON. All rights reserved.</p>
       <div class="powered-by">
         <img src="/aeron-logo.jpg" alt="AERON">
         <span>AERON</span>
@@ -653,16 +675,159 @@
 </footer>
 
 <script>
+  /* ── i18n ── */
+  const T = {
+    ko: {
+      'nav.features': '기능 소개', 'nav.popular': '인기코스',
+      'nav.updates': '업데이트', 'nav.contact': '문의하기',
+      'mobile.today': '🗺️ 나의 오늘', 'mobile.explore': '🧭 코스 떠나기',
+      'mobile.vlog': '🎬 브이로그', 'mobile.group': '🧡 그룹 피드',
+      'mobile.popular': '🏆 인기코스', 'mobile.updates': '🔔 업데이트',
+      'mobile.contact': '✉️ 문의하기', 'mobile.cta': 'App Store에서 다운로드',
+
+      'hero.title': '구름 위의 <span>아이디어</span>를<br>현실의 서비스로',
+      'hero.sub': '상상 속을 자유롭게 떠다니던 아이디어가<br>실제로 작동하는 서비스가 되는 순간을 만들어갑니다.',
+      'meta.industry': 'App · Web · IT',
+
+      'concept.air.sub': '가볍고 자유롭게',
+      'concept.air.desc': '무겁지 않아도 됩니다. 좋은 아이디어는 언제나 가볍게 시작해요. 형식보다 방향, 규모보다 속도를 중요하게 생각합니다.',
+      'concept.cloud.sub': '연결되고 안전하게',
+      'concept.cloud.desc': '사람과 사람, 서비스와 서비스를 연결합니다. 아이디어가 구름처럼 세상에 퍼져나갈 수 있도록 안정적인 기반을 만들어요.',
+      'concept.on.sub': '실행하고 함께',
+      'concept.on.desc': '아이디어는 혼자 쥐고 있을수록 사라집니다. 함께 쓸 수 있는 서비스로 내보낼 때 비로소 완성됩니다.',
+
+      'mission.kicker': 'Mission',
+      'mission.title': '상상이 서비스가<br>되는 순간, <em>AERON</em>',
+      'mission.desc': 'AERON은 한 가지 믿음에서 시작했습니다 — 세상에 아직 없는 것이라도, 필요하다면 만들 수 있다는 것. 앱이든, 웹이든, 어떤 형태든 좋습니다. 사람들의 일상 속에 자연스럽게 스며들어 조금 더 즐겁고 편리한 경험을 전달하는 것이 AERON의 이유입니다.',
+      'mission.v1.title': '아이디어가 먼저',
+      'mission.v1.desc': '기술은 도구입니다. 어떤 경험을 만들 것인지가 항상 먼저예요. 작은 불편함도 그냥 지나치지 않습니다.',
+      'mission.v2.title': '빠르게, 직접',
+      'mission.v2.desc': '생각한 것을 오래 묵히지 않습니다. 빠르게 만들고, 직접 써보고, 실제 피드백으로 완성해나가요.',
+      'mission.v3.title': '사람을 위한 서비스',
+      'mission.v3.desc': '결국 사람이 쓰는 것입니다. 누군가의 하루에 작은 기쁨이 되는 순간, 그게 AERON이 존재하는 이유입니다.',
+
+      'products.kicker': 'Products',
+      'products.title': 'AERON이 만든 서비스',
+      'products.sub': '아이디어를 직접 서비스로 만들어 세상에 내보냅니다',
+
+      'tk.name': '티처스노크', 'tk.status': 'App Store 출시',
+      'tk.tagline': '임용고시 준비생을 위한 학습 도움 앱',
+      'tk.desc': '교원 임용고시를 준비하는 수험생들의 학습 루틴을 체계적으로 관리해주는 앱. 방대한 시험 범위를 효율적으로 정리하고, 꾸준한 학습 습관을 만들 수 있도록 도와줍니다. 혼자 공부하는 긴 시간을 더 단단하게 버텨낼 수 있게요.',
+      'tk.tag1': '임용고시', 'tk.tag2': '학습 관리', 'tk.tag3': '수험생', 'tk.tag4': '교원 준비',
+      'tk.release': '✓ 출시 완료',
+
+      'tteona.status': '2026.06.06 출시',
+      'tteona.tagline': '오늘 하루를 여행처럼 기록해요',
+      'tteona.desc': '나만의 여행 코스를 만들고, 장소마다 영상 클립을 남기면 자동으로 브이로그가 완성되는 여행 기록 앱. 친구들과 실시간으로 코스를 공유하고 함께 같은 여행을 즐길 수 있어요. 일상도 특별한 여행이 될 수 있습니다.',
+      'tteona.tag1': '여행 코스 기록', 'tteona.tag2': '브이로그 자동 편집',
+      'tteona.tag3': '그룹 피드', 'tteona.tag4': '위치 기반 촬영',
+      'tteona.release': '⏱ 2026.06.06 출시 예정',
+
+      'footer.tagline': '오늘 하루를 여행처럼 기록하고<br>친구와 함께 공유해요.',
+      'footer.services': '서비스', 'footer.legal': '법률',
+      'footer.link.today': '나의 오늘', 'footer.link.explore': '코스 떠나기',
+      'footer.link.vlog': '브이로그', 'footer.link.group': '그룹 피드',
+      'footer.link.privacy': '개인정보처리방침', 'footer.link.terms': '이용약관',
+      'footer.link.childsafety': '아동 안전 기준 정책',
+      'footer.copyright': '© 2026 AERON. All rights reserved.',
+    },
+    en: {
+      'nav.features': 'Features', 'nav.popular': 'Popular',
+      'nav.updates': 'Updates', 'nav.contact': 'Contact',
+      'mobile.today': '🗺️ My Today', 'mobile.explore': '🧭 Go on a Course',
+      'mobile.vlog': '🎬 Vlog', 'mobile.group': '🧡 Group Feed',
+      'mobile.popular': '🏆 Popular', 'mobile.updates': '🔔 Updates',
+      'mobile.contact': '✉️ Contact', 'mobile.cta': 'Download on App Store',
+
+      'hero.title': 'Ideas from the clouds,<br>turned into <span>real services</span>',
+      'hero.sub': 'Ideas that once drifted freely through imagination —<br>we make them into services that actually work.',
+      'meta.industry': 'App · Web · IT',
+
+      'concept.air.sub': 'Light & Free',
+      'concept.air.desc': "It doesn't have to be heavy. Great ideas always start light. We value direction over form, and speed over scale.",
+      'concept.cloud.sub': 'Connected & Reliable',
+      'concept.cloud.desc': 'We connect people to people, service to service. Building a stable foundation so ideas can spread like clouds across the world.',
+      'concept.on.sub': 'Execute & Together',
+      'concept.on.desc': "Ideas fade when kept to yourself. They're only complete when released as a service that others can use together.",
+
+      'mission.kicker': 'Mission',
+      'mission.title': 'When imagination becomes<br>a service — that\'s <em>AERON</em>',
+      'mission.desc': "AERON began with one belief — that even things that don't yet exist can be built if they're needed. Whether it's an app, a website, or anything in between. Delivering experiences that naturally fit into people's daily lives and make them a little more enjoyable — that's why AERON exists.",
+      'mission.v1.title': 'Ideas First',
+      'mission.v1.desc': "Technology is a tool. What experience we want to create always comes first. We never walk past a small inconvenience without noticing.",
+      'mission.v2.title': 'Fast & Direct',
+      'mission.v2.desc': "We don't sit on ideas for too long. Build fast, use it yourself, and refine with real feedback from real people.",
+      'mission.v3.title': 'Built for People',
+      'mission.v3.desc': "In the end, people use it. The moment it brings a small joy to someone's day — that's the reason AERON exists.",
+
+      'products.kicker': 'Products',
+      'products.title': "What We've Built",
+      'products.sub': 'Turning ideas into real products, one service at a time',
+
+      'tk.name': "Teachers' Knock", 'tk.status': 'Available on App Store',
+      'tk.tagline': 'A study companion for teacher certification exam candidates',
+      'tk.desc': "An app that helps candidates preparing for South Korea's teacher certification exam manage their study routines systematically. It helps organize the vast exam scope and build consistent study habits — so the long solo study journey feels more manageable.",
+      'tk.tag1': 'Teacher Exam', 'tk.tag2': 'Study Management', 'tk.tag3': 'Exam Prep', 'tk.tag4': 'Education',
+      'tk.release': '✓ Available Now',
+
+      'tteona.status': 'Launching 2026.06.06',
+      'tteona.tagline': 'Record your everyday life like a trip',
+      'tteona.desc': "Create your own travel course, capture short clips at each spot, and a vlog is automatically ready. Share courses with friends in real time and experience the same journey together. Even your daily routine can feel like a special trip.",
+      'tteona.tag1': 'Travel Course', 'tteona.tag2': 'Auto Vlog Edit',
+      'tteona.tag3': 'Group Feed', 'tteona.tag4': 'Location-Based',
+      'tteona.release': '⏱ Launching 2026.06.06',
+
+      'footer.tagline': 'Record every day like a trip<br>and share it with friends.',
+      'footer.services': 'Services', 'footer.legal': 'Legal',
+      'footer.link.today': 'My Today', 'footer.link.explore': 'Go on a Course',
+      'footer.link.vlog': 'Vlog', 'footer.link.group': 'Group Feed',
+      'footer.link.privacy': 'Privacy Policy', 'footer.link.terms': 'Terms of Service',
+      'footer.link.childsafety': 'Child Safety Policy',
+      'footer.copyright': '© 2026 AERON. All rights reserved.',
+    }
+  };
+
+  let currentLang = localStorage.getItem('aeron-lang')
+    || (navigator.language.startsWith('en') ? 'en' : 'ko');
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('aeron-lang', lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+    });
+
+    document.querySelectorAll('.lang-opt, .mobile-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(currentLang);
+
+  /* ── scroll reveal ── */
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+  /* ── navbar ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
+  /* ── mobile menu ── */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
