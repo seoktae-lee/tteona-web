@@ -349,15 +349,18 @@
     .release-live   { color: #3AB87A; }
     .release-soon   { color: var(--orange); }
 
-    /* ─── LANG TOGGLE ─── */
-    .lang-toggle {
+    /* ─── LANG FLOAT ─── */
+    .lang-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
       display: flex; align-items: center;
-      background: var(--ab-pale);
-      border: 1px solid rgba(91,168,212,0.2);
-      border-radius: 100px; padding: 3px; gap: 2px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(91,168,212,0.22);
+      border-radius: 100px; padding: 4px; gap: 2px;
+      box-shadow: 0 4px 24px rgba(91,168,212,0.18);
     }
     .lang-opt {
-      padding: 5px 13px; border-radius: 100px;
+      padding: 6px 15px; border-radius: 100px;
       font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
       border: none; cursor: pointer; background: none;
       color: #999; font-family: inherit;
@@ -366,19 +369,6 @@
     .lang-opt.active {
       background: var(--ab); color: #fff;
       box-shadow: 0 2px 8px rgba(91,168,212,0.35);
-    }
-    .mobile-lang {
-      display: flex; gap: 8px; padding: 10px 12px;
-      border-top: 1px solid var(--border); margin-top: 4px;
-    }
-    .mobile-lang button {
-      flex: 1; padding: 10px; border-radius: 10px;
-      font-size: 14px; font-weight: 700; font-family: inherit;
-      border: 1.5px solid var(--border); background: none;
-      color: #555; cursor: pointer; transition: all 0.15s;
-    }
-    .mobile-lang button.active {
-      background: var(--ab); color: #fff; border-color: var(--ab);
     }
 
     /* ─── FOOTER ─── */
@@ -436,10 +426,6 @@
         <li><a href="/updates.html" data-i18n="nav.updates">업데이트</a></li>
         <li><a href="mailto:just.tteona@gmail.com" data-i18n="nav.contact">문의하기</a></li>
       </ul>
-      <div class="lang-toggle">
-        <button class="lang-opt active" data-lang="ko">KO</button>
-        <button class="lang-opt" data-lang="en">EN</button>
-      </div>
       <a class="nav-cta" href="https://apps.apple.com/app/id000000000">
         <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
         App Store
@@ -462,10 +448,6 @@
   <a href="/updates.html" class="ml" data-i18n="mobile.updates">🔔 업데이트</a>
   <a href="mailto:just.tteona@gmail.com" class="ml" data-i18n="mobile.contact">✉️ 문의하기</a>
   <a href="https://apps.apple.com/app/id000000000" class="m-cta" data-i18n="mobile.cta">App Store에서 다운로드</a>
-  <div class="mobile-lang">
-    <button class="active" data-lang="ko">KO 한국어</button>
-    <button data-lang="en">EN English</button>
-  </div>
 </div>
 
 <!-- HERO -->
@@ -679,6 +661,12 @@
     </div>
   </div>
 </footer>
+
+<!-- FLOATING LANG TOGGLE -->
+<div class="lang-float">
+  <button class="lang-opt active" data-lang="ko">KO</button>
+  <button class="lang-opt" data-lang="en">EN</button>
+</div>
 
 <script>
   /* ── i18n ── */
