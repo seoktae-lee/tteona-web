@@ -112,7 +112,13 @@
     }
     .hero-logo {
       height: 72px;
-      mix-blend-mode: multiply;
+      width: 260px;
+      background-image: url('/aeron-logo.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #EBF5FB;
+      background-blend-mode: multiply;
       animation: floatY 6s ease-in-out infinite;
     }
     @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
@@ -396,7 +402,7 @@
     @media (max-width: 900px) {
       .container { padding: 0 24px; }
       .hero { padding: calc(var(--nav-h) + 64px) 0 72px; }
-      .hero-logo { height: 52px; }
+      .hero-logo { height: 52px; width: 200px; }
       .mission-grid { grid-template-columns: 1fr; gap: 48px; }
       .concept-grid { grid-template-columns: 1fr; }
       .concept-item { padding: 36px 28px; }
@@ -466,7 +472,7 @@
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
-      <img src="/aeron-logo.jpg" alt="AERON" class="hero-logo reveal">
+      <div class="hero-logo reveal" role="img" aria-label="AERON"></div>
       <p class="hero-catch reveal d1">IDEAS IN THE AIR, SOLUTIONS ON.</p>
       <h1 class="hero-title reveal d2" data-i18n-html="hero.title">
         구름 위의 <span>아이디어</span>를<br>현실의 서비스로
