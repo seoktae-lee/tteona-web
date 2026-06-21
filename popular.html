@@ -465,21 +465,7 @@
   </div>
 </footer>
 
-<div class="coming-toast" id="comingToast">🍎 곧 App Store에 출시될 예정이에요!</div>
-
 <script>
-  const comingToast = document.getElementById('comingToast');
-  let toastTimer;
-  function showComingSoon(e) {
-    e.preventDefault();
-    clearTimeout(toastTimer);
-    comingToast.classList.add('show');
-    toastTimer = setTimeout(() => comingToast.classList.remove('show'), 2500);
-  }
-  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(el => {
-    el.addEventListener('click', showComingSoon);
-  });
-
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {

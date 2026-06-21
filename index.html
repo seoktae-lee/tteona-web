@@ -765,8 +765,6 @@
   </div>
 </footer>
 
-<div class="coming-toast" id="comingToast">🍎 곧 App Store에 출시될 예정이에요!</div>
-
 <script>
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
@@ -775,18 +773,6 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
   // Navbar scroll border
-  // App Store 출시 예정 토스트
-  const comingToast = document.getElementById('comingToast');
-  let toastTimer;
-  function showComingSoon(e) {
-    e.preventDefault();
-    clearTimeout(toastTimer);
-    comingToast.classList.add('show');
-    toastTimer = setTimeout(() => comingToast.classList.remove('show'), 2500);
-  }
-  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(el => {
-    el.addEventListener('click', showComingSoon);
-  });
 
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
