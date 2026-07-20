@@ -38,15 +38,10 @@
       text-decoration: none;
     }
     header .brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
+      height: 22px;
+      width: auto;
     }
-    header .brand span {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--orange);
-    }
+    header .brand span { display: none; }
     .lang-toggle {
       display: flex;
       gap: 0;
@@ -111,15 +106,10 @@
       margin-bottom: 6px;
     }
     .footer-brand img {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
+      height: 18px;
+      width: auto;
     }
-    .footer-brand span {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--orange);
-    }
+    .footer-brand span { display: none; }
     .footer-links {
       display: flex;
       gap: 20px;
@@ -158,12 +148,13 @@
 <body>
 <header>
   <a class="brand" href="https://tteona.kr">
-    <img src="/tteona-logo.png" alt="tteona 로고">
+    <img src="/tteona-logo.png?v=2" alt="tteona 로고">
     <span>tteona</span>
   </a>
   <div class="lang-toggle">
     <button id="btn-ko" class="active" onclick="setLang('ko')">한국어</button>
     <button id="btn-en" onclick="setLang('en')">English</button>
+    <button id="btn-ja" onclick="setLang('ja')">日本語</button>
   </div>
 </header>
 
@@ -172,7 +163,7 @@
   <!-- ===== 한국어 ===== -->
   <div id="ko" class="lang-section active">
     <h1>아동 안전 기준 정책</h1>
-    <p class="effective-date">시행일: 2026년 5월 16일 &nbsp;·&nbsp; 최종 업데이트: 2026년 5월 16일</p>
+    <p class="effective-date">시행일: 2026년 5월 16일 &nbsp;·&nbsp; 최종 업데이트: 2026년 7월 20일</p>
 
     <p>AERON(이하 "서비스 제공자")은 모바일 애플리케이션 "떠나"(이하 "앱")를 이용하는 모든 사용자, 특히 아동과 청소년의 안전한 환경을 위해 최선을 다합니다. 서비스 제공자는 아동 성적 학대 및 착취(CSAE)에 대해 무관용 정책을 적용하며, 아동을 착취하거나 학대하거나 위험에 빠뜨리는 모든 콘텐츠와 행위를 엄격히 금지합니다.</p>
 
@@ -217,7 +208,7 @@
   <!-- ===== English ===== -->
   <div id="en" class="lang-section">
     <h1>Child Safety Standards Policy</h1>
-    <p class="effective-date">Effective Date: May 16, 2026 &nbsp;·&nbsp; Last Updated: May 16, 2026</p>
+    <p class="effective-date">Effective Date: May 16, 2026 &nbsp;·&nbsp; Last Updated: July 20, 2026</p>
 
     <p>AERON (the "Service Provider") is committed to providing a safe environment for all users of the mobile application "떠나 (Tteona)" (the "App"), especially children and minors. The Service Provider has a zero-tolerance policy toward Child Sexual Abuse and Exploitation (CSAE) and strictly prohibits any content or behavior that exploits, abuses, or endangers children.</p>
 
@@ -259,11 +250,56 @@
     <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
   </div>
 
+  <!-- ===== 日本語 ===== -->
+  <div id="ja" class="lang-section">
+    <h1>児童安全基準ポリシー</h1>
+    <p class="effective-date">施行日: 2026年5月16日 &nbsp;·&nbsp; 最終更新: 2026年7月20日</p>
+
+    <p>AERON(以下「サービス提供者」)は、モバイルアプリケーション「떠나(Tteona)」(以下「本アプリ」)を利用するすべての利用者、特に児童及び未成年者の安全な環境のために最善を尽くします。サービス提供者は児童の性的虐待及び搾取(CSAE)に対して不寛容(ゼロトレランス)方針を適用し、児童を搾取・虐待し、又は危険にさらすすべてのコンテンツ及び行為を厳格に禁止します。</p>
+
+    <h2>1. 禁止されるコンテンツ及び行為</h2>
+    <p>当社のプラットフォームでは、次の行為を厳格に禁止します。</p>
+    <ul>
+      <li>あらゆる形態の児童性的虐待資料(CSAM)</li>
+      <li>未成年者と不適切な関係を築こうとするグルーミング行為又はその試み</li>
+      <li>未成年者に対する性的搾取、強要又は脅迫(セクストーションを含む)</li>
+      <li>未成年者が登場する性的コンテンツの共有、要求又は配布</li>
+      <li>児童の安全又は福祉を脅かすすべての活動</li>
+    </ul>
+    <p>本ポリシーにおいて、児童又は未成年者とは満18歳未満のすべての個人を意味します。</p>
+
+    <h2>2. 通報方法</h2>
+    <p>本アプリ内で児童の安全を脅かすコンテンツ又は行為を発見された場合は、下記のメールへ直ちに通報してください。</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+    <p>通報を受け付け次第、サービス提供者は直ちに審査手続きを進め、必要な場合は関係する法執行機関に通報します。</p>
+
+    <h2>3. 法的な通報義務</h2>
+    <p>サービス提供者は、児童性的虐待資料(CSAM)と疑われるコンテンツを発見し又は通報を受けた場合、関連法令に従い、直ちに管轄機関(放送通信審議委員会、警察庁サイバー捜査局等)及び米国の行方不明・被搾取児童全国センター(NCMEC)に通報する義務を履行します。</p>
+
+    <h2>4. 利用資格及び年齢制限</h2>
+    <p>本アプリは満14歳以上の利用者を対象とします。サービス提供者は満14歳未満の児童の個人情報を意図的に収集せず、その事実を認知次第、関連するアカウント及びデータを削除します。</p>
+
+    <h2>5. 安全な環境の維持への取り組み</h2>
+    <p>サービス提供者は児童の安全のため、次の取り組みを行います。</p>
+    <ul>
+      <li>グループ(ルーム)機能は招待コードによる閉鎖型運用とし、見知らぬ人との無作為な接触を防止します。</li>
+      <li>児童の安全に関する通報を受け付けた場合、直ちに措置します。</li>
+      <li>関連法令及びプラットフォーム方針の変化に応じて、本ポリシーを定期的に見直し・改善します。</li>
+    </ul>
+
+    <h2>6. ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて変更される場合があり、重要な変更事項はアプリ又は本ページを通じて事前に告知します。</p>
+
+    <h2>7. お問い合わせ</h2>
+    <p>児童の安全に関するお問い合わせ又は通報は、下記のメールへご連絡ください。</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+  </div>
+
 </div>
 
 <footer>
   <div class="footer-brand">
-    <img src="/tteona-logo.png" alt="tteona">
+    <img src="/tteona-logo.png?v=2" alt="tteona">
     <span>tteona</span>
   </div>
   <div class="footer-links">
@@ -283,10 +319,10 @@
 
 <script>
   function setLang(lang) {
-    document.getElementById('ko').classList.toggle('active', lang === 'ko');
-    document.getElementById('en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    ['ko', 'en', 'ja'].forEach(function (l) {
+      document.getElementById(l).classList.toggle('active', l === lang);
+      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    });
     document.documentElement.lang = lang;
   }
 </script>

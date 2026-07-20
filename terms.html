@@ -38,15 +38,10 @@
       text-decoration: none;
     }
     header .brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
+      height: 22px;
+      width: auto;
     }
-    header .brand span {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--orange);
-    }
+    header .brand span { display: none; }
     .lang-toggle {
       display: flex;
       gap: 0;
@@ -111,15 +106,10 @@
       margin-bottom: 6px;
     }
     .footer-brand img {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
+      height: 18px;
+      width: auto;
     }
-    .footer-brand span {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--orange);
-    }
+    .footer-brand span { display: none; }
     .footer-links {
       display: flex;
       gap: 20px;
@@ -158,12 +148,13 @@
 <body>
 <header>
   <a class="brand" href="https://tteona.kr">
-    <img src="/tteona-logo.png" alt="tteona 로고">
+    <img src="/tteona-logo.png?v=2" alt="tteona 로고">
     <span>tteona</span>
   </a>
   <div class="lang-toggle">
     <button id="btn-ko" class="active" onclick="setLang('ko')">한국어</button>
     <button id="btn-en" onclick="setLang('en')">English</button>
+    <button id="btn-ja" onclick="setLang('ja')">日本語</button>
   </div>
 </header>
 
@@ -172,7 +163,7 @@
   <!-- ===== 한국어 ===== -->
   <div id="ko" class="lang-section active">
     <h1>이용약관</h1>
-    <p class="effective-date">시행일: 2026년 5월 12일 &nbsp;·&nbsp; 최종 업데이트: 2026년 5월 12일</p>
+    <p class="effective-date">시행일: 2026년 5월 12일 &nbsp;·&nbsp; 최종 업데이트: 2026년 7월 20일</p>
 
     <h2>1. 목적</h2>
     <p>본 이용약관은 AERON(이하 "서비스 제공자")이 운영하는 모바일 애플리케이션 "떠나"(이하 "앱")의 이용 조건 및 절차를 규정합니다.</p>
@@ -235,12 +226,76 @@
     <h2>13. 문의</h2>
     <p>문의 사항은 앱 내 설정 화면의 문의 기능을 이용하시거나 아래 이메일로 연락해 주시기 바랍니다.</p>
     <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+
+    <hr style="margin:56px 0 0;border:none;border-top:1px solid var(--border);">
+    <h1 style="margin-top:44px;">위치기반서비스 이용약관</h1>
+    <p class="effective-date">시행일: 2026년 7월 20일 &nbsp;·&nbsp; 위치기반서비스사업 신고번호: 제1277호</p>
+
+    <h2>제1조 (목적)</h2>
+    <p>본 위치기반서비스 이용약관(이하 "본 약관")은 「위치정보의 보호 및 이용 등에 관한 법률」(이하 "위치정보법")에 따라, AERON(에어론, 이하 "회사")이 제공하는 위치기반서비스와 관련하여 회사와 개인위치정보주체 간의 권리·의무 및 책임사항, 그 밖에 필요한 사항을 규정함을 목적으로 합니다.</p>
+
+    <h2>제2조 (서비스 사업자 정보)</h2>
+    <ul>
+      <li>상호: 에어론(AERON)</li>
+      <li>주소: 경기도 용인시 수지구 성복2로76번길 31, 105동 604호</li>
+      <li>연락처: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>위치기반서비스사업 신고번호: 제1277호 (방송미디어통신사무소)</li>
+      <li>위치정보관리책임자: 당사 대표 (연락처 상동)</li>
+    </ul>
+
+    <h2>제3조 (위치기반서비스의 내용)</h2>
+    <p>회사는 개인위치정보주체의 동의를 받아 다음의 위치기반서비스를 제공합니다.</p>
+    <ul>
+      <li>현재 위치를 기반으로 한 여행 코스·장소의 안내 및 검색</li>
+      <li>여행 중 방문한 장소의 위치 기록 및 이를 활용한 브이로그·코스 생성</li>
+      <li>같은 그룹(방)에 속한 동행 멤버 간의 실시간 위치 공유</li>
+    </ul>
+
+    <h2>제4조 (개인위치정보주체의 권리 및 행사방법)</h2>
+    <ul>
+      <li>이용자는 위치정보의 수집·이용·제공에 대한 동의의 전부 또는 일부를 언제든지 철회할 수 있습니다. 동의 철회는 기기의 위치 권한 해제 또는 앱 내 위치공유 종료를 통해 가능합니다.</li>
+      <li>이용자는 위치정보의 수집·이용·제공의 일시적인 중지를 요구할 수 있으며, 회사는 이를 거절하지 않습니다.</li>
+      <li>이용자는 회사에 대하여 본인에 관한 위치정보 이용·제공사실 확인자료의 열람 또는 고지, 오류의 정정을 요구할 수 있으며, 회사는 정당한 사유가 없는 한 이에 응합니다.</li>
+      <li>위 권리의 행사는 제2조의 연락처를 통해 요청하실 수 있습니다.</li>
+    </ul>
+
+    <h2>제5조 (위치정보 이용·제공사실 확인자료의 보유근거 및 보유기간)</h2>
+    <p>회사는 위치정보법 제16조제2항에 따라 위치정보 수집·이용·제공사실 확인자료를 위치정보시스템에 자동으로 기록·보존하며, 해당 확인자료를 이용자의 위치기반서비스 이용 시점부터 6개월간 보관한 후 파기합니다.</p>
+
+    <h2>제6조 (개인위치정보의 이용·보유목적 및 보유기간)</h2>
+    <ul>
+      <li>동행 위치공유를 위한 실시간 위치정보는 같은 그룹의 동행 멤버에게 전달하는 목적으로만 이용되며, 별도의 위치 이력으로 저장하지 않습니다.</li>
+      <li>동행 멤버에게 표시되는 최근 위치는 이용자가 해당 그룹에 참여하는 동안에만 임시로 보관되며, 그룹에서 나가거나 회원 탈퇴 시 지체 없이 삭제됩니다.</li>
+      <li>이용자가 여행 중 촬영을 위해 선택·기록한 장소의 좌표는 코스 및 브이로그의 생성·보관 목적으로 이용되며, 이용자가 해당 코스를 삭제하거나 회원 탈퇴 시 파기됩니다.</li>
+    </ul>
+
+    <h2>제7조 (개인위치정보의 제3자 제공 및 통보)</h2>
+    <p>회사는 이용자의 사전 동의 없이 개인위치정보를 제3자에게 제공하지 않습니다. 다만, 이용자가 스스로 그룹(방)에 참여하여 동행 위치공유를 활성화한 경우, 해당 위치정보는 이용자가 선택한 그룹의 동행 멤버에게 실시간으로 제공됩니다. 이 경우 회사는 위치정보를 제공받는 자 및 제공 목적을 이용자가 사전에 확인할 수 있도록 앱 내에 고지합니다.</p>
+
+    <h2>제8조 (8세 이하의 아동 등의 보호의무자의 권리)</h2>
+    <p>8세 이하의 아동, 피성년후견인, 「장애인복지법」상의 장애인 등의 보호의무자가 보호대상자의 생명 또는 신체의 보호를 위하여 위치정보의 이용에 동의하는 경우, 이는 본인의 동의로 보며, 관련 권리는 위치정보법이 정하는 바에 따릅니다.</p>
+
+    <h2>제9조 (위치정보관리책임자)</h2>
+    <p>회사는 개인위치정보를 안전하게 관리하고 개인위치정보주체의 권리를 보호하기 위하여 위치정보관리책임자를 지정하여 운영합니다. 위치정보관리책임자는 당사 대표가 겸임하며, 관련 문의는 제2조의 연락처로 하실 수 있습니다.</p>
+
+    <h2>제10조 (서비스 이용요금)</h2>
+    <p>회사가 제공하는 위치기반서비스는 무료로 제공됩니다. 다만, 서비스 이용 과정에서 발생하는 데이터 통신요금은 이용자가 가입한 이동통신사의 정책에 따라 별도로 부과될 수 있습니다.</p>
+
+    <h2>제11조 (손해배상 및 분쟁조정)</h2>
+    <p>회사가 위치정보법 제15조부터 제26조까지의 규정을 위반하여 이용자에게 손해가 발생한 경우, 이용자는 회사에 손해배상을 청구할 수 있으며, 회사는 고의 또는 과실이 없음을 입증하지 못하는 한 그 책임을 면하지 못합니다. 위치정보의 이용과 관련한 분쟁에 대하여 회사와 이용자 간 협의가 이루어지지 않는 경우, 이용자는 방송미디어통신위원회에 재정을 신청하거나 개인정보분쟁조정위원회에 조정을 신청할 수 있습니다.</p>
+
+    <h2>제12조 (문의처)</h2>
+    <p>위치기반서비스와 관련한 문의·상담은 제2조의 연락처 또는 아래 위치정보 관련 기관을 통해 하실 수 있습니다.</p>
+    <ul>
+      <li>회사: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>위치정보지원센터: 02-588-0185, <a href="mailto:lbs@kcup.or.kr">lbs@kcup.or.kr</a></li>
+    </ul>
   </div>
 
   <!-- ===== English ===== -->
   <div id="en" class="lang-section">
     <h1>Terms of Service</h1>
-    <p class="effective-date">Effective Date: May 12, 2026 &nbsp;·&nbsp; Last Updated: May 12, 2026</p>
+    <p class="effective-date">Effective Date: May 12, 2026 &nbsp;·&nbsp; Last Updated: July 20, 2026</p>
 
     <h2>1. Purpose</h2>
     <p>These Terms of Service govern your use of the mobile application "떠나 (Tteona)" (the "App") operated by AERON (the "Service Provider").</p>
@@ -303,13 +358,209 @@
     <h2>13. Contact</h2>
     <p>For inquiries, please use the in-app contact feature in the Settings screen or reach us by email.</p>
     <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+
+    <hr style="margin:56px 0 0;border:none;border-top:1px solid var(--border);">
+    <h1 style="margin-top:44px;">Location-Based Service Terms</h1>
+    <p class="effective-date">Effective Date: July 20, 2026 &nbsp;·&nbsp; LBS Business Registration No.: 1277</p>
+
+    <h2>Article 1 (Purpose)</h2>
+    <p>These Location-Based Service Terms (the "LBS Terms") set out the rights, obligations, and responsibilities between AERON (the "Company") and the personal location data subject with respect to the location-based services provided by the Company, in accordance with the Korean Act on the Protection and Use of Location Information (the "Location Information Act").</p>
+
+    <h2>Article 2 (Service Provider Information)</h2>
+    <ul>
+      <li>Company: AERON (에어론)</li>
+      <li>Address: 105-604, 31 Seongbok 2-ro 76beon-gil, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea</li>
+      <li>Contact: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>LBS Business Registration No.: 1277 (Broadcasting, Media & Telecommunications Office)</li>
+      <li>Location Information Manager: The Company's Representative (contact as above)</li>
+    </ul>
+
+    <h2>Article 3 (Scope of the Location-Based Services)</h2>
+    <p>With the consent of the personal location data subject, the Company provides the following location-based services:</p>
+    <ul>
+      <li>Guidance and search of travel courses and places based on your current location;</li>
+      <li>Recording the location of places visited during a trip, and using it to generate vlogs and courses;</li>
+      <li>Real-time location sharing among fellow members within the same group (room).</li>
+    </ul>
+
+    <h2>Article 4 (Rights of the Personal Location Data Subject and How to Exercise Them)</h2>
+    <ul>
+      <li>You may withdraw all or part of your consent to the collection, use, or provision of location information at any time, by disabling the device's location permission or ending location sharing within the App.</li>
+      <li>You may request a temporary suspension of the collection, use, or provision of location information, and the Company will not refuse such a request.</li>
+      <li>You may request access to, notification of, or correction of errors in the records confirming the use and provision of your location information, and the Company will comply unless there is a justifiable reason not to.</li>
+      <li>These rights may be exercised through the contact in Article 2.</li>
+    </ul>
+
+    <h2>Article 5 (Basis and Retention Period for Location Use/Provision Records)</h2>
+    <p>In accordance with Article 16(2) of the Location Information Act, the Company automatically records and retains, within its location information system, the records confirming the collection, use, and provision of location information, and retains such records for six (6) months from the time of your use of the location-based service, after which they are destroyed.</p>
+
+    <h2>Article 6 (Purpose and Retention of Personal Location Information)</h2>
+    <ul>
+      <li>Real-time location information for companion sharing is used solely to relay your position to fellow members of the same group and is not stored as a separate location history.</li>
+      <li>The latest location shown to fellow members is retained only temporarily while you participate in that group, and is deleted without delay when you leave the group or withdraw your membership.</li>
+      <li>Coordinates of places you select and record for filming during a trip are used to create and store courses and vlogs, and are destroyed when you delete the course or withdraw your membership.</li>
+    </ul>
+
+    <h2>Article 7 (Provision to Third Parties and Notification)</h2>
+    <p>The Company does not provide personal location information to third parties without your prior consent. However, if you voluntarily join a group (room) and enable companion location sharing, your location information is provided in real time to the fellow members of the group you have chosen. In such cases, the Company notifies you in advance, within the App, of the recipients and the purpose of the provision.</p>
+
+    <h2>Article 8 (Rights of Guardians of Children Aged 8 or Under, etc.)</h2>
+    <p>Where the guardian of a child aged 8 or under, a person under adult guardianship, or a person with a disability as defined by the Act on Welfare of Persons with Disabilities consents to the use of location information to protect the life or body of the person under protection, such consent is deemed the consent of the data subject, and related rights follow the Location Information Act.</p>
+
+    <h2>Article 9 (Location Information Manager)</h2>
+    <p>The Company designates and operates a Location Information Manager to securely manage personal location information and protect the rights of data subjects. The Location Information Manager is concurrently held by the Company's Representative, and related inquiries may be directed to the contact in Article 2.</p>
+
+    <h2>Article 10 (Service Fees)</h2>
+    <p>The location-based services provided by the Company are offered free of charge. However, data communication charges incurred while using the service may be billed separately according to the policy of your mobile carrier.</p>
+
+    <h2>Article 11 (Damages and Dispute Resolution)</h2>
+    <p>If you suffer damages due to the Company's violation of Articles 15 through 26 of the Location Information Act, you may claim damages against the Company, and the Company shall not be exempt from liability unless it proves the absence of intent or negligence. If a dispute regarding the use of location information is not resolved by agreement between the Company and the user, you may apply for adjudication to the Broadcasting, Media & Telecommunications Commission or for mediation to the Personal Information Dispute Mediation Committee.</p>
+
+    <h2>Article 12 (Inquiries)</h2>
+    <p>Inquiries and consultations regarding the location-based services may be made through the contact in Article 2 or the location-information body below:</p>
+    <ul>
+      <li>Company: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>Location Information Support Center: +82-2-588-0185, <a href="mailto:lbs@kcup.or.kr">lbs@kcup.or.kr</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== 日本語 ===== -->
+  <div id="ja" class="lang-section">
+    <h1>利用規約</h1>
+    <p class="effective-date">施行日: 2026年5月12日 &nbsp;·&nbsp; 最終更新: 2026年7月20日</p>
+
+    <h2>1. 目的</h2>
+    <p>本利用規約は、AERON(以下「サービス提供者」)が運営するモバイルアプリケーション「떠나(Tteona)」(以下「本アプリ」)の利用条件及び手続きを定めるものです。</p>
+
+    <h2>2. 規約への同意</h2>
+    <p>本アプリをダウンロード又は使用することにより、本規約に同意したものとみなされます。ご利用前に内容を十分にお読みください。</p>
+
+    <h2>3. サービスの説明</h2>
+    <p>「떠나(Tteona)」は、グループ旅行コースを計画・実行し、旅行中に撮影した動画からVlogを自動生成し、同行するメンバーとリアルタイムの位置及びフィードを共有するアプリです。</p>
+
+    <h2>4. アカウント及び利用資格</h2>
+    <ul>
+      <li>満14歳以上の方のみ登録できます。</li>
+      <li>メール、Google、Apple、Kakaoアカウントで登録できます。</li>
+      <li>アカウント情報及び端末のセキュリティ維持の責任は利用者本人にあります。</li>
+    </ul>
+
+    <h2>5. 禁止行為</h2>
+    <p>利用者は次の行為を行ってはなりません。</p>
+    <ul>
+      <li>他人のアカウントの不正利用又は虚偽情報での登録</li>
+      <li>本アプリのリバースエンジニアリング、ソースコードの無断複製・改変</li>
+      <li>サービスの正常な運営を妨害する行為</li>
+      <li>他人の個人情報の侵害又は違法コンテンツのアップロード</li>
+      <li>脱獄(Jailbreak)した端末からのアクセス(これに起因する不具合についてサービス提供者は責任を負いません)</li>
+    </ul>
+
+    <h2>6. コンテンツ及び知的財産権</h2>
+    <p>本アプリのデザイン、ロゴ、ソースコード、商標等の知的財産権はすべてサービス提供者に帰属します。利用者が本アプリ内にアップロードした動画・写真・テキストの権利は当該利用者に帰属し、サービス提供者はサービスの運営・改善の目的に限りこれを利用できます。</p>
+
+    <h2>7. コースの公開及びグループ機能</h2>
+    <ul>
+      <li>利用者が作成・保存した旅行コースは、アプリ内の他の利用者に公開され、検索及び利用が可能です。公開を望まない情報はコースに含めないでください。</li>
+      <li>グループ(ルーム)は6桁の招待コードで参加でき、招待コードを他人と共有する責任は利用者本人にあります。</li>
+      <li>グループで自分が最後のメンバーの状態で退出するか、アカウントを削除すると、当該グループのフィード・コメント・共有コース等すべてのデータが永久に削除されます。</li>
+    </ul>
+
+    <h2>8. 第三者サービス</h2>
+    <p>本アプリは円滑な機能提供のため、次の第三者サービスを使用します。</p>
+    <ul>
+      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase(認証、データベース、プッシュ通知)</a></li>
+      <li><a href="https://policies.google.com/terms" target="_blank">Google(ログイン)</a></li>
+      <li><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple(ログイン、場所検索)</a></li>
+      <li><a href="https://www.kakao.com/policy/privacy" target="_blank">Kakao(ログイン、場所検索)</a></li>
+      <li><a href="https://openweather.co.uk/privacy-policy" target="_blank">OpenWeatherMap(天気情報)</a></li>
+    </ul>
+
+    <h2>9. 免責事項</h2>
+    <p>サービス提供者は本アプリの安定的な運営に努めますが、ネットワーク障害・第三者サービスの不具合・不可抗力による中断について責任を負いません。</p>
+
+    <h2>10. サービスの変更及び終了</h2>
+    <p>サービス提供者は運営上の必要に応じてサービスの一部又は全部を変更・中断でき、重要な変更事項は事前にアプリ又はウェブサイトを通じて告知します。</p>
+
+    <h2>11. 準拠法及び紛争解決</h2>
+    <p>本規約は大韓民国の法律を準拠法とし、サービス利用に関する紛争は管轄裁判所で解決します。</p>
+
+    <h2>12. 規約の変更</h2>
+    <p>本規約は必要に応じて変更される場合があり、変更時はアプリ又は本ページを通じて告知します。変更後も継続して利用する場合、変更後の規約に同意したものとみなします。</p>
+
+    <h2>13. お問い合わせ</h2>
+    <p>お問い合わせは、アプリ内の設定画面のお問い合わせ機能をご利用いただくか、下記のメールへご連絡ください。</p>
+    <p>📧 <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
+
+    <hr style="margin:56px 0 0;border:none;border-top:1px solid var(--border);">
+    <h1 style="margin-top:44px;">位置基盤サービス利用規約</h1>
+    <p class="effective-date">施行日: 2026年7月20日 &nbsp;·&nbsp; 位置基盤サービス事業届出番号: 第1277号</p>
+
+    <h2>第1条(目的)</h2>
+    <p>本位置基盤サービス利用規約(以下「本規約」)は、韓国「位置情報の保護及び利用等に関する法律」(以下「位置情報法」)に基づき、AERON(エアロン、以下「当社」)が提供する位置基盤サービスに関し、当社と個人位置情報主体との間の権利・義務及び責任事項その他必要な事項を定めることを目的とします。</p>
+
+    <h2>第2条(サービス事業者情報)</h2>
+    <ul>
+      <li>商号: エアロン(AERON)</li>
+      <li>住所: 京畿道龍仁市水枝区城福2路76番ギル31, 105棟604号</li>
+      <li>連絡先: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>位置基盤サービス事業届出番号: 第1277号(放送メディア通信事務所)</li>
+      <li>位置情報管理責任者: 当社代表(連絡先は上記と同じ)</li>
+    </ul>
+
+    <h2>第3条(位置基盤サービスの内容)</h2>
+    <p>当社は個人位置情報主体の同意を得て、次の位置基盤サービスを提供します。</p>
+    <ul>
+      <li>現在地に基づく旅行コース・場所の案内及び検索</li>
+      <li>旅行中に訪れた場所の位置記録及びそれを用いたVlog・コースの作成</li>
+      <li>同一グループ(ルーム)内の同行メンバー間のリアルタイム位置共有</li>
+    </ul>
+
+    <h2>第4条(個人位置情報主体の権利及び行使方法)</h2>
+    <ul>
+      <li>利用者は位置情報の収集・利用・提供への同意の全部又は一部をいつでも撤回できます。撤回は端末の位置権限の解除又はアプリ内の位置共有終了により可能です。</li>
+      <li>利用者は位置情報の収集・利用・提供の一時停止を要求でき、当社はこれを拒否しません。</li>
+      <li>利用者は本人に関する位置情報の利用・提供事実確認資料の閲覧又は告知、誤りの訂正を要求でき、当社は正当な理由がない限りこれに応じます。</li>
+      <li>上記権利の行使は第2条の連絡先を通じて行えます。</li>
+    </ul>
+
+    <h2>第5条(位置情報の利用・提供事実確認資料の保有根拠及び保有期間)</h2>
+    <p>当社は位置情報法第16条第2項に基づき、位置情報の収集・利用・提供事実確認資料を位置情報システムに自動的に記録・保存し、当該確認資料を利用者の位置基盤サービス利用時点から6か月間保管した後に破棄します。</p>
+
+    <h2>第6条(個人位置情報の利用・保有目的及び保有期間)</h2>
+    <ul>
+      <li>同行位置共有のためのリアルタイム位置情報は、同一グループの同行メンバーへ伝達する目的のみに利用し、別途の位置履歴として保存しません。</li>
+      <li>同行メンバーに表示される直近の位置は、当該グループに参加している間のみ一時的に保管され、グループ退出又は退会時に遅滞なく削除されます。</li>
+      <li>利用者が旅行中の撮影のために選択・記録した場所の座標は、コース及びVlogの作成・保管の目的で利用し、コース削除又は退会時に破棄します。</li>
+    </ul>
+
+    <h2>第7条(個人位置情報の第三者提供及び通知)</h2>
+    <p>当社は利用者の事前同意なく個人位置情報を第三者に提供しません。ただし、利用者が自らグループ(ルーム)に参加し同行位置共有を有効にした場合、当該位置情報は利用者が選択したグループの同行メンバーにリアルタイムで提供されます。この場合、当社は位置情報の提供を受ける者及び提供目的を利用者が事前に確認できるよう、アプリ内に告知します。</p>
+
+    <h2>第8条(8歳以下の児童等の保護義務者の権利)</h2>
+    <p>8歳以下の児童、被成年後見人、「障害者福祉法」上の障害者等の保護義務者が、保護対象者の生命又は身体の保護のために位置情報の利用に同意する場合、これを本人の同意とみなし、関連する権利は位置情報法の定めるところによります。</p>
+
+    <h2>第9条(位置情報管理責任者)</h2>
+    <p>当社は個人位置情報を安全に管理し、個人位置情報主体の権利を保護するため、位置情報管理責任者を指定して運営します。位置情報管理責任者は当社代表が兼任し、関連するお問い合わせは第2条の連絡先へお願いいたします。</p>
+
+    <h2>第10条(サービス利用料金)</h2>
+    <p>当社が提供する位置基盤サービスは無料で提供されます。ただし、サービス利用の過程で発生するデータ通信料は、利用者が加入する移動通信会社の方針により別途課金される場合があります。</p>
+
+    <h2>第11条(損害賠償及び紛争調整)</h2>
+    <p>当社が位置情報法第15条から第26条までの規定に違反し利用者に損害が生じた場合、利用者は当社に損害賠償を請求でき、当社は故意又は過失のないことを立証できない限りその責任を免れません。位置情報の利用に関する紛争について当社と利用者間の協議が調わない場合、利用者は放送メディア通信委員会に裁定を申請し、又は個人情報紛争調整委員会に調停を申請できます。</p>
+
+    <h2>第12条(お問い合わせ先)</h2>
+    <p>位置基盤サービスに関するお問い合わせ・ご相談は、第2条の連絡先又は下記の位置情報関連機関を通じて行えます。</p>
+    <ul>
+      <li>当社: <a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></li>
+      <li>位置情報支援センター: +82-2-588-0185, <a href="mailto:lbs@kcup.or.kr">lbs@kcup.or.kr</a></li>
+    </ul>
   </div>
 
 </div>
 
 <footer>
   <div class="footer-brand">
-    <img src="/tteona-logo.png" alt="tteona">
+    <img src="/tteona-logo.png?v=2" alt="tteona">
     <span>tteona</span>
   </div>
   <div class="footer-links">
@@ -329,10 +580,10 @@
 
 <script>
   function setLang(lang) {
-    document.getElementById('ko').classList.toggle('active', lang === 'ko');
-    document.getElementById('en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    ['ko', 'en', 'ja'].forEach(function (l) {
+      document.getElementById(l).classList.toggle('active', l === lang);
+      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    });
     document.documentElement.lang = lang;
   }
 </script>
