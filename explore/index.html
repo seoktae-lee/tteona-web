@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>코스 탐색 — tteona</title>
+  <meta name="description" content="떠나 유저들이 남긴 여행 코스를 앱 설치 없이 둘러보세요">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/explore/manifest.json">
+  <meta name="theme-color" content="#FF6B35">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="떠나">
+  <link rel="apple-touch-icon" href="/explore/icons/icon-180.png">
+
+  <!-- OG -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="떠나 코스 탐색">
+  <meta property="og:description" content="유저들이 직접 걸은 여행 코스를 앱 설치 없이 둘러보세요">
+  <meta property="og:image" content="https://tteona.kr/og-image.png">
+  <meta property="og:url" content="https://tteona.kr/explore/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-light: #FFF0EB;
+      --bg: #FAFAFA;
+      --card: #FFFFFF;
+      --text: #111;
+      --sub: #666;
+      --border: #EBEBEB;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ── 헤더 ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250,250,250,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px;
+    }
+    .topbar img.logo { height: 24px; width: auto; }
+    .topbar .page-name { font-size: 14px; font-weight: 500; color: var(--sub); margin-top: 2px; }
+    .topbar .spacer { flex: 1; }
+    .topbar .store-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--orange); color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 8px 13px; border-radius: 100px;
+      border: 1px solid var(--orange);
+      transition: opacity 0.15s;
+    }
+    .topbar .store-pill:hover { opacity: 0.88; }
+    .topbar .store-pill svg { width: 12px; height: 12px; fill: #fff; }
+    .topbar .store-pill.android {
+      background: var(--card); color: #555; border-color: var(--border); cursor: pointer;
+    }
+    .topbar .store-pill.android svg { fill: #3DDC84; }
+    @media (max-width: 480px) { .topbar .page-name { display: none; } }
+
+    /* 안드로이드 심사 중 토스트 */
+    .toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(14px);
+      background: #111; color: #fff; padding: 12px 22px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; white-space: nowrap;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+      z-index: 999; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── 컨트롤 (검색 + 정렬) ── */
+    .controls {
+      max-width: 1100px; margin: 0 auto;
+      padding: 14px 16px 4px;
+    }
+    .searchbox {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 10px 14px;
+    }
+    .searchbox svg { width: 16px; height: 16px; stroke: #999; flex-shrink: 0; }
+    .searchbox input {
+      border: none; outline: none; background: none;
+      font-family: inherit; font-size: 14px; width: 100%;
+    }
+    .chips {
+      display: flex; gap: 8px; margin-top: 12px;
+      overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip {
+      flex-shrink: 0;
+      border: 1px solid var(--border); background: var(--card);
+      color: #444; font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .chip.on { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .chip.geo.on { background: #2A9D8F; border-color: #2A9D8F; }
+    .season-note {
+      font-size: 12px; color: var(--sub); margin-top: 10px;
+      display: none;
+    }
+    .season-note.show { display: block; }
+    .season-note b { color: var(--orange); }
+
+    /* ── 그리드 ── */
+    .grid-wrap { max-width: 1100px; margin: 0 auto; padding: 14px 16px 40px; }
+    .grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 700px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1000px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: block;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+    .thumb {
+      position: relative; aspect-ratio: 1 / 1;
+      background: linear-gradient(150deg, #FFE3D6 0%, #FFD0BA 55%, #FFC2A6 100%);
+      overflow: hidden;
+    }
+    .thumb img.photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb .naru {
+      position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%);
+      width: 62%; opacity: 0.95; pointer-events: none;
+    }
+    .thumb .shade {
+      position: absolute; inset: auto 0 0 0; height: 55%;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+    }
+    .thumb .tname {
+      position: absolute; left: 12px; right: 12px; bottom: 10px;
+      color: #fff; font-size: 14px; font-weight: 700; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    }
+    .card-body { padding: 10px 12px 12px; }
+    .card-sub {
+      font-size: 12px; color: var(--sub);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 6px; font-size: 12px; color: #888;
+    }
+    .card-meta .tagchip {
+      margin-left: auto;
+      background: var(--orange-light); color: var(--orange);
+      font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 100px;
+    }
+
+    /* ── 스켈레톤 ── */
+    @keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+    .sk {
+      border-radius: 16px; border: 1px solid var(--border);
+      overflow: hidden; background: var(--card);
+    }
+    .sk .sk-thumb, .sk .sk-line {
+      background: linear-gradient(90deg, #F1F1F1 25%, #E7E7E7 37%, #F1F1F1 63%);
+      background-size: 400px 100%;
+      animation: shimmer 1.3s infinite linear;
+    }
+    .sk .sk-thumb { aspect-ratio: 1/1; }
+    .sk .sk-line { height: 12px; border-radius: 6px; margin: 10px 12px; }
+    .sk .sk-line.short { width: 55%; margin-top: 0; }
+
+    /* ── 상태 메시지 ── */
+    .state {
+      text-align: center; padding: 70px 20px; color: var(--sub); font-size: 14px;
+      display: none;
+    }
+    .state.show { display: block; }
+    .state .big { font-size: 40px; margin-bottom: 12px; }
+    .state button {
+      margin-top: 16px; background: var(--orange); color: #fff; border: none;
+      font-size: 14px; font-weight: 700; padding: 10px 22px; border-radius: 100px;
+    }
+
+    /* ── 하단 CTA ── */
+    .cta {
+      max-width: 1100px; margin: 0 auto 50px; padding: 0 16px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, #FF6B35, #FF8F5E);
+      border-radius: 20px; padding: 34px 24px; text-align: center; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .cta-box h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+    .cta-box p { font-size: 14px; opacity: 0.92; margin-top: 8px; line-height: 1.6; }
+    .cta-btns {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px;
+    }
+    .cta-box .store-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--orange);
+      font-size: 14px; font-weight: 800;
+      padding: 12px 24px; border-radius: 100px;
+      border: none; transition: transform 0.15s;
+    }
+    .cta-box .store-btn:hover { transform: translateY(-2px); }
+    .cta-box .store-btn svg { width: 15px; height: 15px; fill: var(--orange); }
+    .cta-box .store-btn.android {
+      background: rgba(255,255,255,0.16); color: #fff;
+      border: 1px solid rgba(255,255,255,0.55); cursor: pointer;
+    }
+    .cta-box .store-btn.android svg { fill: #fff; }
+    .cta-box .store-btn.android .soon {
+      font-size: 10px; font-weight: 700;
+      background: rgba(255,255,255,0.25); padding: 2px 7px; border-radius: 100px;
+    }
+    .cta-note { font-size: 12px; opacity: 0.85; margin-top: 12px; }
+
+    footer {
+      text-align: center; font-size: 12px; color: #aaa;
+      padding: 0 16px 36px;
+    }
+    footer a { color: #888; margin: 0 6px; }
+  </style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" style="display:flex;align-items:center;">
+      <img class="logo" src="/tteona-logo.png?v=2" alt="tteona">
+    </a>
+    <span class="page-name">코스 탐색</span>
+    <span class="spacer"></span>
+    <a class="store-pill" href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543">
+      <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      iOS
+    </a>
+    <button class="store-pill android" id="androidPillTop" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+      Android
+    </button>
+  </div>
+</header>
+
+<div class="toast" id="toast"></div>
+
+<!-- 검색 + 정렬 -->
+<div class="controls">
+  <div class="searchbox">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+    <input id="search" type="search" placeholder="코스 이름 · 지역 · 장소 검색" autocomplete="off">
+  </div>
+  <div class="chips">
+    <button class="chip on" data-sort="recommend">✨ 추천</button>
+    <button class="chip" data-sort="latest">🕐 최신</button>
+    <button class="chip" data-sort="popular">❤️ 인기</button>
+    <button class="chip geo" id="geoChip">📍 내 주변</button>
+  </div>
+  <p class="season-note" id="seasonNote"></p>
+</div>
+
+<!-- 그리드 -->
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
+
+  <div class="state" id="stateEmpty">
+    <div class="big">🧭</div>
+    검색 결과가 없어요.<br>다른 검색어로 찾아보세요.
+  </div>
+  <div class="state" id="stateError">
+    <div class="big">🌧️</div>
+    코스를 불러오지 못했어요.<br>네트워크 상태를 확인해 주세요.
+    <br><button id="retryBtn">다시 시도</button>
+  </div>
+</div>
+
+<!-- 하단 CTA -->
+<div class="cta">
+  <div class="cta-box">
+    <h2>이 코스들, 직접 떠나볼까요?</h2>
+    <p>앱에서는 코스를 따라 걷고, 실시간으로 함께 움직이고,<br>하루가 자동으로 브이로그가 됩니다.</p>
+    <div class="cta-btns">
+      <a class="store-btn" href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543">
+        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        iOS — App Store
+      </a>
+      <button class="store-btn android" id="androidBtnBottom" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+        Android — Google Play
+        <span class="soon">심사 중</span>
+      </button>
+    </div>
+    <p class="cta-note">Android 버전은 Google Play 심사 중이에요 — 곧 만나요!</p>
+  </div>
+</div>
+
+<footer>
+  © AERON · <a href="/">홈</a>·<a href="/privacy.html">개인정보처리방침</a>·<a href="/terms.html">이용약관</a>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var grid       = document.getElementById('grid');
+  var searchEl   = document.getElementById('search');
+  var seasonNote = document.getElementById('seasonNote');
+  var stateEmpty = document.getElementById('stateEmpty');
+  var stateError = document.getElementById('stateError');
+  var geoChip    = document.getElementById('geoChip');
+
+  var state = {
+    sort: 'recommend',
+    coords: null,       // {lat, lng} — "내 주변" 켜졌을 때만
+    courses: [],
+    query: '',
+    loading: false
+  };
+
+  // ── 유틸 ──
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+  }
+  function fmt(n) {
+    n = n || 0;
+    if (n >= 10000) return (n / 10000).toFixed(1).replace(/\.0$/, '') + '만';
+    if (n >= 1000)  return (n / 1000).toFixed(1).replace(/\.0$/, '') + '천';
+    return String(n);
+  }
+
+  // ── 렌더 ──
+  function skeleton() {
+    var html = '';
+    for (var i = 0; i < 8; i++) {
+      html += '<div class="sk"><div class="sk-thumb"></div><div class="sk-line"></div><div class="sk-line short"></div></div>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function cardHtml(c) {
+    var thumb = c.thumbnailUrl
+      ? '<img class="photo" src="' + esc(c.thumbnailUrl) + '" alt="" loading="lazy">'
+      : '<img class="naru" src="/tteoni-front.png" alt="">';
+    var sub = [c.region, (c.placeNames || []).join(' · ')].filter(Boolean).join(' — ');
+    return (
+      '<a class="card" href="/course/' + encodeURIComponent(c.courseId) + '">' +
+        '<div class="thumb">' + thumb +
+          '<div class="shade"></div>' +
+          '<div class="tname">' + esc(c.courseName) + '</div>' +
+        '</div>' +
+        '<div class="card-body">' +
+          '<div class="card-sub">' + esc(sub || '떠나 코스') + '</div>' +
+          '<div class="card-meta">' +
+            '<span>❤️ ' + fmt(c.likeCount) + '</span>' +
+            '<span>📍 ' + (c.placeCount || 0) + '곳</span>' +
+            (c.tag ? '<span class="tagchip">' + esc(c.tag) + '</span>' : '') +
+          '</div>' +
+        '</div>' +
+      '</a>'
+    );
+  }
+
+  function render() {
+    stateError.classList.remove('show');
+    var q = state.query.trim().toLowerCase();
+    var list = state.courses;
+    if (q) {
+      list = list.filter(function (c) {
+        var hay = (c.courseName + ' ' + c.region + ' ' + (c.placeNames || []).join(' ')).toLowerCase();
+        return hay.indexOf(q) !== -1;
+      });
+    }
+    grid.innerHTML = list.map(cardHtml).join('');
+    stateEmpty.classList.toggle('show', list.length === 0 && !state.loading);
+  }
+
+  // ── 데이터 ──
+  function load() {
+    state.loading = true;
+    stateEmpty.classList.remove('show');
+    stateError.classList.remove('show');
+    skeleton();
+
+    var url = '/api/public/explore?sort=' + state.sort + '&limit=48';
+    if (state.coords) url += '&lat=' + state.coords.lat + '&lng=' + state.coords.lng;
+
+    fetch(url)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        state.loading = false;
+        state.courses = data.courses || [];
+        if (state.sort === 'recommend' && data.season) {
+          seasonNote.innerHTML = '지금은 <b>' + esc(data.season) + '</b> — 계절에 어울리는 코스를 먼저 보여드려요' +
+            (state.coords ? ' · 📍 내 주변 우선' : '');
+          seasonNote.classList.add('show');
+        } else {
+          seasonNote.classList.remove('show');
+        }
+        render();
+      })
+      .catch(function () {
+        state.loading = false;
+        grid.innerHTML = '';
+        seasonNote.classList.remove('show');
+        stateError.classList.add('show');
+      });
+  }
+
+  // ── 이벤트 ──
+  document.querySelectorAll('.chip[data-sort]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      if (state.sort === chip.dataset.sort) return;
+      document.querySelectorAll('.chip[data-sort]').forEach(function (c) { c.classList.remove('on'); });
+      chip.classList.add('on');
+      state.sort = chip.dataset.sort;
+      load();
+    });
+  });
+
+  geoChip.addEventListener('click', function () {
+    if (state.coords) {           // 끄기
+      state.coords = null;
+      geoChip.classList.remove('on');
+      load();
+      return;
+    }
+    if (!navigator.geolocation) return;
+    geoChip.textContent = '📍 위치 확인 중…';
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        state.coords = { lat: pos.coords.latitude.toFixed(4), lng: pos.coords.longitude.toFixed(4) };
+        geoChip.textContent = '📍 내 주변';
+        geoChip.classList.add('on');
+        load();
+      },
+      function () {
+        geoChip.textContent = '📍 내 주변';
+        alert('위치 권한을 허용하면 주변 코스를 먼저 보여드려요.');
+      },
+      { timeout: 8000, maximumAge: 300000 }
+    );
+  });
+
+  var debounce;
+  searchEl.addEventListener('input', function () {
+    clearTimeout(debounce);
+    debounce = setTimeout(function () {
+      state.query = searchEl.value;
+      render();
+    }, 150);
+  });
+
+  document.getElementById('retryBtn').addEventListener('click', load);
+
+  // Android — Google Play 심사 중 안내 토스트
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+  ['androidPillTop', 'androidBtnBottom'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', function () {
+      showToast('🤖 Android 버전은 Google Play 심사 중이에요. 곧 만나요!');
+    });
+  });
+
+  // 썸네일 로드 실패(파일 유실 등) 시 나루 기본 썸네일로 대체 — capture 단계 위임
+  grid.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img.classList || !img.classList.contains('photo')) return;
+    var box = img.parentNode;
+    img.remove();
+    box.insertAdjacentHTML('afterbegin', '<img class="naru" src="/tteoni-front.png" alt="">');
+  }, true);
+
+  // ── 서비스워커 (PWA) ──
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/explore/sw.js').catch(function () {});
+    });
+  }
+
+  // URL 쿼리로 초기 정렬 지정 — /explore/?sort=popular (구 인기코스 리다이렉트 대응)
+  var qsort = new URLSearchParams(location.search).get('sort');
+  if (['recommend', 'latest', 'popular'].indexOf(qsort) !== -1 && qsort !== state.sort) {
+    state.sort = qsort;
+    document.querySelectorAll('.chip[data-sort]').forEach(function (c) {
+      c.classList.toggle('on', c.dataset.sort === qsort);
+    });
+  }
+
+  load();
+})();
+</script>
+
+</body>
+</html>

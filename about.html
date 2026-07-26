@@ -48,8 +48,8 @@
     .navbar.scrolled { border-bottom-color: var(--border); }
     .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .nav-logo img { width: 34px; height: 34px; border-radius: 9px; }
-    .nav-logo span { font-size: 20px; font-weight: 900; color: var(--orange); letter-spacing: -0.5px; }
+    .nav-logo img { height: 26px; width: auto; }
+    .nav-logo span { display: none; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
     .nav-links > li > a,
     .nav-links > li > button {
@@ -369,8 +369,8 @@
     footer { background: var(--text); color: rgba(255,255,255,0.55); padding: 60px 0 40px; }
     .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
-    .footer-logo img { width: 34px; height: 34px; border-radius: 9px; }
-    .footer-logo span { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .footer-logo img { height: 22px; width: auto; }
+    .footer-logo span { display: none; }
     .footer-tagline { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
     .footer-contact a { font-size: 13px; color: var(--orange); text-decoration: none; }
     .footer-col h4 { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
@@ -410,13 +410,12 @@
   <div class="container">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/tteona-logo.png" alt="tteona">
+        <img src="/tteona-logo.png?v=2" alt="tteona">
         <span>tteona</span>
       </a>
       <ul class="nav-links">
         <li><a href="/about.html" class="active">About AERON</a></li>
         <li><a href="/#feature-today" data-i18n="nav.features">기능 소개</a></li>
-        <li><a href="/popular.html" data-i18n="nav.popular">인기코스</a></li>
         <li><a href="/updates.html" data-i18n="nav.updates">업데이트</a></li>
         <li><a href="/#cta" data-i18n="nav.download">다운로드</a></li>
         <li><a href="mailto:aeron@tteona.kr" data-i18n="nav.contact">문의하기</a></li>
@@ -439,7 +438,6 @@
   <a href="/#feature-explore" class="ml" data-i18n="mobile.explore">🧭 코스 떠나기</a>
   <a href="/#feature-vlog" class="ml" data-i18n="mobile.vlog">🎬 브이로그</a>
   <a href="/#feature-group" class="ml" data-i18n="mobile.group">🧡 그룹 피드</a>
-  <a href="/popular.html" class="ml" data-i18n="mobile.popular">🏆 인기코스</a>
   <a href="/updates.html" class="ml" data-i18n="mobile.updates">🔔 업데이트</a>
   <a href="/#cta" class="ml" data-i18n="mobile.download">⬇️ 다운로드</a>
   <a href="mailto:aeron@tteona.kr" class="ml" data-i18n="mobile.contact">✉️ 문의하기</a>
@@ -593,7 +591,7 @@
       <div class="pcard reveal d2">
         <div class="pcard-banner pcard-banner-tteona">
           <div class="pcard-icon">
-            <img src="/tteona-logo.png" alt="tteona">
+            <img src="/tteona-appicon.png" alt="tteona">
           </div>
           <span class="pcard-status status-soon" data-i18n="tteona.status">2026.06.06 출시</span>
         </div>
@@ -626,7 +624,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand-col">
-        <div class="footer-logo"><img src="/tteona-logo.png" alt="tteona"><span>tteona</span></div>
+        <div class="footer-logo"><img src="/tteona-logo.png?v=2" alt="tteona"><span>tteona</span></div>
         <p class="footer-tagline" data-i18n-html="footer.tagline">오늘 하루를 여행처럼 기록하고<br>친구와 함께 공유해요.</p>
         <p class="footer-contact"><a href="mailto:aeron@tteona.kr">aeron@tteona.kr</a></p>
       </div>

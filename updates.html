@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>업데이트 — tteona</title>
-  <link rel="icon" href="/tteona-logo.png">
+  <link rel="icon" href="/tteona-appicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -30,8 +30,8 @@
     .navbar.scrolled { border-bottom-color: var(--border); }
     .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .nav-logo img { width: 34px; height: 34px; border-radius: 9px; }
-    .nav-logo span { font-size: 20px; font-weight: 900; color: var(--orange); letter-spacing: -0.5px; }
+    .nav-logo img { height: 26px; width: auto; }
+    .nav-logo span { display: none; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
     .nav-links > li > a,
     .nav-links > li > button {
@@ -241,12 +241,11 @@
   <div class="container" style="max-width:1080px">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/tteona-logo.png" alt="tteona">
+        <img src="/tteona-logo.png?v=2" alt="tteona">
         <span>tteona</span>
       </a>
       <ul class="nav-links">
         <li><a href="/">기능 소개</a></li>
-        <li><a href="/popular.html">인기코스</a></li>
         <li><a href="/updates.html" class="active">업데이트</a></li>
         <li><a href="/#cta">다운로드</a></li>
         <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
@@ -264,7 +263,6 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/">🗺️ 기능 소개</a>
-  <a href="/popular.html">🏆 인기코스</a>
   <a href="/updates.html">🔔 업데이트</a>
   <a href="/#cta">⬇️ 다운로드</a>
   <a href="mailto:just.tteona@gmail.com">✉️ 문의하기</a>

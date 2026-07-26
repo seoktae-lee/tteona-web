@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.seoktaedev.tteona",
+      "sha256_cert_fingerprints": [
+        "0D:46:56:6E:50:68:AE:C6:96:A4:49:3B:3C:55:16:39:E5:2F:98:A6:77:2D:5B:BC:EB:E1:36:A9:29:71:91:DB",
+        "B9:31:E3:BE:06:8C:AC:A8:AF:45:2E:52:EF:55:0E:10:D5:60:07:AB:C2:F0:DF:9E:75:90:A7:04:3C:4D:D1:77",
+        "D9:EC:F7:DC:38:34:B3:1E:2D:58:A2:98:C1:DA:D5:98:A2:46:02:B1:13:0E:DA:EA:5A:C9:F9:91:89:D8:32:B6"
+      ]
+    }
+  }
+]

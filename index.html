@@ -56,8 +56,8 @@
     .navbar.scrolled { border-bottom-color: rgba(0,0,0,0.06); }
     .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .nav-logo img { width: 34px; height: 34px; border-radius: 9px; }
-    .nav-logo span { font-size: 20px; font-weight: 900; color: var(--orange); letter-spacing: -0.5px; }
+    .nav-logo img { height: 26px; width: auto; }
+    .nav-logo span { display: none; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
     .nav-links > li { position: relative; }
     .nav-links > li > a, .nav-links > li > button {
@@ -239,8 +239,8 @@
     footer { position: relative; z-index: 5; background: #fff; border-top: 1px solid var(--border); padding: 60px 0 36px; }
     .footer-inner { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 48px; }
     .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-    .footer-logo img { width: 28px; height: 28px; border-radius: 7px; }
-    .footer-logo span { font-size: 20px; font-weight: 900; color: var(--orange); }
+    .footer-logo img { height: 20px; width: auto; }
+    .footer-logo span { display: none; }
     .footer-tagline { font-size: 13px; color: var(--sub); line-height: 1.75; max-width: 220px; margin-bottom: 16px; }
     .footer-contact { font-size: 12px; color: #aaa; }
     .footer-contact a { color: #aaa; text-decoration: none; transition: color 0.15s; }
@@ -292,7 +292,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/tteona-logo.png" alt="tteona">
+        <img src="/tteona-logo.png?v=2" alt="tteona">
         <span>tteona</span>
       </a>
       <ul class="nav-links">
@@ -318,7 +318,7 @@
             </a>
           </div>
         </li>
-        <li><a href="/popular.html">인기코스</a></li>
+        <li><a href="/explore/">코스 탐색</a></li>
         <li><a href="/updates.html">업데이트</a></li>
         <li><a href="#cta">다운로드</a></li>
         <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
@@ -337,7 +337,7 @@
   <a href="#feature-group" class="ml">🧡 그룹 피드</a>
   <a href="#feature-explore" class="ml">🧭 코스 떠나기</a>
   <a href="#feature-vlog" class="ml">🎬 브이로그</a>
-  <a href="/popular.html" class="ml">🏆 인기코스</a>
+  <a href="/explore/" class="ml">🧭 코스 탐색</a>
   <a href="/updates.html" class="ml">🔔 업데이트</a>
   <a href="mailto:just.tteona@gmail.com" class="ml">✉️ 문의하기</a>
   <a href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543" class="m-cta">App Store에서 다운로드</a>
@@ -489,7 +489,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand-col">
-        <div class="footer-logo"><img src="/tteona-logo.png" alt="tteona"><span>tteona</span></div>
+        <div class="footer-logo"><img src="/tteona-logo.png?v=2" alt="tteona"><span>tteona</span></div>
         <p class="footer-tagline">오늘 하루를 여행처럼 기록하고<br>친구와 함께 공유해요.</p>
         <p class="footer-contact"><a href="mailto:just.tteona@gmail.com">just.tteona@gmail.com</a></p>
       </div>
