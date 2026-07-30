@@ -75,20 +75,10 @@
     .topbar .store-pill:hover { opacity: 0.88; }
     .topbar .store-pill svg { width: 12px; height: 12px; fill: #fff; }
     .topbar .store-pill.android {
-      background: var(--card); color: #555; border-color: var(--border); cursor: pointer;
+      background: var(--card); color: #555; border-color: var(--border);
     }
     .topbar .store-pill.android svg { fill: #3DDC84; }
     @media (max-width: 480px) { .topbar .page-name { display: none; } }
-
-    /* 안드로이드 심사 중 토스트 */
-    .toast {
-      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(14px);
-      background: #111; color: #fff; padding: 12px 22px; border-radius: 100px;
-      font-size: 13px; font-weight: 600; white-space: nowrap;
-      opacity: 0; transition: opacity 0.2s, transform 0.2s;
-      z-index: 999; pointer-events: none;
-    }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* ── 컨트롤 (검색 + 정렬) ── */
     .controls {
@@ -230,14 +220,9 @@
     .cta-box .store-btn svg { width: 15px; height: 15px; fill: var(--orange); }
     .cta-box .store-btn.android {
       background: rgba(255,255,255,0.16); color: #fff;
-      border: 1px solid rgba(255,255,255,0.55); cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.55);
     }
     .cta-box .store-btn.android svg { fill: #fff; }
-    .cta-box .store-btn.android .soon {
-      font-size: 10px; font-weight: 700;
-      background: rgba(255,255,255,0.25); padding: 2px 7px; border-radius: 100px;
-    }
-    .cta-note { font-size: 12px; opacity: 0.85; margin-top: 12px; }
 
     footer {
       text-align: center; font-size: 12px; color: #aaa;
@@ -260,14 +245,12 @@
       <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
       iOS
     </a>
-    <button class="store-pill android" id="androidPillTop" type="button">
+    <a class="store-pill android" href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
       Android
-    </button>
+    </a>
   </div>
 </header>
-
-<div class="toast" id="toast"></div>
 
 <!-- 검색 + 정렬 -->
 <div class="controls">
@@ -309,13 +292,11 @@
         <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         iOS — App Store
       </a>
-      <button class="store-btn android" id="androidBtnBottom" type="button">
+      <a class="store-btn android" href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
         Android — Google Play
-        <span class="soon">심사 중</span>
-      </button>
+      </a>
     </div>
-    <p class="cta-note">Android 버전은 Google Play 심사 중이에요 — 곧 만나요!</p>
   </div>
 </div>
 
@@ -478,22 +459,6 @@
   });
 
   document.getElementById('retryBtn').addEventListener('click', load);
-
-  // Android — Google Play 심사 중 안내 토스트
-  var toastEl = document.getElementById('toast');
-  var toastTimer;
-  function showToast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
-  }
-  ['androidPillTop', 'androidBtnBottom'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', function () {
-      showToast('🤖 Android 버전은 Google Play 심사 중이에요. 곧 만나요!');
-    });
-  });
 
   // 썸네일 로드 실패(파일 유실 등) 시 나루 기본 썸네일로 대체 — capture 단계 위임
   grid.addEventListener('error', function (e) {
