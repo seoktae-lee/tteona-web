@@ -100,6 +100,8 @@
       background: rgba(255,250,245,0.97); backdrop-filter: blur(16px);
       padding: 12px 20px 24px; border-bottom: 1px solid var(--border); z-index: 99;
       flex-direction: column; gap: 2px;
+      max-height: calc(100dvh - var(--nav-h)); overflow-y: auto;
+      overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { padding: 13px 12px; font-size: 15px; font-weight: 500; color: #333; text-decoration: none; border-radius: 10px; transition: background 0.13s; }
@@ -130,29 +132,28 @@
     }
     .hero h1 em { font-style: normal; color: var(--orange); }
     .hero-sub { font-size: clamp(15px, 2vw, 19px); color: var(--sub); line-height: 1.7; margin-bottom: 34px; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--orange); color: #fff; text-decoration: none;
-      font-size: 16px; font-weight: 700;
-      padding: 16px 30px; border-radius: 100px;
-      box-shadow: 0 10px 30px rgba(255,107,53,0.35);
+    /* App Store + Google Play : 좌우 완전히 동일한 크기 */
+    .store-row {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center; align-items: stretch;
+      width: 100%; max-width: 464px; margin: 0 auto;
+    }
+    .btn-primary, .btn-store2 {
+      flex: 1 1 200px; max-width: 100%;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 56px; padding: 15px 22px;
+      font-size: 16px; font-weight: 700; text-decoration: none;
+      border-radius: 100px; border: 1px solid transparent;
+      white-space: nowrap;
       transition: transform 0.18s, box-shadow 0.18s;
     }
+    .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 10px 30px rgba(255,107,53,0.35); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,107,53,0.45); }
-    .btn-primary svg { width: 18px; height: 18px; fill: #fff; }
-    /* App Store + Google Play 나란히 */
-    .store-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
-    .btn-store2 {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #fff; color: var(--text); text-decoration: none;
-      font-size: 16px; font-weight: 700;
-      padding: 16px 30px; border-radius: 100px;
-      border: 1px solid var(--border);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-      transition: transform 0.18s, box-shadow 0.18s;
-    }
+    .btn-store2 { background: #fff; color: var(--text); border-color: var(--border); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
     .btn-store2:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
-    .btn-store2 svg { width: 18px; height: 18px; fill: #3DDC84; }
+    .btn-primary svg, .btn-store2 svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-primary svg { fill: #fff; }
+    .btn-store2 svg { fill: #3DDC84; }
     /* 어두운 CTA 섹션 위에서는 반투명 화이트로 */
     .cta .btn-store2 {
       background: rgba(255,255,255,0.14); color: #fff;
@@ -214,10 +215,16 @@
     .scene ul li { display: flex; gap: 8px; font-size: 13.5px; color: #444; align-items: flex-start; line-height: 1.5; }
     .scene ul li::before { content: '·'; color: var(--orange); font-weight: 900; }
     .scene .sshot {
-      width: 100%; border-radius: 16px; margin-top: 16px;
+      display: block; width: 100%; max-width: 250px; height: auto;
+      margin: 18px auto 0; border-radius: 18px; background: #fff;
       border: 1px solid rgba(0,0,0,0.07);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.12);
     }
+    .scene .sshot-pair { display: flex; gap: 10px; margin-top: 18px; justify-content: center; }
+    .scene .sshot-pair .sshot { margin: 0; max-width: 100%; min-width: 0; flex: 1 1 0; border-radius: 14px; }
+    .scene.dark .sshot { border-color: rgba(255,255,255,0.14); box-shadow: 0 12px 30px rgba(0,0,0,0.38); }
+    .scene .scap { display: block; margin-top: 8px; text-align: center; font-size: 11.5px; color: #b0a396; }
+    .scene.dark .scap { color: rgba(255,255,255,0.45); }
     .scene.dark {
       background: rgba(23,42,50,0.88);
       border-color: rgba(255,255,255,0.1);
@@ -233,15 +240,33 @@
     #feature-explore { top: 53%; left: calc(50% + 40px); }
     #feature-vlog    { top: 75%; right: calc(50% + 40px); }
 
+    /* 모바일/태블릿: 길 애니메이션 대신 세로 스택 (카드 겹침 방지) */
     @media (max-width: 900px) {
-      #feature-today, #feature-group, #feature-explore, #feature-vlog {
-        left: 50%; right: auto; transform: translateX(-50%);
+      .journey {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 24px; padding: 48px 20px 64px;
       }
-      #feature-today   { top: 10%; }
-      #feature-group   { top: 32%; }
-      #feature-explore { top: 54%; }
-      #feature-vlog    { top: 76%; }
-      .scene { padding: 22px; }
+      .journey-road, #naru { display: none; }
+      /* 카드 사이 구간에만 점선 길 (카드 뒤로 비쳐 보이지 않도록) */
+      .journey::before,
+      .scene::after {
+        content: ''; position: absolute; left: 50%; width: 3px;
+        margin-left: -1.5px; z-index: 0; pointer-events: none;
+        background: repeating-linear-gradient(180deg,
+          rgba(255,107,53,0.3) 0 10px, rgba(255,107,53,0) 10px 22px);
+      }
+      .journey::before { top: 6px; height: 36px; }
+      .scene::after { top: 100%; height: 24px; }
+      .scene:last-of-type::after { display: none; }
+      .scene {
+        position: relative; top: auto; left: auto; right: auto; transform: none;
+        width: 100%; max-width: 420px; padding: 24px;
+        background: rgba(255,255,255,0.97);
+      }
+      .scene.dark { background: rgba(23,42,50,0.95); }
+      #feature-today, #feature-group, #feature-explore, #feature-vlog {
+        top: auto; left: auto; right: auto;
+      }
     }
 
     /* ── CTA (도착) ── */
@@ -300,6 +325,23 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .footer-badges { flex-direction: column; gap: 10px; }
+      /* 히어로: 나루와 스크롤 힌트가 겹치지 않도록 */
+      .hero {
+        justify-content: flex-start;
+        padding: calc(var(--nav-h) + 28px) 20px 84px;
+      }
+      .hero-badge { margin-bottom: 20px; }
+      .hero-sub { margin-bottom: 26px; }
+      .hero-naru { margin-top: 26px; }
+      .scroll-hint { bottom: 16px; }
+      .btn-primary, .btn-store2 { flex-basis: 100%; font-size: 15px; min-height: 52px; }
+      .store-row { max-width: 340px; }
+      .scene { padding: 20px; }
+      .cta { padding: 88px 20px 96px; }
+    }
+    /* 낮은 화면(가로 모드 등)에서는 스크롤 힌트 숨김 */
+    @media (max-height: 640px) {
+      .scroll-hint { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -462,7 +504,7 @@
       <li>장소 검색 & 순서 편집으로 간단하게</li>
       <li>대표 이미지를 골라 나만의 코스 커버 완성</li>
     </ul>
-    <img class="sshot" src="/app-course.png" alt="tteona 코스 화면">
+    <img class="sshot" src="/shot-course.jpg?v=2" width="420" height="866" loading="lazy" decoding="async" alt="떠나 코스 상세 화면 — 장소 목록과 이동 정보">
   </div>
 
   <!-- 장면 2 : 함께 떠나기 -->
@@ -475,6 +517,8 @@
       <li>실시간 위치 공유 — 지연 없이 바로바로</li>
       <li>그룹 피드 & 댓글로 순간을 나눠요</li>
     </ul>
+    <img class="sshot" src="/shot-capture.jpg?v=2" width="420" height="862" loading="lazy" decoding="async" alt="떠나 촬영 화면 — 3초 자동 촬영">
+    <span class="scap">장소마다 짧은 클립을 남겨요</span>
   </div>
 
   <!-- 장면 3 : 탐색 -->
@@ -487,7 +531,7 @@
       <li>날씨 · 이동 거리 · 소요 시간까지 한눈에</li>
       <li>자동차 / 대중교통 / 도보 별 경로 안내</li>
     </ul>
-    <img class="sshot" src="/app-map.png" alt="tteona 지도 화면">
+    <img class="sshot" src="/shot-explore.jpg?v=2" width="420" height="867" loading="lazy" decoding="async" alt="떠나 탐색 지도 — 다른 여행자들의 코스">
   </div>
 
   <!-- 장면 4 : 브이로그 (밤) -->
@@ -500,6 +544,11 @@
       <li>장소별 클립 자동 합성 & 자막</li>
       <li>완성되면 알림으로 알려드려요</li>
     </ul>
+    <div class="sshot-pair">
+      <img class="sshot" src="/shot-format.jpg?v=2" width="420" height="856" loading="lazy" decoding="async" alt="떠나 브이로그 포맷 선택 화면">
+      <img class="sshot" src="/shot-caption.jpg?v=2" width="420" height="861" loading="lazy" decoding="async" alt="떠나 브이로그 자막 스타일 화면">
+    </div>
+    <span class="scap">포맷과 자막 스타일만 고르면 끝</span>
   </div>
 
 </div>
@@ -612,6 +661,9 @@
 
     const journey = document.getElementById('journey');
     const road = document.getElementById('roadPath');
+    // 모바일(<=900px)에서는 길 SVG를 숨기고 카드를 세로로 쌓으므로
+    // 길 그리기 / 나루 이동 애니메이션은 데스크톱에서만 실행 (회전/리사이즈 시 자동 갱신)
+    gsap.matchMedia().add('(min-width: 901px)', () => {
     const roadLen = road.getTotalLength();
 
     // 길 그리기
@@ -658,6 +710,7 @@
         scrollTrigger: { trigger: pin, start: 'top 62%', toggleActions: 'play none none reverse' }
       });
     });
+    }); // end matchMedia (desktop road)
 
     // 장면 카드 등장
     document.querySelectorAll('.scene').forEach(card => {
