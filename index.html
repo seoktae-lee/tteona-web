@@ -398,6 +398,13 @@
       .nav-links, .nav-actions { display: none; }
       .hamburger { display: flex; }
     }
+
+    /* 히어로의 큰 스토어 버튼이 화면에 있는 동안에는 상단바 버튼을 숨긴다 (중복 방지).
+       히어로를 지나가면 그때부터 상단바 버튼이 따라다닌다. */
+    .nav-actions { transition: opacity 0.25s ease, transform 0.25s ease; }
+    body.hero-cta-visible .nav-actions {
+      opacity: 0; pointer-events: none; transform: translateY(-6px);
+    }
   </style>
   <link rel="canonical" href="https://tteona.kr/">
   <meta property="og:site_name" content="떠나 tteona">
@@ -734,6 +741,21 @@
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
+
+
+  // 히어로 스토어 버튼이 보이는 동안 상단바 버튼 숨기기 (같은 CTA가 두 번 보이지 않도록)
+  (function () {
+    var heroCta = document.querySelector('.hero .store-row');
+    if (!heroCta) return;
+    function syncNavCta() {
+      var r = heroCta.getBoundingClientRect();
+      var visible = r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight);
+      document.body.classList.toggle('hero-cta-visible', visible);
+    }
+    window.addEventListener('scroll', syncNavCta, { passive: true });
+    window.addEventListener('resize', syncNavCta);
+    syncNavCta();
+  })();
 
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
