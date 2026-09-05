@@ -76,7 +76,7 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
     }
-    @media (min-width: 641px) { .mobile-menu { display: none !important; } }
+    @media (min-width: 981px) { .mobile-menu { display: none !important; } }
 
     .coming-toast {
       position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px);
@@ -241,6 +241,57 @@
     footer p { font-size: 13px; color: #bbb; }
     footer a { color: #bbb; text-decoration: none; }
     footer a:hover { color: var(--orange); }
+
+    /* ── 공통 상단바 : 어느 페이지에서도 같은 메뉴 · 같은 스토어 버튼 ── */
+    .nav-inner { gap: 14px; }
+    .nav-links {
+      display: flex; align-items: center; gap: 2px; list-style: none;
+      position: static; transform: none; margin: 0 auto; left: auto;
+    }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a, .nav-links > li > button {
+      display: flex; align-items: center; gap: 4px;
+      padding: 8px 12px; font-size: 14px; font-weight: 500; color: #333;
+      text-decoration: none; background: none; border: none; cursor: pointer;
+      border-radius: 8px; font-family: inherit; white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links > li > a:hover, .nav-links > li > button:hover { background: rgba(0,0,0,0.05); color: #111; }
+    .nav-links > li > a.active { color: var(--orange); font-weight: 700; }
+    .chevron { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s; }
+    .nav-links > li:hover .chevron { transform: rotate(180deg); }
+    .dropdown {
+      position: absolute; top: calc(100% + 8px); left: 50%;
+      min-width: 200px; background: #fff;
+      border: 1px solid var(--border); border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1); padding: 8px;
+      opacity: 0; pointer-events: none;
+      transform: translateX(-50%) translateY(-8px);
+      transition: opacity 0.18s, transform 0.18s;
+    }
+    .nav-links > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .dropdown a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; color: #333; text-decoration: none; transition: background 0.13s; }
+    .dropdown a:hover { background: var(--orange-light); color: var(--orange); }
+    .d-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; color: var(--orange); }
+    .d-label { font-weight: 700; font-size: 14px; }
+    .d-sub { font-size: 12px; color: #888; margin-top: 1px; }
+    /* 스토어 버튼 — 좌우 동일 크기 */
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      min-width: 132px; padding: 9px 16px; border-radius: 12px;
+      background: var(--orange); color: #fff; border: 1px solid transparent;
+      font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .nav-cta svg { width: 14px; height: 14px; fill: #fff; flex-shrink: 0; }
+    .nav-cta.play { background: #fff; color: #111; border-color: var(--border); }
+    .nav-cta.play svg { fill: #3DDC84; }
+    @media (max-width: 980px) {
+      .nav-links, .nav-actions { display: none; }
+      .hamburger { display: flex; }
+    }
   </style>
   <link rel="canonical" href="https://tteona.kr/updates.html">
   <meta name="description" content="떠나 앱의 버전별 새로운 기능과 개선 사항을 확인하세요. 브이로그, 코스 탐색, 그룹 여행 기능이 어떻게 발전해왔는지 한눈에 볼 수 있어요.">
@@ -262,21 +313,38 @@
         <img src="/tteona-logo.png?v=2" alt="tteona">
         <span>tteona</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="/">기능 소개</a></li>
-        <li><a href="/explore/">코스 탐색</a></li>
-        <li><a href="/updates.html" class="active">업데이트</a></li>
-        <li><a href="/#cta">다운로드</a></li>
-        <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
+            <ul class="nav-links">
+        <li><a href="https://aeron.kr" target="_blank" rel="noopener">About AERON</a></li>
+        <li>
+          <button><span data-i18n="nav.features">기능 소개</span> <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="/#feature-today">
+              <div class="d-icon"><i class="ph-fill ph-map-trifold"></i></div>
+              <div><div class="d-label" data-i18n="drop.today">나의 오늘</div><div class="d-sub" data-i18n="drop.todaySub">코스 기록 & 탐색</div></div>
+            </a>
+            <a href="/#feature-group">
+              <div class="d-icon"><i class="ph-fill ph-users"></i></div>
+              <div><div class="d-label" data-i18n="drop.group">그룹 피드</div><div class="d-sub" data-i18n="drop.groupSub">친구와 함께 여행</div></div>
+            </a>
+            <a href="/#feature-explore">
+              <div class="d-icon"><i class="ph-fill ph-compass"></i></div>
+              <div><div class="d-label" data-i18n="drop.course">코스 떠나기</div><div class="d-sub" data-i18n="drop.courseSub">타 유저 코스 따라가기</div></div>
+            </a>
+            <a href="/#feature-vlog">
+              <div class="d-icon"><i class="ph-fill ph-film-strip"></i></div>
+              <div><div class="d-label" data-i18n="drop.vlog">브이로그</div><div class="d-sub" data-i18n="drop.vlogSub">자동 영상 편집</div></div>
+            </a>
+          </div>
+        </li>
+        <li><a href="/explore/" data-i18n="nav.explore">코스 탐색</a></li>
+        <li><a class="active" href="/updates.html" data-i18n="nav.updates">업데이트</a></li>
+        <li><a href="/#cta" data-i18n="nav.download">다운로드</a></li>
+        <li><a href="mailto:just.tteona@gmail.com" data-i18n="nav.contact">문의하기</a></li>
       </ul>
-      <a class="nav-cta" href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543">
-        <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg>
-        App Store
-      </a>
-      <a class="nav-cta play" href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
-        Google Play
-      </a>
+      <div class="nav-actions">
+        <a class="nav-cta" href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543"><svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.7 0 663.5 0 541.8c0-207.8 134.9-317.9 267.9-317.9 75.3 0 137.9 49.2 184.2 49.2 44.4 0 114.5-52.1 201.5-52.1zM568.5 81.4C588.5 55.4 602.8 19.9 602.8 0c0-1.9-.1-3.8-.3-5.7-30.5 1.1-67.1 20.4-89.3 47.9-17.9 21.3-35.5 57.2-35.5 87.2 0 2 .3 4 .5 4.7 2 .3 4.1.5 6.1.5 28.3 0 63.2-18.8 84.2-53.2z"/></svg> App Store</a>
+        <a class="nav-cta play" href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg> Google Play</a>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="메뉴">
         <span></span><span></span><span></span>
       </button>
@@ -285,13 +353,17 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">🗺️ 기능 소개</a>
-  <a href="/explore/">🧭 코스 탐색</a>
-  <a href="/updates.html">🔔 업데이트</a>
-  <a href="/#cta">⬇️ 다운로드</a>
-  <a href="mailto:just.tteona@gmail.com">✉️ 문의하기</a>
-  <a href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543" class="m-cta">App Store에서 다운로드</a>
-  <a href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona" class="m-cta play">Google Play에서 다운로드</a>
+  <a href="https://aeron.kr" target="_blank" rel="noopener" class="ml">🏢 About AERON</a>
+  <a href="/#feature-today" class="ml" data-i18n="mobile.today">🗺️ 나의 오늘</a>
+  <a href="/#feature-group" class="ml" data-i18n="mobile.group">🧡 그룹 피드</a>
+  <a href="/#feature-explore" class="ml" data-i18n="mobile.explore">🧭 코스 떠나기</a>
+  <a href="/#feature-vlog" class="ml" data-i18n="mobile.vlog">🎬 브이로그</a>
+  <a href="/explore/" class="ml" data-i18n="mobile.exploreWeb">🧭 코스 탐색</a>
+  <a href="/updates.html" class="ml" data-i18n="mobile.updates">🔔 업데이트</a>
+  <a href="/#cta" class="ml" data-i18n="mobile.download">⬇️ 다운로드</a>
+  <a href="mailto:just.tteona@gmail.com" class="ml" data-i18n="mobile.contact">✉️ 문의하기</a>
+  <a href="https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543" class="m-cta" data-i18n="mobile.cta">App Store에서 다운로드</a>
+  <a href="https://play.google.com/store/apps/details?id=com.seoktaedev.tteona" class="m-cta play" data-i18n="mobile.ctaPlay">Google Play에서 다운로드</a>
 </div>
 
 <!-- PAGE HEADER -->
