@@ -192,6 +192,7 @@
       display: flex; align-items: flex-start; gap: 10px;
       font-size: 14px; color: #333; line-height: 1.6;
     }
+    .change-list li .ct { flex: 1; min-width: 0; }
     .change-list li .ci {
       flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px;
       background: var(--orange-light); border-radius: 6px;
@@ -241,6 +242,16 @@
     footer a { color: #bbb; text-decoration: none; }
     footer a:hover { color: var(--orange); }
   </style>
+  <link rel="canonical" href="https://tteona.kr/updates.html">
+  <meta name="description" content="떠나 앱의 버전별 새로운 기능과 개선 사항을 확인하세요. 브이로그, 코스 탐색, 그룹 여행 기능이 어떻게 발전해왔는지 한눈에 볼 수 있어요.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="업데이트 노트 — 떠나">
+  <meta property="og:description" content="떠나 앱의 버전별 새로운 기능과 개선 사항을 확인하세요. 브이로그, 코스 탐색, 그룹 여행 기능이 어떻게 발전해왔는지 한눈에 볼 수 있어요.">
+  <meta property="og:image" content="https://tteona.kr/og-image.png">
+  <meta property="og:url" content="https://tteona.kr/updates.html">
+  <meta property="og:site_name" content="떠나 tteona">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -253,6 +264,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="/">기능 소개</a></li>
+        <li><a href="/explore/">코스 탐색</a></li>
         <li><a href="/updates.html" class="active">업데이트</a></li>
         <li><a href="/#cta">다운로드</a></li>
         <li><a href="mailto:just.tteona@gmail.com">문의하기</a></li>
@@ -274,6 +286,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/">🗺️ 기능 소개</a>
+  <a href="/explore/">🧭 코스 탐색</a>
   <a href="/updates.html">🔔 업데이트</a>
   <a href="/#cta">⬇️ 다운로드</a>
   <a href="mailto:just.tteona@gmail.com">✉️ 문의하기</a>
@@ -286,7 +299,7 @@
   <div class="container">
     <div class="page-eyebrow">Release Notes</div>
     <h1 class="page-title">업데이트 노트</h1>
-    <p class="page-subtitle">tteona의 새로운 기능과 개선사항을 확인해보세요.</p>
+    <p class="page-subtitle">떠나가 지금까지 어떻게 달라졌는지, 버전별로 정리했어요.</p>
   </div>
 </div>
 
@@ -295,43 +308,162 @@
   <div class="container">
     <div class="timeline">
 
-      <!-- v1.1 업데이트 예정 -->
-      <div class="tl-entry tl-upcoming">
+      <div class="tl-entry tl-latest">
         <div class="tl-left">
-          <span class="tl-version">v1.1</span>
-          <span class="tl-date">예정</span>
+          <span class="tl-version">v1.3.2</span>
+          <span class="tl-date">2026.08.28</span>
           <div class="tl-dot"></div>
         </div>
         <div class="tl-card">
-          <div class="upcoming-overlay">
-            <div class="upcoming-badge">
-              <i class="ph-fill ph-clock-countdown"></i>
-              업데이트 예정
-            </div>
-          </div>
-          <div class="tl-card-title">다음 업데이트</div>
+          <div class="tl-card-title">📸 촬영 탭 개편 · 게스트 체험 · 자막 꾸미기</div>
           <div class="change-group">
             <div class="change-group-label tag-new">새 기능</div>
             <ul class="change-list">
-              <li><span class="ci"><i class="ph-fill ph-star"></i></span>새로운 기능이 준비되고 있어요</li>
-              <li><span class="ci"><i class="ph-fill ph-star"></i></span>새로운 기능이 준비되고 있어요</li>
+              <li><span class="ci"><i class="ph-fill ph-camera"></i></span><span class="ct"><strong>촬영 탭</strong>을 새로 만들고 탭 구조를 정리했어요 — 촬영 · 발견 · 채팅 · 프로필</span></li>
+              <li><span class="ci"><i class="ph-fill ph-user-plus"></i></span><span class="ct">회원가입 없이 먼저 써보는 <strong>게스트 모드</strong> — 브이로그 1회 체험</span></li>
+              <li><span class="ci"><i class="ph-fill ph-textbox"></i></span><span class="ct">브이로그 <strong>자막 꾸미기</strong> — 글씨체 · 색 · 표시 항목 · 클립별 문구</span></li>
+              <li><span class="ci"><i class="ph-fill ph-timer"></i></span><span class="ct">클립 길이를 2초 · 3초 · 5초 중에 고를 수 있어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-map-trifold"></i></span><span class="ct">네이버 지도 길찾기를 지원해요</span></li>
             </ul>
           </div>
           <div class="change-divider"></div>
           <div class="change-group">
             <div class="change-group-label tag-improve">개선</div>
             <ul class="change-list">
-              <li><span class="ci ci-improve"><i class="ph-fill ph-star"></i></span>더 나은 경험을 위한 개선이 진행 중이에요</li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-check-circle"></i></span><span class="ct">이메일 가입 시 주소를 잘못 입력했을 때 바로 고칠 수 있어요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-check-circle"></i></span><span class="ct">인증 메일을 기다리는 동안에도 촬영을 이어갈 수 있어요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-check-circle"></i></span><span class="ct">인증 전에 다른 방법으로 로그인해도 찍어둔 영상이 그대로 남아요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-check-circle"></i></span><span class="ct">촬영이 저장되지 않으면 바로 알려드려요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-check-circle"></i></span><span class="ct">구독 화면에서 요금제와 가격이 한눈에 보이도록 정리했어요</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">Android</span>
+          <span class="tl-date">2026.07.30</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">🤖 Google Play 출시</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 소식</div>
+            <ul class="change-list">
+              <li><span class="ci"><i class="ph-fill ph-android-logo"></i></span><span class="ct">안드로이드 버전을 <strong>Google Play</strong>에 출시했어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-device-mobile"></i></span><span class="ct">iOS와 같은 코스 · 브이로그 · 그룹 여행 기능을 그대로 쓸 수 있어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-users-three"></i></span><span class="ct">아이폰 친구와 안드로이드 친구가 같은 방에서 함께 떠날 수 있어요</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.3.1</span>
+          <span class="tl-date">2026.07.27</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">✍️ 자막 글씨체 추가 · 안정화</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li><span class="ci"><i class="ph-fill ph-text-aa"></i></span><span class="ct">브이로그 자막용 글씨체 2종을 추가했어요 — 주아 · 나눔 펜</span></li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li><span class="ci ci-improve"><i class="ph-fill ph-link"></i></span><span class="ct">코스 공유 링크로 열리는 페이지를 정비했어요</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.3</span>
+          <span class="tl-date">2026.07.20</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">🎓 첫 브이로그 튜토리얼 · 위치 정보 보호 강화</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li><span class="ci"><i class="ph-fill ph-graduation-cap"></i></span><span class="ct">처음 오신 분을 위한 <strong>단계별 브이로그 만들기</strong> 안내</span></li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li><span class="ci ci-improve"><i class="ph-fill ph-shield-check"></i></span><span class="ct">위치 정보 이용 내역을 기록하고, 기간이 지나면 자동으로 파기해요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-file-text"></i></span><span class="ct">위치기반서비스 이용약관을 새로 마련했어요</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.2</span>
+          <span class="tl-date">2026.07.17</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">💬 채팅 읽음 표시 · 브이로그 자동 공유</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li><span class="ci"><i class="ph-fill ph-chats-circle"></i></span><span class="ct">채팅에 <strong>안 읽은 메시지 수</strong>와 시간 구분선이 생겼어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-share-network"></i></span><span class="ct">브이로그가 완성되면 함께 떠난 방 채팅에 <strong>자동으로 공유</strong>돼요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-image"></i></span><span class="ct">그룹 방에 대표 이미지를 설정하고 멤버 목록을 볼 수 있어요</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-left">
+          <span class="tl-version">v1.1</span>
+          <span class="tl-date">2026.07.14</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-title">🗺️ 프로필 탭 · 발자취 지도 · 브이로그 포맷 선택</div>
+          <div class="change-group">
+            <div class="change-group-label tag-new">새 기능</div>
+            <ul class="change-list">
+              <li><span class="ci"><i class="ph-fill ph-footprints"></i></span><span class="ct"><strong>프로필 탭과 발자취 지도</strong> — 다녀온 지역이 색칠돼요 (전 세계 주 · 도 단위)</span></li>
+              <li><span class="ci"><i class="ph-fill ph-crop"></i></span><span class="ct">브이로그 <strong>포맷 선택</strong> — 릴스 9:16 · 유튜브 16:9 · 인스타 1:1</span></li>
+              <li><span class="ci"><i class="ph-fill ph-cloud-arrow-up"></i></span><span class="ct">브이로그를 서버에서 만들어, 앱을 꺼도 계속 진행돼요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-crown"></i></span><span class="ct">PRO 구독을 도입했어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-paint-brush"></i></span><span class="ct">내 코스 썸네일을 직접 꾸밀 수 있어요</span></li>
+              <li><span class="ci"><i class="ph-fill ph-chat-teardrop-text"></i></span><span class="ct">그룹 채팅에 답장과 이모지 반응이 생겼어요</span></li>
+            </ul>
+          </div>
+          <div class="change-divider"></div>
+          <div class="change-group">
+            <div class="change-group-label tag-improve">개선</div>
+            <ul class="change-list">
+              <li><span class="ci ci-improve"><i class="ph-fill ph-path"></i></span><span class="ct">장소 검색을 카카오 로컬로 통합하고, 자동차 · 대중교통 · 도보 경로를 실제 소요 시간으로 안내해요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-image"></i></span><span class="ct">코스에 한국관광공사 장소 사진을 붙였어요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-sun"></i></span><span class="ct">계절에 맞는 코스를 먼저 추천해요</span></li>
+              <li><span class="ci ci-improve"><i class="ph-fill ph-bell"></i></span><span class="ct">푸시 알림 수신 문제와 배지 숫자를 바로잡았어요</span></li>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- v1.0 App Store 출시 -->
-      <div class="tl-entry tl-latest">
+      <div class="tl-entry">
         <div class="tl-left">
           <span class="tl-version">v1.0</span>
-          <span class="tl-date">2026.06.06</span>
+          <span class="tl-date">2026.06.08</span>
           <div class="tl-dot"></div>
         </div>
         <div class="tl-card">
@@ -339,29 +471,17 @@
           <div class="change-group">
             <ul class="change-list">
               <li>
-                <span class="ci"><i class="ph-fill ph-map-trifold"></i></span>
-                코스를 따라 장소를 기록하는 <strong>나의 오늘</strong> 기능
-              </li>
+                <span class="ci"><i class="ph-fill ph-map-trifold"></i></span><span class="ct">코스를 따라 장소를 기록하는 <strong>나의 오늘</strong> 기능</span></li>
               <li>
-                <span class="ci"><i class="ph-fill ph-video-camera"></i></span>
-                장소마다 짧은 영상 클립을 촬영해 자동으로 합치는 <strong>브이로그</strong> 기능
-              </li>
+                <span class="ci"><i class="ph-fill ph-video-camera"></i></span><span class="ct">장소마다 짧은 영상 클립을 촬영해 자동으로 합치는 <strong>브이로그</strong> 기능</span></li>
               <li>
-                <span class="ci"><i class="ph-fill ph-compass"></i></span>
-                타 유저의 코스를 가져와 직접 따라가는 <strong>코스 떠나기</strong> 기능
-              </li>
+                <span class="ci"><i class="ph-fill ph-compass"></i></span><span class="ct">타 유저의 코스를 가져와 직접 따라가는 <strong>코스 떠나기</strong> 기능</span></li>
               <li>
-                <span class="ci"><i class="ph-fill ph-users"></i></span>
-                초대 코드로 친구와 함께 여행을 공유하는 <strong>그룹 피드</strong> 기능
-              </li>
+                <span class="ci"><i class="ph-fill ph-users"></i></span><span class="ct">초대 코드로 친구와 함께 여행을 공유하는 <strong>그룹 피드</strong> 기능</span></li>
               <li>
-                <span class="ci"><i class="ph-fill ph-map-pin"></i></span>
-                그룹 멤버 간 실시간 위치 공유
-              </li>
+                <span class="ci"><i class="ph-fill ph-map-pin"></i></span><span class="ct">그룹 멤버 간 실시간 위치 공유</span></li>
               <li>
-                <span class="ci"><i class="ph-fill ph-sign-in"></i></span>
-                Apple, 카카오, 이메일 로그인 지원
-              </li>
+                <span class="ci"><i class="ph-fill ph-sign-in"></i></span><span class="ct">Apple, 카카오, 이메일 로그인 지원</span></li>
             </ul>
           </div>
         </div>
@@ -372,7 +492,7 @@
 </section>
 
 <footer>
-  <p>© 2025 tteona · <a href="/terms.html">이용약관</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="mailto:just.tteona@gmail.com">문의하기</a></p>
+  <p>© 2026 tteona · <a href="/terms.html">이용약관</a> · <a href="/privacy.html">개인정보처리방침</a> · <a href="mailto:just.tteona@gmail.com">문의하기</a></p>
 </footer>
 
 <script>
@@ -386,6 +506,25 @@
   document.querySelectorAll('.mobile-menu a').forEach(a => {
     a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
+</script>
+<script>
+// 스토어 클릭 집계 — 쿠키·개인식별 정보 없이 웹서버 액세스 로그로만 센다.
+// (앱 내부 퍼널은 /api/stats/course-event 가 따로 담당한다)
+(function () {
+  function beacon(kind) {
+    try {
+      var u = '/px/store-' + kind + '.gif?p=' + encodeURIComponent(location.pathname) + '&t=' + Date.now();
+      if (window.fetch) fetch(u, { method: 'GET', keepalive: true, cache: 'no-store' }).catch(function () {});
+      else new Image().src = u;
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (a.href.indexOf('apps.apple.com') > -1) beacon('ios');
+    else if (a.href.indexOf('play.google.com') > -1) beacon('android');
+  }, true);
+})();
 </script>
 </body>
 </html>

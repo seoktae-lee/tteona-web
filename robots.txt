@@ -1,0 +1,7 @@
+# tteona.kr
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /px/
+
+Sitemap: https://tteona.kr/sitemap.xml

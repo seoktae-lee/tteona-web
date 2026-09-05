@@ -348,6 +348,61 @@
       #naru img, .scroll-hint svg { animation: none; }
     }
   </style>
+  <link rel="canonical" href="https://tteona.kr/">
+  <meta property="og:site_name" content="떠나 tteona">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- 구조화 데이터: 검색 결과에 앱 정보가 함께 노출되도록 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "@id": "https://tteona.kr/#app",
+        "name": "떠나",
+        "alternateName": "tteona",
+        "description": "가고 싶은 장소를 코스로 잇고, 장소마다 짧은 클립을 남기면 하루가 한 편의 브이로그로 자동 완성되는 여행 기록 앱.",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "iOS 17.0+, Android",
+        "inLanguage": ["ko", "en", "ja"],
+        "url": "https://tteona.kr/",
+        "image": "https://tteona.kr/tteona-appicon.png",
+        "screenshot": [
+          "https://tteona.kr/shot-course.jpg",
+          "https://tteona.kr/shot-explore.jpg",
+          "https://tteona.kr/shot-format.jpg"
+        ],
+        "installUrl": [
+          "https://apps.apple.com/kr/app/%EB%96%A0%EB%82%98/id6767218543",
+          "https://play.google.com/store/apps/details?id=com.seoktaedev.tteona"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        },
+        "publisher": { "@id": "https://tteona.kr/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://tteona.kr/#org",
+        "name": "AERON",
+        "url": "https://aeron.kr",
+        "logo": "https://tteona.kr/tteona-logo.png",
+        "email": "just.tteona@gmail.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tteona.kr/#website",
+        "url": "https://tteona.kr/",
+        "name": "떠나 tteona",
+        "inLanguage": "ko",
+        "publisher": { "@id": "https://tteona.kr/#org" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -745,6 +800,25 @@
     // GSAP 미로드/모션 최소화: 길 전체 표시 (콘텐츠는 기본 노출)
     document.getElementById('stars').style.opacity = 0;
   }
+</script>
+<script>
+// 스토어 클릭 집계 — 쿠키·개인식별 정보 없이 웹서버 액세스 로그로만 센다.
+// (앱 내부 퍼널은 /api/stats/course-event 가 따로 담당한다)
+(function () {
+  function beacon(kind) {
+    try {
+      var u = '/px/store-' + kind + '.gif?p=' + encodeURIComponent(location.pathname) + '&t=' + Date.now();
+      if (window.fetch) fetch(u, { method: 'GET', keepalive: true, cache: 'no-store' }).catch(function () {});
+      else new Image().src = u;
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (a.href.indexOf('apps.apple.com') > -1) beacon('ios');
+    else if (a.href.indexOf('play.google.com') > -1) beacon('android');
+  }, true);
+})();
 </script>
 </body>
 </html>

@@ -410,6 +410,15 @@
       .hamburger { display: flex; }
     }
   </style>
+  <link rel="canonical" href="https://tteona.kr/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About AERON — 떠나를 만드는 팀">
+  <meta property="og:description" content="IDEAS IN THE AIR, SOLUTIONS ON. AERON은 구름처럼 떠다니는 아이디어를 실제 서비스로 실현합니다.">
+  <meta property="og:image" content="https://tteona.kr/og-image.png">
+  <meta property="og:url" content="https://tteona.kr/about.html">
+  <meta property="og:site_name" content="떠나 tteona">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -846,6 +855,25 @@
       document.body.style.overflow = '';
     });
   });
+</script>
+<script>
+// 스토어 클릭 집계 — 쿠키·개인식별 정보 없이 웹서버 액세스 로그로만 센다.
+// (앱 내부 퍼널은 /api/stats/course-event 가 따로 담당한다)
+(function () {
+  function beacon(kind) {
+    try {
+      var u = '/px/store-' + kind + '.gif?p=' + encodeURIComponent(location.pathname) + '&t=' + Date.now();
+      if (window.fetch) fetch(u, { method: 'GET', keepalive: true, cache: 'no-store' }).catch(function () {});
+      else new Image().src = u;
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (a.href.indexOf('apps.apple.com') > -1) beacon('ios');
+    else if (a.href.indexOf('play.google.com') > -1) beacon('android');
+  }, true);
+})();
 </script>
 </body>
 </html>

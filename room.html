@@ -127,5 +127,24 @@
       Google Play에서 다운로드
     </a>
   </div>
+<script>
+// 스토어 클릭 집계 — 쿠키·개인식별 정보 없이 웹서버 액세스 로그로만 센다.
+// (앱 내부 퍼널은 /api/stats/course-event 가 따로 담당한다)
+(function () {
+  function beacon(kind) {
+    try {
+      var u = '/px/store-' + kind + '.gif?p=' + encodeURIComponent(location.pathname) + '&t=' + Date.now();
+      if (window.fetch) fetch(u, { method: 'GET', keepalive: true, cache: 'no-store' }).catch(function () {});
+      else new Image().src = u;
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (a.href.indexOf('apps.apple.com') > -1) beacon('ios');
+    else if (a.href.indexOf('play.google.com') > -1) beacon('android');
+  }, true);
+})();
+</script>
 </body>
 </html>
